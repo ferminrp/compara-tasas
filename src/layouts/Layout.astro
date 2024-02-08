@@ -9,14 +9,21 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<meta charset="UTF-8">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://ik.imagekit.io/ferminrp/icon.png?updatedAt=1707315247753&tr=w-180,h-180">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-title" content="Compara Tasas">
+		<meta name="apple-mobile-web-app-status-bar-style" content="default">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Comparador de Tasas de FCI">
+		<meta name="twitter:image" content="https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG">
+		<title>Comparador de Tasas de FCI</title>
+		<meta name="description" content="Compara las tasas de rendimiento que ofrecen las principales billeteras digitales y sacale mas jugo a tu pesos.">
+		<link rel="icon" href="https://ik.imagekit.io/ferminrp/tasas_logo.png?updatedAt=1705753442861" type="image/x-icon">
+		<meta property="og:image" content="https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG" />
 	</head>
-	<body class="bg-gray-100 text-gray-900">
+	<body class="bg-gray-100 text-gray-900 py-6">
 		<slot />
 	</body>
 </html>
