@@ -1,4 +1,6 @@
 ---
+import  SpeedInsights  from "@vercel/speed-insights/astro"
+
 interface Props {
 	title: string;
 }
@@ -25,6 +27,13 @@ const { title } = Astro.props;
 	</head>
 	<body class="bg-gray-100 text-gray-900 py-6">
 		<slot />
+	<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+	<script async src="https://scripts.simpleanalyticscdn.com/auto-events.js"></script>
+
+	<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8830795303254861"
+crossorigin="anonymous"></script>
+	<SpeedInsights/>
 	</body>
 </html>
 <style is:global>
