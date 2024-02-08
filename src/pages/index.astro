@@ -1,11 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+
+// Define your API endpoint and API keys
+const apiEndpoint = 'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*';
+const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRoa2xwYWNmd3RydHV5bnFsbmFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA5NDU4ODMsImV4cCI6MjAxNjUyMTg4M30._it1MlAW77XSEtPomXXgibz99xJtZc5Jcc3V2OVt33s'; // Ensure to securely store and use your API keys
+
+// Configure your fetch request with headers
+const response = await fetch(apiEndpoint, {
+  method: 'GET', // or 'POST', depending on the API requirements
+  headers: {
+    'Authorization': `Bearer ${apiKey}`,
+    'apikey': apiKey
+    // Add any other headers required by the API
+  },
+});
+
+const data = await response.json();
+
+// Assuming your API returns data in a similar structure
+const userData = data;
+
 ---
 
 <Layout title="Compara Tasas">
 <div id="containter" class="container mx-auto mx-4 px-4 my-6 max-w-sm">
-          <h1 class="text-3xl text-gray-900 font-bold my-6">¡Elegí el fondo con <span class="text-indigo-600">más rendimientos</span> para vos!</h1>
+{userData[0].id}          
+<h1 class="text-3xl text-gray-900 font-bold my-6">¡Elegí el fondo con <span class="text-indigo-600">más rendimientos</span> para vos!</h1>
             <p class="flex items-center gap-1 text-gray-500"><span class="h-2 w-2 rounded-full bg-green-500"></span>Última actualización: <span id="updateDate"></span><p>
             <div class="flex flex-col gap-4 my-6">
             <h2 class="text-xl text-gray-800 font-bold">Inversión Automática</h2>
