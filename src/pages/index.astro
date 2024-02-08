@@ -66,6 +66,13 @@ const sortedData = data.sort((a, b) => {
             </div>
             <div class="flex flex-col gap-4 my-6">
               <h2 class="text-xl text-gray-800 font-bold">Fondos en USD</h2>
+              {
+                sortedData
+                  .filter(item => item.type === 'buendolar')
+                  .map(item => (
+                    <Card {...item} />
+                  ))
+              }
             </div>
 
             <div class="flex flex-col gap-4 my-6">
