@@ -1,0 +1,15 @@
+---
+function getCurrentDate() {
+    const date = new Date(); // Create a new date object representing the current date and time
+    const year = date.getFullYear(); // Get the full year
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Get the month, add 1 to make it 1-indexed, convert to string and pad if necessary
+    const day = String(date.getDate()).padStart(2, '0'); // Get the day of the month, convert to string and pad if necessary
+
+    return `${year}-${month}-${day}`; // Return the date in YYYY-MM-DD format
+}
+
+const currentDate = getCurrentDate(); // Call the function to get the current date
+---
+
+<span>{currentDate}</span>
+
