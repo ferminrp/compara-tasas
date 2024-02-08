@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro'
 
 // Define your API endpoint and API keys
 const apiEndpoint = 'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*';
@@ -17,24 +18,51 @@ const response = await fetch(apiEndpoint, {
 
 const data = await response.json();
 
-// Assuming your API returns data in a similar structure
-const userData = data;
+const sortedData = data.sort((a, b) => {
+  if (a.tea < b.tea) {
+    return 1; // for descending order, return 1 if the first item is less than the second
+  } else if (a.tea > b.tea) {
+    return -1; // return -1 if the first item is greater than the second
+  } else {
+    return 0; // return 0 if they're equal
+  }
+});
 
 ---
 
 <Layout title="Compara Tasas">
 <div id="containter" class="container mx-auto mx-4 px-4 my-6 max-w-sm">
-{userData[0].id}          
 <h1 class="text-3xl text-gray-900 font-bold my-6">¡Elegí el fondo con <span class="text-indigo-600">más rendimientos</span> para vos!</h1>
             <p class="flex items-center gap-1 text-gray-500"><span class="h-2 w-2 rounded-full bg-green-500"></span>Última actualización: <span id="updateDate"></span><p>
             <div class="flex flex-col gap-4 my-6">
             <h2 class="text-xl text-gray-800 font-bold">Inversión Automática</h2>
+            {
+              sortedData
+                .filter(item => item.type === 'cuenta_remunerada')
+                .map(item => (
+                  <Card {...item} />
+                ))
+            }
             </div>
             <div class="flex flex-col gap-4 my-6">
             <h2 class="text-xl text-gray-800 font-bold">Experiencia Tradicional</h2>
+            {
+              sortedData
+                .filter(item => item.type === 'tradicional')
+                .map(item => (
+                  <Card {...item} />
+                ))
+            }
             </div>
             <div class="flex flex-col gap-4 my-6">
             <h2 class="text-xl text-gray-800 font-bold">Cripto Pesos</h2>
+            {
+              sortedData
+                .filter(item => item.type === 'criptopesos')
+                .map(item => (
+                  <Card {...item} />
+                ))
+            }
             </div>
             <div class="flex flex-col gap-4 my-6">
               <h2 class="text-xl text-gray-800 font-bold">Fondos en USD</h2>
