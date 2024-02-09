@@ -7,7 +7,7 @@ const dolaresMostrables = ["Blue", "Contado con liquidación", "Bolsa", "Cripto"
 const filteredDolares = data.filter(item => dolaresMostrables.includes(item.nombre));
 
 ---
-<div class="bg-white shadow-sm rounded-lg border-gray-300 my-4 p-4 text-gray dark:bg-gray-900 flex flex-col">
+<div class="bg-white shadow-sm rounded-lg border-gray-300 my-2 p-4 text-gray dark:bg-gray-900 flex flex-col">
     {
         filteredDolares.map((item, index) => (
             (item.compra + item.venta) / 2 > 800 ?
