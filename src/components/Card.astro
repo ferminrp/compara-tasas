@@ -2,7 +2,7 @@
 const inversion = Astro.props;
 
 const formattedTea = new Intl.NumberFormat('es-AR', { style: 'percent', minimumFractionDigits: 2 }).format(inversion.tea / 100);
-const logo = inversion.logo + '?tr=w-48,h-48,f_webp'
+const logo = inversion.logo + '?tr=w-32,h-32,f_webp'
 ---
 
 <a class="bg-white shadow-sm rounded-lg border-gray-300 p-4" href={`${inversion.url}?ref=comparatasas.ar`}>
