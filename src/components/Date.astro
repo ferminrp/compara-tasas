@@ -1,14 +1,17 @@
 ---
 function getCurrentDate() {
-    const date = new Date(); // Create a new date object representing the current date and time
-    const year = date.getFullYear(); // Get the full year
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Get the month, add 1 to make it 1-indexed, convert to string and pad if necessary
-    const day = String(date.getDate()).padStart(2, '0'); // Get the day of the month, convert to string and pad if necessary
+    const date = new Date(); // Crea un objeto de fecha representando la fecha y hora actual
+    const day = date.getDate(); // Obtiene el día del mes
 
-    return `${year}-${month}-${day}`; // Return the date in YYYY-MM-DD format
+    // Array de los nombres abreviados de los meses en español
+    const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    const month = months[date.getMonth()]; // Obtiene el nombre abreviado del mes actual
+
+    return `${day} de ${month}`; // Retorna la fecha en el formato "9 de Feb."
 }
 
-const currentDate = getCurrentDate(); // Call the function to get the current date
+const currentDate = getCurrentDate(); // Llama a la función para obtener la fecha actual
+
 ---
 
 <span>{currentDate}</span>
