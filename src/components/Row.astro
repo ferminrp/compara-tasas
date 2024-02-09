@@ -2,7 +2,7 @@
 // Destructure the props
 const { isLastItem, url, name, logo, tea } = Astro.props;
 const formattedTea = new Intl.NumberFormat('es-AR', { style: 'percent', minimumFractionDigits: 2 }).format(tea / 100);
-const fullLogo = logo + '?tr=w-48,h-48,f_webp'
+const fullLogo = logo + '?tr=w-16,h-16,f_webp'
 ---
 
 <a class={`p-2 ${isLastItem ? '' : 'border-b border-b-1 border-gray-100'}`} href={`${url}?ref=comparatasas.ar`}>
