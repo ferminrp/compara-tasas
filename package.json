@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/partytown": "^2.0.4",
+    "@astrojs/sitemap": "^3.0.5",
     "@astrojs/tailwind": "^5.1.0",
     "@vercel/speed-insights": "^1.0.9",
     "astro": "^4.3.5",
