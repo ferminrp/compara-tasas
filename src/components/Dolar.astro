@@ -4,7 +4,8 @@ const formattedPrice = new Intl.NumberFormat('es-AR', { style: 'currency', curre
 ---
 
 <div class="flex justify-between text-sm dark:text-gray-300">
-    <p class="font-semibold">{name === "Bolsa" ? "Mep" : name}</p>
+    <p class="font-semibold">{name === "Bolsa" ? "Mep" : name === "Contado con liquidación" ? "CCL" : name}
+    </p>
     <p>{formattedPrice}</p>
 </div>
 {!isLastItem && <hr class="border-gray-100 my-1 dark:border-gray-800">}
