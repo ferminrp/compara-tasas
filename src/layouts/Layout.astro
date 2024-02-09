@@ -1,5 +1,5 @@
 ---
-import  SpeedInsights  from "@vercel/speed-insights/astro"
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
 	title: string;
@@ -11,34 +11,84 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<link rel="apple-touch-icon" sizes="180x180" href="https://ik.imagekit.io/ferminrp/icon.png?updatedAt=1707315247753&tr=w-180,h-180">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-title" content="Compara Tasas">
-		<meta name="apple-mobile-web-app-status-bar-style" content="default">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="Comparador de Tasas de FCI">
-		<meta name="twitter:image" content="https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG">
+		<meta charset="UTF-8" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="https://ik.imagekit.io/ferminrp/icon.png?updatedAt=1707315247753&tr=w-180,h-180"
+		/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-title" content="Compara Tasas" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Comparador de Tasas de FCI" />
+		<meta
+			name="twitter:image"
+			content="https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG"
+		/>
 		<title>Comparador de Tasas de FCI</title>
-		<meta name="description" content="Compara las tasas de rendimiento que ofrecen las principales billeteras digitales y sacale mas jugo a tu pesos.">
-		<link rel="icon" href="https://ik.imagekit.io/ferminrp/tasas_logo.png?updatedAt=1705753442861" type="image/x-icon">
-		<meta property="og:image" content="https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG" />
+		<meta
+			name="description"
+			content="Compara las tasas de rendimiento que ofrecen las principales billeteras digitales y sacale mas jugo a tu pesos."
+		/>
+		<link
+			rel="icon"
+			href="https://ik.imagekit.io/ferminrp/tasas_logo.png?updatedAt=1705753442861"
+			type="image/x-icon"
+		/>
+		<meta
+			property="og:image"
+			content="https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG"
+		/>
+		<script>
+			function setThemeColor() {
+			  const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			  const metaThemeColor = document.querySelector("meta[name=theme-color]");
+			  
+			  if (isDarkMode) {
+				metaThemeColor.setAttribute("content", "#020617");
+			  } else {
+				metaThemeColor.setAttribute("content", "#f1f5f9");
+			  }
+			}
+		  
+			// Initial set
+			setThemeColor();
+		  
+			// Listen for changes
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeColor);
+		  </script>
 	</head>
 	<body class="bg-gray-100 text-gray-900 py-6 dark:bg-gray-950">
 		<slot />
-	<script type="text/partytown" async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-	<script type="text/partytown" async src="https://scripts.simpleanalyticscdn.com/auto-events.js"></script>
+		<script
+			type="text/partytown"
+			async
+			defer
+			src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+		<script
+			type="text/partytown"
+			async
+			src="https://scripts.simpleanalyticscdn.com/auto-events.js"
+		></script>
 
-	<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
-	<script type="text/partytown" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8830795303254861"
-crossorigin="anonymous"></script>
-	<SpeedInsights/>
+		<noscript
+			><img
+				src="https://queue.simpleanalyticscdn.com/noscript.gif"
+				alt=""
+				referrerpolicy="no-referrer-when-downgrade"
+			/></noscript
+		>
+		<script
+			type="text/partytown"
+			async
+			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8830795303254861"
+			crossorigin="anonymous"></script>
+		<SpeedInsights />
 	</body>
 </html>
 <style is:global>
 	:root {
-
 	}
-
 </style>
