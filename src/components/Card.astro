@@ -5,17 +5,17 @@ const formattedTea = new Intl.NumberFormat('es-AR', { style: 'percent', minimumF
 const logo = inversion.logo + '?tr=w-32,h-32,f_webp'
 ---
 
-<a class="bg-white shadow-sm rounded-lg border-gray-300 p-4" href={`${inversion.url}?ref=comparatasas.ar`}>
+<a class="bg-white shadow-sm rounded-lg border-gray-300 p-4 text-gray dark:bg-gray-900" href={`${inversion.url}?ref=comparatasas.ar`}>
 	<div class="">
 	  <div class="flex flex-row justify-between items-center">
 		<div class="flex items-center gap-2">
 		  <img loading="lazy" style="width: 32px; height: 32px;" class="rounded-full w-8 h-8" width="32" height="32" src={logo} alt={`${inversion.title} logo`} />
 		  <div>
-			<p class="font-semibold capitalize flex items-center content-center">{inversion.name}</p>
+			<p class="font-semibold capitalize flex items-center content-center dark:text-gray-200">{inversion.name}</p>
 			<p class="text-gray-400 text-xs">{inversion.detail}</p>
 		  </div>
 		</div>
-		<p><span class="tabular-nums">{formattedTea}</span>  <span class="text-gray-400 text-xs">TEA</span></p>
+		<p><span class="tabular-nums dark:text-gray-200">{formattedTea}</span>  <span class="text-gray-400 text-xs">TEA</span></p>
 	  </div>
 	</div>
   </a>

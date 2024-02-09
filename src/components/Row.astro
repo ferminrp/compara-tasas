@@ -5,16 +5,16 @@ const formattedTea = new Intl.NumberFormat('es-AR', { style: 'percent', minimumF
 const fullLogo = logo + '?tr=w-16,h-16,f_webp'
 ---
 
-<a class={`p-2 ${isLastItem ? '' : 'border-b border-b-1 border-gray-100'}`} href={`${url}?ref=comparatasas.ar`}>
+<a class={`p-2 ${isLastItem ? 'dark:bg-gray-900' : 'border-b border-b-1 border-gray-100 dark:bg-gray-900'}`} href={`${url}?ref=comparatasas.ar`}>
   <div>
     <div class="flex flex-row justify-between items-center">
       <div class="flex items-center gap-2">
         <img loading="lazy" style="width: 16px; height: 16px;" class="rounded-full w-4 h-4" src={fullLogo} alt={`${name} logo`}>
         <div>
-          <p class="font-semibold capitalize">{name}</p>
+          <p class="font-semibold capitalize dark:text-gray-200">{name}</p>
         </div>
       </div>
-      <p><span class="tabular-nums">{formattedTea}</span> <span class="text-gray-400 text-xs">TEA</span></p>
+      <p><span class="tabular-nums dark:text-gray-200">{formattedTea}</span> <span class="text-gray-400 text-xs">TEA</span></p>
     </div>
   </div>
 </a>
