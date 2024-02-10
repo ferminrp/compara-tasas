@@ -6,13 +6,13 @@ const formattedVenta = new Intl.NumberFormat('es-AR', { style: 'currency', curre
 ---
 
 <tr>
-<td class="px-4 py-2 border-b border-gray-200 bg-white text-sm w-full">
-    <p class="text-gray whitespace-no-wrap">{name === "Bolsa" ? "Mep" : name === "Contado con liquidación" ? "CCL" : name}</p>
+<td class="px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-sm w-full">
+    <p class="text-gray whitespace-no-wrap dark:text-gray-200">{name === "Bolsa" ? "Mep" : name === "Contado con liquidación" ? "CCL" : name}</p>
 </td>
-<td class="px-4 py-2 border-b border-gray-200 bg-white text-sm text-right w-auto whitespace-nowrap">
-    <p class="text-gray whitespace-no-wrap">{formattedCompra}</p>
+<td class="px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-sm text-right w-auto whitespace-nowrap">
+    <p class="text-gray whitespace-no-wrap dark:text-gray-200">{formattedCompra}</p>
 </td>
-<td class="px-4 py-2 border-b border-gray-200 bg-white text-sm text-right w-auto whitespace-nowrap">
-    <p class="text-gray whitespace-no-wrap">{formattedVenta}</p>
+<td class="px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-sm text-right w-auto whitespace-nowrap">
+    <p class="text-gray whitespace-no-wrap dark:text-gray-200">{formattedVenta}</p>
 </td>
 </tr>
