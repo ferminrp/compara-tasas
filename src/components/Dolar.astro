@@ -1,11 +1,18 @@
 ---
-const { name, cotizacion, isLastItem } = Astro.props;
-const formattedPrice = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(cotizacion);
+const { name, precioCompra, precioVenta , isLastItem } = Astro.props;
+const formattedCompra = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(precioCompra);
+const formattedVenta = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(precioVenta);
+
 ---
 
-<div class="flex justify-between text-sm dark:text-gray-300">
-    <p class="font-semibold">{name === "Bolsa" ? "Mep" : name === "Contado con liquidación" ? "CCL" : name}
-    </p>
-    <p>{formattedPrice}</p>
-</div>
-{!isLastItem && <hr class="border-gray-100 my-2 dark:border-gray-800">}
+<tr>
+<td class="px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-sm w-full">
+    <p class="text-gray whitespace-no-wrap dark:text-gray-200">{name === "Bolsa" ? "Mep" : name === "Contado con liquidación" ? "CCL" : name}</p>
+</td>
+<td class="px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-sm text-right w-auto whitespace-nowrap">
+    <p class="text-gray whitespace-no-wrap dark:text-gray-200">{formattedCompra}</p>
+</td>
+<td class="px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-sm text-right w-auto whitespace-nowrap">
+    <p class="text-gray whitespace-no-wrap dark:text-gray-200">{formattedVenta}</p>
+</td>
+</tr>
