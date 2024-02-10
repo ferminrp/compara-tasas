@@ -1,54 +1,48 @@
-# Astro Starter Kit: Basics
+# Comparatasas
 
-```sh
-npm create astro@latest -- --template basics
-```
+El objetivo de este proyecto es construir la fuente de información de datos financieros mas clara y robusta posible para cualquier Argentino que quiera mejorar su salud financiera.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Puede incluir pero no esta limitado a rendimientos de instrumentos de inversion, comparador de comisiones, indexar sitios o contenido educativo.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Principios
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- Cuando redirijamos a proveedores de servicios estos tienen que ser de buena reputacion, seguros y ofrecer una buena experiencia.
+- Ante un empate siempre priorizar proyectos Argentinos a proyectos del exterior. (ejemplo Binance)
 
-## 🚀 Project Structure
+Para aprender lo básico de Astro, se recomienda el [tutorial oficial](https://docs.astro.build/en/tutorial/0-introduction/).
 
-Inside of your Astro project, you'll see the following folders and files:
+## Cómo contribuir?
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+El sitio está desarrollado en [Astro](https://astro.build/) y hosteado en Vercel.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Para aprender lo básico de Astro, se recomienda el [tutorial oficial](https://docs.astro.build/en/tutorial/0-introduction/).
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Para contribuir recomendamos pero no es obligatorio sumarse al [discord](https://discord.gg/epJVzFjK).
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Para levantar un ambiente local
 
-## 🧞 Commands
+1. Clona el repositorio en tu máquina local.
+2. Asegúrate de tener instalado Node.js (versión 14.x o superior) y npm.
+3. En la terminal, navega hasta la carpeta del proyecto y ejecuta `npm install` para instalar las dependencias.
+4. Una vez finalizada la instalación de dependencias, ejecuta `npm run dev` para iniciar el servidor de desarrollo.
+5. Abre tu navegador y visita `http://localhost:4321` para ver el proyecto en ejecución.
 
-All commands are run from the root of the project, from a terminal:
+### Contribuir con código
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Si deseas contribuir con código, por favor:
 
-## 👀 Want to learn more?
+1. Revisa los issues abiertos o crea uno nuevo explicando la mejora o el bug a solucionar.
+2. Hace un fork del repositorio.
+3. Crea una nueva rama para tu feature o corrección de bug.
+4. Escribe y prueba tu código.
+5. Asegúrate de seguir las guías de estilo del código existente.
+6. Envía un Pull Request hacia la branch develop con una descripción detallada de los cambios propuestos y referencia el issue relacionado.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Contribuir con ideas, bugs o feedback
+
+Si tienes ideas, encuentras un bug o quieres dar feedback sobre el proyecto:
+
+- Abre un nuevo issue en el repositorio describiendo tu idea, el bug encontrado o el feedback que deseas compartir.
+- Sé lo más detallado posible en la descripción.
+- Si es posible, incluye capturas de pantalla o cualquier otro recurso que pueda ayudar a entender mejor tu punto.
+
