@@ -2,14 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Row from "../components/Row.astro";
-import Date from "../components/Date.astro";
 import Dolares from "../components/Dolares.astro";
 
 // Define your API endpoint and API keys
 const apiEndpoint =
   "https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*";
-const apiKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRoa2xwYWNmd3RydHV5bnFsbmFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA5NDU4ODMsImV4cCI6MjAxNjUyMTg4M30._it1MlAW77XSEtPomXXgibz99xJtZc5Jcc3V2OVt33s"; // Ensure to securely store and use your API keys
+const apiKey = import.meta.env.VITE_SUPABASE_API_KEY;
 
 // Configure your fetch request with headers
 const response = await fetch(apiEndpoint, {
