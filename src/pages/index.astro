@@ -32,7 +32,7 @@ const sortedData = data.sort((a, b) => {
 
 const filteredFiwindData = sortedData.filter((item) => item.type === "fiwind");
 const filteredBuenbitData = sortedData.filter(
-  (item) => item.type === "buenbit",
+  (item) => item.type === "buenbit"
 );
 ---
 
@@ -128,7 +128,7 @@ const filteredBuenbitData = sortedData.filter(
                 </div>
               </div>
               <button
-              class="bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-500 py-1 px-4 border border-indigo-600 rounded-lg"
+                class="bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-500 py-1 px-4 border border-indigo-600 rounded-lg"
               >
                 Descargar
               </button>
@@ -203,8 +203,9 @@ const filteredBuenbitData = sortedData.filter(
       /></a
     >
     <p class="my-4 text-gray-600 text-sm italic dark:text-gray-400">
-      Tasas de los fondos estimadas a partir de los rendimientos del último día. Información
-      provista por la cámara argentina de fondos comunes de inversión. La cotización del dolar es provista por dolarapi.com
+      Tasas de los fondos estimadas a partir de los rendimientos del último día.
+      Información provista por la cámara argentina de fondos comunes de
+      inversión. La cotización del dolar es provista por dolarapi.com
     </p>
     <div class="flex items-center gap-4">
       <img
