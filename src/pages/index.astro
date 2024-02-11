@@ -10,6 +10,7 @@ const apiEndpoint =
   "https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*";
 const apiKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRoa2xwYWNmd3RydHV5bnFsbmFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA5NDU4ODMsImV4cCI6MjAxNjUyMTg4M30._it1MlAW77XSEtPomXXgibz99xJtZc5Jcc3V2OVt33s"; // Ensure to securely store and use your API keys
+const PLAZO_FIJO = "pf";
 
 // Configure your fetch request with headers
 const response = await fetch(apiEndpoint, {
@@ -34,7 +35,7 @@ const sortedData = data.sort((a, b) => {
 
 const filteredFiwindData = sortedData.filter((item) => item.type === "fiwind");
 const filteredBuenbitData = sortedData.filter(
-  (item) => item.type === "buenbit",
+  (item) => item.type === "buenbit"
 );
 ---
 
@@ -70,6 +71,16 @@ const filteredBuenbitData = sortedData.filter(
       {
         sortedData
           .filter((item) => item.type === "tradicional")
+          .map((item) => <Card {...item} />)
+      }
+    </div>
+    <div class="flex flex-col gap-4 my-6">
+      <h2 class="text-xl text-gray-800 dark:text-gray-300 font-bold">
+        Plazo fijo
+      </h2>
+      {
+        sortedData
+          .filter((item) => item.type === PLAZO_FIJO)
           .map((item) => <Card {...item} />)
       }
     </div>
@@ -130,7 +141,7 @@ const filteredBuenbitData = sortedData.filter(
                 </div>
               </div>
               <button
-              class="bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-500 py-1 px-4 border border-indigo-600 rounded-lg"
+                class="bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-500 py-1 px-4 border border-indigo-600 rounded-lg"
               >
                 Descargar
               </button>
@@ -205,8 +216,9 @@ const filteredBuenbitData = sortedData.filter(
       /></a
     >
     <p class="my-4 text-gray-600 text-sm italic dark:text-gray-400">
-      Tasas de los fondos estimadas a partir de los rendimientos del último día. Información
-      provista por la cámara argentina de fondos comunes de inversión. La cotización del dolar es provista por dolarapi.com
+      Tasas de los fondos estimadas a partir de los rendimientos del último día.
+      Información provista por la cámara argentina de fondos comunes de
+      inversión. La cotización del dolar es provista por dolarapi.com
     </p>
     <div class="flex items-center gap-4">
       <img
