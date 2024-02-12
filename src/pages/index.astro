@@ -8,7 +8,7 @@ import Dolares from "../components/Dolares.astro";
 // Define your API endpoint and API keys
 const apiEndpoint =
   "https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*";
-const apiKey = await import.meta.env.SUPABASE_KEY as string;
+const apiKey = process.env.SUPABASE_KEY;
 
 // Configure your fetch request with headers
 const response = await fetch(apiEndpoint, {
