@@ -31,7 +31,6 @@ const InvestmentSection = ({ investmentFilter, data, title }: Props) => {
            ?.filter((item) => item.type === investmentFilter)
           .map((item) => <Card {...item} selectedRate={selectedRate} />)
          }
-      <div className='w-4/5 mx-auto border-b border-gray-700 my-8'></div>
      </div>
   )
 }
