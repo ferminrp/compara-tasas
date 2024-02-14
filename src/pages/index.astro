@@ -1,19 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Row from "../components/Row.astro";
 import Dolares from "../components/Dolares.astro";
 import Github from "../assets/github.svg";
+import InvestmentSection from "../components/Sections/InvestmentSection"
+import CriptoUsd from "../components/Sections/CriptoUsd"
+import { type Exchange } from '../model/exchange'
+import { type Investment } from '../model/business'
 
 // Define your API endpoint and API keys
 const apiEndpoint =
   "https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*";
 const apiKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRoa2xwYWNmd3RydHV5bnFsbmFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA5NDU4ODMsImV4cCI6MjAxNjUyMTg4M30._it1MlAW77XSEtPomXXgibz99xJtZc5Jcc3V2OVt33s"; // Ensure to securely store and use your API keys
-const PLAZO_FIJO = "pf";
 
 // Configure your fetch request with headers
-const response = await fetch(apiEndpoint, {
+
+  const response = await fetch(apiEndpoint, {
   method: "GET",
   headers: {
     Authorization: `Bearer ${apiKey}`,
@@ -21,7 +23,8 @@ const response = await fetch(apiEndpoint, {
   },
 });
 
-const data = await response.json();
+ const data = await response.json();
+
 
 const sortedData = data.sort((a, b) => {
   if (a.tea < b.tea) {
@@ -37,6 +40,43 @@ const filteredFiwindData = sortedData.filter((item) => item.type === "fiwind");
 const filteredBuenbitData = sortedData.filter(
   (item) => item.type === "buenbit"
 );
+
+const exchanges = [{
+  data: filteredBuenbitData,
+  link: 'https://buenbit.com?ref=comparatasas.ar',
+  logo:"https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734",
+  altLogo:"buenbit logo",
+  name: 'Buenbit'
+},
+{
+  data: filteredFiwindData,
+  link: 'https://fiwind.io?ref=comparatasas.ar',
+  logo:"https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696",
+  altLogo:"fiwind logo",
+  name: 'Fiwind'
+}] as Exchange[]
+
+
+const investments: {filterInvestment: Investment['type'], title: string}[] = [{
+  filterInvestment: 'cuenta_remunerada',
+  title: 'Inversión Automática'
+},{
+  filterInvestment: 'tradicional',
+  title: 'Experiencia Tradicional'
+},
+{
+  filterInvestment: 'pf',
+  title: 'Plazos Fijos'
+},
+{
+  filterInvestment: 'criptopesos',
+  title: 'Cripto Pesos'
+},
+{
+  filterInvestment: 'buendolar',
+  title: 'Fondos en USD'
+}] 
+
 ---
 
 <Layout title="Compara Tasas">
@@ -54,153 +94,9 @@ const filteredBuenbitData = sortedData.filter(
         >Última actualización: <Date /></span>
     </p>-->
     <Dolares />
-    <div class="flex flex-col gap-4 my-6">
-      <h2 class="text-xl text-gray-800 dark:text-gray-300 font-bold">
-        Inversión Automática
-      </h2>
-      {
-        sortedData
-          .filter((item) => item.type === "cuenta_remunerada")
-          .map((item) => <Card {...item} />)
-      }
-    </div>
-    <div class="flex flex-col gap-4 my-6">
-      <h2 class="text-xl text-gray-800 dark:text-gray-300 font-bold">
-        Experiencia Tradicional
-      </h2>
-      {
-        sortedData
-          .filter((item) => item.type === "tradicional")
-          .map((item) => <Card {...item} />)
-      }
-    </div>
-    <div class="flex flex-col gap-4 my-6">
-      <h2 class="text-xl text-gray-800 dark:text-gray-300 font-bold">
-        Plazos Fijos
-      </h2>
-      {
-        sortedData
-          .filter((item) => item.type === PLAZO_FIJO)
-          .map((item) => <Card {...item} />)
-      }
-    </div>
-    <div class="flex flex-col gap-4 my-6">
-      <h2 class="text-xl text-gray-800 dark:text-gray-300 font-bold">
-        Cripto Pesos
-      </h2>
-      {
-        sortedData
-          .filter((item) => item.type === "criptopesos")
-          .map((item) => <Card {...item} />)
-      }
-    </div>
-    <div class="flex flex-col gap-4 my-6">
-      <h2 class="text-xl text-gray-800 dark:text-gray-300 font-bold">
-        Fondos en USD
-      </h2>
-      {
-        sortedData
-          .filter((item) => item.type === "buendolar")
-          .map((item) => <Card {...item} />)
-      }
-    </div>
-
-    <div class="flex flex-col gap-4 my-6">
-      <h2 class="text-xl text-gray-800 dark:text-gray-300 font-bold">
-        Cripto Dolares
-      </h2>
-      <p class="text-gray-600 dark:text-gray-400 text-xs">
-        Compara en donde comprar crypto al mejor precio en <a
-          class="underline"
-          href="https://usdc.ar">USDC.AR</a
-        >.
-      </p>
-      <div
-        class="flex flex-col bg-white shadow-sm rounded-lg border-gray-300 px-4 py-2 dark:bg-gray-900"
-      >
-        <a
-          class="border-b border-b-1 border-gray-100 py-4"
-          href="https://buenbit.com?ref=comparatasas.ar"
-        >
-          <div class="">
-            <div class="flex flex-row justify-between items-center">
-              <div class="flex items-center gap-2">
-                <img
-                  loading="lazy"
-                  style="width: 32px; height: 32px;"
-                  class="rounded-full w-8 y-8"
-                  width="32"
-                  height="32"
-                  src="https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734"
-                  alt="buenbit logo"
-                />
-                <div>
-                  <p class="font-semibold capitalize dark:text-gray-200">
-                    Buenbit
-                  </p>
-                </div>
-              </div>
-              <button
-                class="bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-500 py-1 px-4 border border-indigo-600 rounded-lg"
-              >
-                Descargar
-              </button>
-            </div>
-          </div>
-        </a>
-        {
-          filteredBuenbitData.map((item, index) => (
-            <Row
-              {...item}
-              isLastItem={index === filteredBuenbitData.length - 1}
-            />
-          ))
-        }
-      </div>
-
-      <div
-        class="flex flex-col bg-white shadow-sm rounded-lg border-gray-300 px-4 py-2 dark:bg-gray-900"
-      >
-        <a
-          class="border-b border-b-1 border-gray-100 py-4"
-          href="https://fiwind.io?ref=comparatasas.ar"
-        >
-          <div class="">
-            <div class="flex flex-row justify-between items-center">
-              <div class="flex items-center gap-2">
-                <img
-                  loading="lazy"
-                  style="width: 32px; height: 32px;"
-                  class="rounded-full w-8 y-8"
-                  width="32"
-                  height="32"
-                  src="https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696"
-                  alt="fiwind logo"
-                />
-                <div>
-                  <p class="font-semibold capitalize dark:text-gray-200">
-                    Fiwind
-                  </p>
-                </div>
-              </div>
-              <button
-                class="bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-500 py-1 px-4 border border-indigo-600 rounded-lg"
-              >
-                Descargar
-              </button>
-            </div>
-          </div>
-        </a>
-        {
-          filteredFiwindData.map((item, index) => (
-            <Row
-              {...item}
-              isLastItem={index === filteredFiwindData.length - 1}
-            />
-          ))
-        }
-      </div>
-    </div>
+    {investments.map(investment =>  <InvestmentSection client:load data={sortedData} investmentFilter={investment?.filterInvestment} title={investment.title} /> )}
+    
+    <CriptoUsd exchanges={exchanges} client:load title={"Cripto Dolares"} subtitle={"Compara en donde comprar crypto al mejor precio en"} />
 
     <a id="cafecito" href='https://cafecito.app/ferminrp' rel='noopener' target='_blank'><img width="192" height="40" srcset='https://cdn.cafecito.app/imgs/buttons/button_3.png 1x, https://cdn.cafecito.app/imgs/buttons/button_3_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_3_3.75x.png 3.75x' src='https://cdn.cafecito.app/imgs/buttons/button_3.png' alt='Invitame un café en cafecito.app' /></a>
 
@@ -235,5 +131,3 @@ const filteredBuenbitData = sortedData.filter(
     </div>
   </div>
 </Layout>
-
-<style></style>
