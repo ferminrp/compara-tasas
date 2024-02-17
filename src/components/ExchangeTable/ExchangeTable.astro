@@ -43,6 +43,7 @@ const { exchange } = Astro.props
         {...item}
         isLastItem={index === exchange.data.length - 1}
         key={item.id}
+        defaultLogo={exchange.logo}
       />
     ))
   }

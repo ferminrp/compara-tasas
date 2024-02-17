@@ -1,20 +1,16 @@
 ---
-const { isLastItem, name, tea, tna, logo, url } = Astro.props
+const { isLastItem, moneda, apy, logo, defaultLogo } = Astro.props
 
-const tnaRate = new Intl.NumberFormat('es-AR', {
+const apyFormatted = new Intl.NumberFormat('es-AR', {
   style: 'percent',
   minimumFractionDigits: 2
-}).format(tna / 100)
-const teaRate = new Intl.NumberFormat('es-AR', {
-  style: 'percent',
-  minimumFractionDigits: 2
-}).format(tea / 100)
-const fullLogo = logo + '?tr=w-16,h-16,f_webp'
+}).format(apy / 100)
+
+const fullLogo = logo ?? defaultLogo
 ---
 
 <a
   class={`p-2 ${isLastItem ? 'dark:bg-gray-900' : 'border-b border-b-1 border-gray-100 dark:border-gray-600 dark:bg-gray-900'}`}
-  href={`${url}?ref=comparatasas.ar`}
 >
   <div>
     <div class='flex flex-row justify-between items-center'>
@@ -23,27 +19,21 @@ const fullLogo = logo + '?tr=w-16,h-16,f_webp'
           loading='lazy'
           style={{ width: '16px', height: '16px' }}
           class='rounded-full w-4 h-4'
-          src={fullLogo}
-          alt={`${name} logo`}
+          src={fullLogo + '?tr=w-16,h-16,f_webp'}
+          alt={`${moneda} logo`}
         />
         <div>
           <p class='font-semibold capitalize dark:text-gray-200'>
-            {name}
+            {moneda}
           </p>
         </div>
       </div>
       <div>
         <p class='w-[150px] flex justify-end align-middle gap-1'>
-          <span class='tabular-nums dark:text-gray-200'>{tnaRate}</span>
-          <span class='dark:text-gray-200 text-xs mt-[5px]'>TNA</span>
-        </p>
-        <p class='w-[150px] flex justify-end align-middle'>
-          <span class='tabular-nums text-gray-400 text-xs'>
-            {teaRate}
-          </span>
-          <span class='text-gray-400 text-xs tracking-wider'>
-            TEA
-          </span>
+          <span class='tabular-nums dark:text-gray-200'
+            >{apyFormatted}</span
+          >
+          <span class='dark:text-gray-200 text-xs mt-[5px]'>APY</span>
         </p>
       </div>
     </div>

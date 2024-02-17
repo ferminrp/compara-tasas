@@ -1,12 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Dolares from '../components/Dolares.astro'
-import Github from '../assets/github.svg'
 import InvestmentSection from '../components/Sections/InvestmentSection.astro'
 import CriptoUsd from '../components/Sections/CriptoUsd.astro'
 import { type Exchange } from '../model/exchange'
 import { type Investment } from '../model/business'
 import { getPFInvestments } from '../Services/argentinaDatos'
+import { getReturnsByApp } from '../client/argentinaDatos'
 
 // Define your API endpoint and API keys
 const apiEndpoint =
@@ -24,6 +24,10 @@ const response = await fetch(apiEndpoint, {
 })
 
 const data = await response.json()
+
+const letsBitReturns = await getReturnsByApp('letsbit')
+const fiwindReturns = await getReturnsByApp('fiwind')
+const buenbitReturns = await getReturnsByApp('buenbit')
 
 // Quitar los plazos fijos que vienen de supabase
 const filteredData = data.filter((d) => d.type != 'pf')
@@ -44,28 +48,27 @@ const sortedData = allData.sort((a, b) => {
   }
 })
 
-//console.log(sortedData);
-const filteredFiwindData = sortedData.filter(
-  (item) => item.type === 'fiwind'
-)
-const filteredBuenbitData = sortedData.filter(
-  (item) => item.type === 'buenbit'
-)
-
 const exchanges = [
   {
-    data: filteredBuenbitData,
+    data: buenbitReturns,
     link: 'https://buenbit.com?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734',
     altLogo: 'buenbit logo',
     name: 'Buenbit'
   },
   {
-    data: filteredFiwindData,
+    data: fiwindReturns,
     link: 'https://fiwind.io?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696',
     altLogo: 'fiwind logo',
     name: 'Fiwind'
+  },
+  {
+    data: letsBitReturns,
+    link: 'https://letsbit.io/?ref=comparatasas.ar',
+    logo: 'https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269',
+    altLogo: 'letsbut logo',
+    name: 'LetsBit'
   }
 ] as Exchange[]
 
