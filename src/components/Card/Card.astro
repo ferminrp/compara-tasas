@@ -11,23 +11,11 @@ const teaRate = new Intl.NumberFormat('es-AR', {
 }).format(tea / 100)
 const logoImg = logo + '?tr=w-32,h-32,f_webp'
 ---
-
-<a
-  class='bg-white shadow-sm rounded-lg border-gray-300 p-4 text-gray dark:bg-gray-900'
-  href={`${url}?ref=comparatasas.ar`}
->
-  <div>
-    <div class='flex flex-row justify-between items-center'>
-      <div class='flex items-center gap-2 mr-auto'>
-        <img
-          loading='lazy'
-          style={{ width: '32px', height: '32px' }}
-          class='rounded-full w-8 h-8'
-          width='32'
-          height='32'
-          src={logoImg}
-          alt={`${title} logo`}
-        />
+  <a class="bg-white shadow-sm rounded-lg border-gray-300 p-4 text-gray dark:bg-gray-900" href={`${url}?ref=comparatasas.ar`}>
+    <div class="">
+      <div class="flex flex-row justify-between items-center">
+        <div class="flex items-center gap-2 mr-auto">
+          <img loading="lazy" style={{ width: '32px', height: '32px' }} class="rounded-full w-8 h-8" width="32" height="32" src={logoImg} alt={`${title ? title : name} logo`} />
         <div>
           <p
             class='font-semibold capitalize flex items-center content-center dark:text-gray-200'
