@@ -2,8 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Dolares from "../components/Dolares.astro";
 import Github from "../assets/github.svg";
-import InvestmentSection from "../components/Sections/InvestmentSection"
-import CriptoUsd from "../components/Sections/CriptoUsd"
+import InvestmentSection from "../components/Sections/InvestmentSection.astro"
+import CriptoUsd from "../components/Sections/CriptoUsd.astro"
 import { type Exchange } from '../model/exchange'
 import { type Investment } from '../model/business'
 import { getPFInvestments } from "../Services/argentinaDatos";
@@ -104,9 +104,9 @@ const investments: {filterInvestment: Investment['type'], title: string}[] = [{
         >Última actualización: <Date /></span>
     </p>-->
     <Dolares />
-    {investments.map(investment =>  <InvestmentSection client:load data={sortedData} investmentFilter={investment?.filterInvestment} title={investment.title} /> )}
+    {investments.map(investment =>  <InvestmentSection  data={sortedData} investmentFilter={investment?.filterInvestment} title={investment.title} /> )}
     
-    <CriptoUsd exchanges={exchanges} client:load title={"Cripto Dolares"} subtitle={"Compara en donde comprar crypto al mejor precio en"} />
+    <CriptoUsd exchanges={exchanges} title={"Cripto Dolares"} subtitle={"Compara en donde comprar crypto al mejor precio en"} />
 
     <a id="cafecito" href='https://cafecito.app/ferminrp' rel='noopener' target='_blank'><img width="192" height="40" srcset='https://cdn.cafecito.app/imgs/buttons/button_3.png 1x, https://cdn.cafecito.app/imgs/buttons/button_3_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_3_3.75x.png 3.75x' src='https://cdn.cafecito.app/imgs/buttons/button_3.png' alt='Invitame un café en cafecito.app' /></a>
 
