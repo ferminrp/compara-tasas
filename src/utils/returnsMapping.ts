@@ -1,8 +1,8 @@
 export const MAPPING_RETURNS = {
-  // Missing logos
-  // NARS: {}
-  // NUPEN
   // NCOP
+  NUPEN: {
+    logo: 'https://ik.imagekit.io/ferminrp/nupen.png?updatedAt=1708205096229'
+  },
   ADA: {
     logo: 'https://ik.imagekit.io/ferminrp/ada.png?updatedAt=1708168609471'
   },
@@ -25,6 +25,9 @@ export const MAPPING_RETURNS = {
     logo: 'https://ik.imagekit.io/ferminrp/download.png?updatedAt=1703518180297'
   },
   NUARS: {
+    logo: 'https://ik.imagekit.io/ferminrp/nuars.webp?updatedAt=1706442438735'
+  },
+  NARS: {
     logo: 'https://ik.imagekit.io/ferminrp/nuars.webp?updatedAt=1706442438735'
   },
   USDM: {
