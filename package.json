@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "lint": "prettier --write  \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\" && eslint --fix \"src/**/*.{js,ts,jsx,tsx,astro}\"",
     "astro": "astro"
   },
   "dependencies": {
@@ -19,5 +20,13 @@
     "@vercel/speed-insights": "^1.0.9",
     "astro": "^4.3.5",
     "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^7.0.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-astro": "^0.31.4",
+    "prettier": "^3.2.5",
+    "prettier-config-standard": "^7.0.0",
+    "prettier-plugin-astro": "^0.13.0"
   }
 }

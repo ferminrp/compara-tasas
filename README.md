@@ -45,4 +45,3 @@ Si tienes ideas, encuentras un bug o quieres dar feedback sobre el proyecto:
 - Abre un nuevo issue en el repositorio describiendo tu idea, el bug encontrado o el feedback que deseas compartir.
 - Sé lo más detallado posible en la descripción.
 - Si es posible, incluye capturas de pantalla o cualquier otro recurso que pueda ayudar a entender mejor tu punto.
-

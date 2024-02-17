@@ -1,84 +1,99 @@
 ---
-
 interface Props {
-	title: string;
+  title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="theme-color" id="metaThemeColor" content="#f1f5f9">
-		<script>
-			function setThemeColor() {
-			  const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-			  const metaThemeColor = document.querySelector("meta[name=theme-color]");
-			  
-			  if (isDarkMode) {
-				metaThemeColor.setAttribute("content", "#020617");
-			  } else {
-				metaThemeColor.setAttribute("content", "#f1f5f9");
-			  }
-			}
-		  
-			// Initial set
-			setThemeColor();
-		  
-			// Listen for changes
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeColor);
-		  </script>
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="apple-touch-icon.png"
-		/>
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-title" content="Compara Tasas" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content="Comparador de Tasas de FCI" />
-		<meta
-			name="twitter:image"
-			content="https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG"
-		/>
-		<title>Comparador de Tasas de FCI</title>
-		<meta
-			name="description"
-			content="Compara las tasas de rendimiento que ofrecen las principales billeteras digitales y sacale mas jugo a tu pesos."
-		/>
-		<meta
-			name="keywords"
-			content="Comparar tasas, tasas de interes Argentina, mejores tasas de interes, Comparar FCI, mejores tasas FCI, comparar 
-			tasas de interes, plazo fijo argentina, plazo fijo vs fci"
-	  	/>
-		<link
-			rel="icon"
-			href="favicon.ico"
-			type="image/x-icon"
-		/>
-		<meta
-			property="og:image"
-			content="https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG"
-		/>
-	</head>
-	<body class="bg-gray-100 text-gray-900 py-6 dark:bg-gray-950">
-		<slot />
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVDC98G0E2"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='theme-color' id='metaThemeColor' content='#f1f5f9' />
+    <script>
+      function setThemeColor() {
+        const isDarkMode = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches
+        const metaThemeColor = document.querySelector(
+          'meta[name=theme-color]'
+        )
 
-		gtag('config', 'G-MVDC98G0E2');
-		</script>
-	</body>
+        if (isDarkMode) {
+          metaThemeColor.setAttribute('content', '#020617')
+        } else {
+          metaThemeColor.setAttribute('content', '#f1f5f9')
+        }
+      }
+
+      // Initial set
+      setThemeColor()
+
+      // Listen for changes
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', setThemeColor)
+    </script>
+    <link
+      rel='apple-touch-icon'
+      sizes='180x180'
+      href='apple-touch-icon.png'
+    />
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta name='apple-mobile-web-app-title' content='Compara Tasas' />
+    <meta
+      name='apple-mobile-web-app-status-bar-style'
+      content='default'
+    />
+    <meta
+      name='viewport'
+      content='width=device-width, initial-scale=1.0'
+    />
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:title' content='Comparador de Tasas de FCI' />
+    <meta
+      name='twitter:image'
+      content='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
+    />
+    <title>Comparador de Tasas de FCI</title>
+    <meta
+      name='description'
+      content='Compara las tasas de rendimiento que ofrecen las principales billeteras digitales y sacale mas jugo a tu pesos.'
+    />
+    <meta
+      name='keywords'
+      content='Comparar tasas, tasas de interes Argentina, mejores tasas de interes, Comparar FCI, mejores tasas FCI, comparar 
+			tasas de interes, plazo fijo argentina, plazo fijo vs fci'
+    />
+    <link rel='icon' href='favicon.ico' type='image/x-icon' />
+    <meta
+      property='og:image'
+      content='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
+    />
+  </head>
+  <body class='bg-gray-100 text-gray-900 py-6 dark:bg-gray-950'>
+    <slot />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src='https://www.googletagmanager.com/gtag/js?id=G-MVDC98G0E2'
+    ></script>
+    <script>
+      // @ts-ignore
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // @ts-ignore
+        dataLayer.push(arguments)
+      }
+      // @ts-ignore
+      gtag('js', new Date())
+      // @ts-ignore
+      gtag('config', 'G-MVDC98G0E2')
+    </script>
+  </body>
 </html>
 <style is:global>
-	:root {
-	}
+  :root {
+  }
 </style>
