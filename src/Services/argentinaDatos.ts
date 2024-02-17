@@ -56,7 +56,7 @@ const composePFData = (data): Investment => {
     full_liquidity: false,
     url: data.url as string,
     type: 'pf',
-    detail: 'Plazo fijo a 30 dias',
+    detail: 'Plazo fijo a 30 días',
     tna: tna,
     tea: tea
   }
