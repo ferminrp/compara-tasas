@@ -24,8 +24,9 @@ Para contribuir recomendamos pero no es obligatorio sumarse al [discord](https:/
 1. Clona el repositorio en tu máquina local.
 2. Asegúrate de tener instalado Node.js (versión 14.x o superior) y npm.
 3. En la terminal, navega hasta la carpeta del proyecto y ejecuta `npm install` para instalar las dependencias.
-4. Una vez finalizada la instalación de dependencias, ejecuta `npm run dev` para iniciar el servidor de desarrollo.
-5. Abre tu navegador y visita `http://localhost:4321` para ver el proyecto en ejecución.
+4. Crea un archivo `.env` y dentro mete la variable `PUBLIC_SUPABASE_KEY=`, el valor pidelo por discord por temas de seguridad.
+5. Una vez finalizada la instalación de dependencias, ejecuta `npm run dev` para iniciar el servidor de desarrollo.
+6. Abre tu navegador y visita `http://localhost:4321` para ver el proyecto en ejecución.
 
 ### Contribuir con código
 
