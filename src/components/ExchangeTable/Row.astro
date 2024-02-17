@@ -13,7 +13,7 @@ const fullLogo = logo + '?tr=w-16,h-16,f_webp'
 ---
 
 <a
-  class={`p-2 ${isLastItem ? 'dark:bg-gray-900' : 'border-b border-b-1 border-gray-100 dark:bg-gray-900'}`}
+  class={`p-2 ${isLastItem ? 'dark:bg-gray-900' : 'border-b border-b-1 border-gray-100 dark:border-gray-600 dark:bg-gray-900'}`}
   href={`${url}?ref=comparatasas.ar`}
 >
   <div>
@@ -33,15 +33,15 @@ const fullLogo = logo + '?tr=w-16,h-16,f_webp'
         </div>
       </div>
       <div>
-        <p class='w-[150px] flex justify-end align-middle'>
+        <p class='w-[150px] flex justify-end align-middle gap-1'>
           <span class='tabular-nums dark:text-gray-200'>{tnaRate}</span>
-          <span class='text-gray-200 text-xs mt-[5px] ml-[15px]'>TNA</span>
+          <span class='dark:text-gray-200 text-xs mt-[5px]'>TNA</span>
         </p>
         <p class='w-[150px] flex justify-end align-middle'>
           <span class='tabular-nums text-gray-400 text-xs'>
             {teaRate}
           </span>
-          <span class='text-gray-400 text-xs tracking-wider ml-[17px]'>
+          <span class='text-gray-400 text-xs tracking-wider'>
             TEA
           </span>
         </p>
