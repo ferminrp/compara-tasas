@@ -1,5 +1,6 @@
 ---
 import Row from './Row.astro'
+import { MAPPING_RETURNS } from '../../utils/returnsMapping'
 
 const { exchange } = Astro.props
 ---
@@ -38,13 +39,17 @@ const { exchange } = Astro.props
     </div>
   </a>
   {
-    exchange.data.map((item, index) => (
-      <Row
-        {...item}
-        isLastItem={index === exchange.data.length - 1}
-        key={item.id}
-        defaultLogo={exchange.logo}
-      />
-    ))
+    exchange.data
+      .filter((x) => x.apy > 0) // Filter returns with 0 apy
+      .sort((a, b) => b.apy - a.apy) // sort highest to lowest
+      .map((item, index) => (
+        <Row
+          {...item}
+          isLastItem={index === exchange.data.length - 1}
+          key={item.id}
+          defaultLogo={exchange.logo}
+          logo={MAPPING_RETURNS[item.moneda]?.logo}
+        />
+      ))
   }
 </div>

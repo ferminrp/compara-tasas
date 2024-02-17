@@ -6,7 +6,7 @@ import CriptoUsd from '../components/Sections/CriptoUsd.astro'
 import { type Exchange } from '../model/exchange'
 import { type Investment } from '../model/business'
 import { getPFInvestments } from '../Services/argentinaDatos'
-import { getReturnsByApp } from '../client/argentinaDatos'
+import { getReturns } from '../client/argentinaDatos'
 
 // Define your API endpoint and API keys
 const apiEndpoint =
@@ -25,9 +25,7 @@ const response = await fetch(apiEndpoint, {
 
 const data = await response.json()
 
-const letsBitReturns = await getReturnsByApp('letsbit')
-const fiwindReturns = await getReturnsByApp('fiwind')
-const buenbitReturns = await getReturnsByApp('buenbit')
+const returns = await getReturns()
 
 // Quitar los plazos fijos que vienen de supabase
 const filteredData = data.filter((d) => d.type != 'pf')
@@ -50,21 +48,21 @@ const sortedData = allData.sort((a, b) => {
 
 const exchanges = [
   {
-    data: buenbitReturns,
+    data: returns?.buenbit ?? [],
     link: 'https://buenbit.com?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734',
     altLogo: 'buenbit logo',
     name: 'Buenbit'
   },
   {
-    data: fiwindReturns,
+    data: returns?.fiwind ?? [],
     link: 'https://fiwind.io?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696',
     altLogo: 'fiwind logo',
     name: 'Fiwind'
   },
   {
-    data: letsBitReturns,
+    data: returns?.letsbit ?? [],
     link: 'https://letsbit.io/?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269',
     altLogo: 'letsbut logo',

@@ -12,6 +12,9 @@ export interface Return {
   fecha: string
 }
 
-export interface EnrichedReturn extends Return {
-  logo: string
+export type App = 'letsbit' | 'fiwind' | 'buenbit'
+
+export interface ReturnsResponse {
+  entidad: App
+  rendimientos: Return[]
 }
