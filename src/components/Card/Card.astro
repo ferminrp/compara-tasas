@@ -12,7 +12,7 @@ const logoImg = logo + '?tr=w-32,h-32,f_webp'
     <div class="">
       <div class="flex flex-row justify-between items-center">
         <div class="flex items-center gap-2 mr-auto">
-          <img loading="lazy" style={{ width: '32px', height: '32px' }} class="rounded-full w-8 h-8" width="32" height="32" src={logoImg} alt={`${title} logo`} />
+          <img loading="lazy" style={{ width: '32px', height: '32px' }} class="rounded-full w-8 h-8" width="32" height="32" src={logoImg} alt={`${title ? title : name} logo`} />
             <div>
               <p class="font-semibold capitalize flex items-center content-center dark:text-gray-200">{name}</p>
               <p class="text-gray-400 text-xs">{detail}</p>
