@@ -1,33 +1,59 @@
 ---
-const {logo,tna,tea,detail,title,name,url} = Astro.props
+const { logo, tna, tea, detail, title, name, url } = Astro.props
 
-
-  
-const tnaRate = new Intl.NumberFormat('es-AR', { style: 'percent', minimumFractionDigits: 2 }).format(tna / 100);
-const teaRate = new Intl.NumberFormat('es-AR', { style: 'percent', minimumFractionDigits: 2 }).format(tea / 100);
+const tnaRate = new Intl.NumberFormat('es-AR', {
+  style: 'percent',
+  minimumFractionDigits: 2
+}).format(tna / 100)
+const teaRate = new Intl.NumberFormat('es-AR', {
+  style: 'percent',
+  minimumFractionDigits: 2
+}).format(tea / 100)
 const logoImg = logo + '?tr=w-32,h-32,f_webp'
-
 ---
-  <a class="bg-white shadow-sm rounded-lg border-gray-300 p-4 text-gray dark:bg-gray-900" href={`${url}?ref=comparatasas.ar`}>
-    <div class="">
-      <div class="flex flex-row justify-between items-center">
-        <div class="flex items-center gap-2 mr-auto">
-          <img loading="lazy" style={{ width: '32px', height: '32px' }} class="rounded-full w-8 h-8" width="32" height="32" src={logoImg} alt={`${title} logo`} />
-            <div>
-              <p class="font-semibold capitalize flex items-center content-center dark:text-gray-200">{name}</p>
-              <p class="text-gray-400 text-xs">{detail}</p>
-            </div>
-        </div>
+
+<a
+  class='bg-white shadow-sm rounded-lg border-gray-300 p-4 text-gray dark:bg-gray-900'
+  href={`${url}?ref=comparatasas.ar`}
+>
+  <div>
+    <div class='flex flex-row justify-between items-center'>
+      <div class='flex items-center gap-2 mr-auto'>
+        <img
+          loading='lazy'
+          style={{ width: '32px', height: '32px' }}
+          class='rounded-full w-8 h-8'
+          width='32'
+          height='32'
+          src={logoImg}
+          alt={`${title} logo`}
+        />
         <div>
-          <p class="w-[150px] flex justify-end align-middle gap-1">
-            <span class="tabular-nums dark:text-gray-200">{tnaRate}</span>
-            <span class="text-gray-800 text-xs mt-[5px] dark:text-gray-200">TNA</span></p>
-          <p class="w-[150px] flex justify-end align-middle gap-1">
-            <span class="tabular-nums text-gray-400 text-xs">{teaRate}</span>
-            <span class="text-gray-400 text-xs tracking-wider">TEA</span></p>
+          <p
+            class='font-semibold capitalize flex items-center content-center dark:text-gray-200'
+          >
+            {name}
+          </p>
+          <p class='text-gray-400 text-xs'>{detail}</p>
         </div>
-        
+      </div>
+      <div>
+        <p class='w-[150px] flex justify-end align-middle gap-1'>
+          <span class='tabular-nums dark:text-gray-200'
+            >{tnaRate}</span
+          ><span class='dark:text-gray-200 text-xs mt-[5px]'
+            >TNA</span
+          >
+        </p>
+        <p class='w-[150px] flex justify-end align-middle gap-1'>
+          <span class='tabular-nums text-gray-400 text-xs'
+            >{teaRate}</span
+          ><span
+            class='text-gray-400 text-xs tracking-wider'
+            >TEA</span
+          >
+        </p>
       </div>
     </div>
-  </a>
-  
+  </div>
+</a>
