@@ -1,0 +1,46 @@
+---
+import Row from "./Row.astro"
+
+const {exchange} = Astro.props
+---
+
+    <div
+    class="flex flex-col bg-white shadow-sm rounded-lg border-gray-300 px-4 py-2 dark:bg-gray-900"
+  >
+    <a
+      class="border-b border-b-1 border-gray-100 py-4"
+      href={exchange.link}
+    >
+      <div class="">
+        <div class="flex flex-row justify-between items-center">
+          <div class="flex items-center gap-2">
+            <img
+              loading="lazy"
+              style={{width: '32px', height: '32px'}}
+              class="rounded-full w-8 y-8"
+              width="32"
+              height="32"
+              src={exchange.logo}
+              alt={exchange.altLogo}
+            />
+            <div>
+              <p class="font-semibold capitalize dark:text-gray-200">
+                {exchange.name}
+              </p>
+            </div>
+          </div>
+          <button
+            class="bg-white dark:bg-gray-900 text-indigo-600 dark:text-indigo-500 py-1 px-4 border border-indigo-600 rounded-lg"
+          >
+            Descargar
+          </button>
+        </div>
+      </div>
+    </a>
+    {
+      exchange.data.map((item, index) => (
+        <Row {...item} isLastItem={index === exchange.data.length - 1} key={item.id} />
+      ))
+    }
+  </div>
+  )
