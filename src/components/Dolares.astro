@@ -42,13 +42,12 @@ const filteredDolares = data.filter((item) =>
       </thead>
       <tbody>
         {
-          filteredDolares.map((item, index) =>
+          filteredDolares.map((item) =>
             (item.compra + item.venta) / 2 > 800 ? (
               <Dolar
                 name={item.nombre}
                 precioCompra={item.compra}
                 precioVenta={item.venta}
-                isLastItem={index === filteredDolares.length - 1}
               />
             ) : null
           )
