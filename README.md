@@ -17,7 +17,7 @@ El sitio está desarrollado en [Astro](https://astro.build/) y hosteado en Verce
 
 Para aprender lo básico de Astro, se recomienda el [tutorial oficial](https://docs.astro.build/en/tutorial/0-introduction/).
 
-Para contribuir recomendamos pero no es obligatorio sumarse al [discord](https://discord.gg/epJVzFjK).
+Para contribuir recomendamos pero no es obligatorio sumarse al [discord](https://discord.gg/dNk89yvXvZ).
 
 ### Para levantar un ambiente local
 
