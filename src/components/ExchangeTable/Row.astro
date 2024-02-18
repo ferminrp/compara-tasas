@@ -1,10 +1,9 @@
 ---
+import { formatPercentage } from "../../utils/formats"
+
 const { isLastItem, moneda, apy, logo, defaultLogo } = Astro.props
 
-const apyFormatted = new Intl.NumberFormat('es-AR', {
-  style: 'percent',
-  minimumFractionDigits: 2
-}).format(apy / 100)
+const apyFormatted = formatPercentage(apy)
 
 const fullLogo = logo ?? defaultLogo
 ---

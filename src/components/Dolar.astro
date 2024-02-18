@@ -1,13 +1,9 @@
 ---
-const { name, precioCompra, precioVenta, isLastItem } = Astro.props
-const formattedCompra = new Intl.NumberFormat('es-AR', {
-  style: 'currency',
-  currency: 'ARS'
-}).format(precioCompra)
-const formattedVenta = new Intl.NumberFormat('es-AR', {
-  style: 'currency',
-  currency: 'ARS'
-}).format(precioVenta)
+import { formatCurrency } from "../utils/formats"
+
+const { name, precioCompra, precioVenta } = Astro.props
+const formattedCompra = formatCurrency(precioCompra)
+const formattedVenta = formatCurrency(precioVenta)
 ---
 
 <tr>
