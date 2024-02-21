@@ -1,9 +1,11 @@
 ---
 interface Props {
-  title: string
+  title: string,
+  metaImage: string,
+  metaDescription: string
 }
 
-const { title } = Astro.props
+const { title, metaImage, metaDescription } = Astro.props
 ---
 
 <!doctype html>
