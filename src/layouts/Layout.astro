@@ -53,15 +53,15 @@ const { title, metaImage, metaDescription } = Astro.props
       content='width=device-width, initial-scale=1.0'
     />
     <meta name='twitter:card' content='summary_large_image' />
-    <meta name='twitter:title' content='Comparador de Tasas de FCI' />
+    <meta name='twitter:title' content={title} />
     <meta
       name='twitter:image'
-      content='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
+      content={metaImage}
     />
-    <title>Comparador de Tasas de FCI</title>
+    <title>{title}</title>
     <meta
       name='description'
-      content='Compara las tasas de rendimiento que ofrecen las principales billeteras digitales y sacale mas jugo a tu pesos.'
+      content={metaDescription}
     />
     <meta
       name='keywords'
@@ -71,7 +71,7 @@ const { title, metaImage, metaDescription } = Astro.props
     <link rel='icon' href='favicon.ico' type='image/x-icon' />
     <meta
       property='og:image'
-      content='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
+      content={metaImage}
     />
   </head>
   <body class='bg-gray-100 text-gray-900 py-6 dark:bg-gray-950'>
