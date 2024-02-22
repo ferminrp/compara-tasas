@@ -1,4 +1,5 @@
 ---
+import Drawer from '../components/Drawer'
 interface Props {
   title: string,
   metaImage: string,
@@ -67,6 +68,7 @@ const { title, metaImage, metaDescription, isFooterVisible = true } = Astro.prop
     <meta property='og:image' content={metaImage} />
   </head>
   <body class='bg-gray-100 text-gray-900 py-6 dark:bg-gray-950'>
+    <Drawer client:load />
     <slot />
     {isFooterVisible ? (
       <div
