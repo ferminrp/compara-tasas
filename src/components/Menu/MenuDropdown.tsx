@@ -36,7 +36,7 @@ const MenuDropdown = () => {
   }, [handleOpenMenu])
 
   return (
-    <div className='flex flex-col'>
+    <div className='relative flex flex-col'>
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         className='flex items-center gap-1 text-gray-400'
@@ -64,7 +64,7 @@ const MenuDropdown = () => {
       {isOpen ? (
         <div
           ref={menuRef}
-          className='w-[50%] flex flex-col rounded-lg border-[#CAD0E0] dark:border-[#292B2E] border-[1px] bg-gray-100 dark:bg-gray-900 fixed top-8 right-4'
+          className='w-[50%] min-w-[200px] max-w-[300px] flex flex-col rounded-lg border-[#CAD0E0] dark:border-[#292B2E] border-[1px] bg-gray-100 dark:bg-gray-900 absolute top-0 right-0'
         >
           <ul className='flex flex-col gap-3 content-between items-center py-6'>
             {items.map((item, index) => (
