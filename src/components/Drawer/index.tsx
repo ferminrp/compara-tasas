@@ -10,7 +10,7 @@ const Drawer = () => {
       <Menu open={open} setOpen={setOpen} />
       <div
         className={cn(
-          'fixed top-0 left-0 z-20 lg:w-[20%] w-[65%] h-full transition-all duration-500 transform -translate-x-full  bg-gray-100 dark:bg-gray-800 shadow-lg',
+          'fixed top-0 left-0 z-20  lg:w-[20%] w-full h-full transition-all duration-500 transform translate-x-full  bg-gray-100 dark:bg-gray-900 shadow-lg',
           {
             'translate-x-0 shadow-cyan-500/50': open
           }

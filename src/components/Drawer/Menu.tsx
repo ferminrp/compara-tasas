@@ -7,11 +7,11 @@ interface Props {
 }
 
 const Menu = ({ open, setOpen }: Props) => {
-  const genericHamburgerLine = `h-1 w-8 my-1 rounded-full bg-white transition ease transform duration-300`
+  const genericHamburgerLine = `h-1 w-8 my-1 rounded-full bg-gray-100 dark:bg-gray-400 transition ease transform duration-300`
 
   return (
     <button
-      className='flex flex-col h-12 w-12 absolute z-[100000] left-6 border-white rounded justify-center items-center group'
+      className='flex flex-col h-12 w-12 relative z-[100000] border-white rounded justify-center items-center group'
       onClick={() => setOpen(!open)}
     >
       <div

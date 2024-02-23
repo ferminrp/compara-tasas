@@ -1,10 +1,10 @@
 ---
-import Drawer from '../components/Drawer'
+import NavBar from '../components/Menu/NavBar'
 interface Props {
   title: string,
   metaImage: string,
   metaDescription: string,
-  isFooterVisible: boolean
+  isFooterVisible?: boolean
 }
 
 const { title, metaImage, metaDescription, isFooterVisible = true } = Astro.props
@@ -67,8 +67,9 @@ const { title, metaImage, metaDescription, isFooterVisible = true } = Astro.prop
     <link rel='icon' href='favicon.ico' type='image/x-icon' />
     <meta property='og:image' content={metaImage} />
   </head>
-  <body class='bg-gray-100 text-gray-900 py-6 dark:bg-gray-950'>
-    <Drawer client:load />
+  <body class='bg-gray-100 text-gray-900 dark:bg-gray-950'>
+    <NavBar client:load/>
+    <!-- <Drawer client:load /> -->
     <slot />
     {isFooterVisible ? (
       <div
