@@ -9,6 +9,7 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), partytown(), sitemap(), react()],
+  site: 'https://comparatasas.ar',
   output: "server",
   adapter: vercel()
 });
