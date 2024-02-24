@@ -23,6 +23,12 @@ const items: itemDataType[] = [
     name: 'CRYPTO',
     url: '/crypto',
     icon: '⚡'
+  },
+  {
+    name: 'AVISO LEGAL',
+    url: '/legal',
+    icon: '⚖️',
+    separator: true
   }
 ]
 
