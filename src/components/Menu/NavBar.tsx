@@ -2,7 +2,13 @@ import React from 'react'
 import Drawer from '../Drawer'
 import MenuDropdown from './MenuDropdown'
 
-const NavBar = () => {
+const NavBar = ({
+  pathname
+}: {
+  /** Utiliza la ruta actual para indicar
+   * cual item del menu está activo **/
+  pathname: string
+}) => {
   return (
     <div className='w-full mx-auto sm:px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'>
       <div className='py-4'>
@@ -12,7 +18,7 @@ const NavBar = () => {
             <span>TASAS</span>
             <span className='dark:text-gray-400'>.AR</span>
           </div>
-          <MenuDropdown />
+          <MenuDropdown pathname={pathname} />
         </div>
       </div>
     </div>

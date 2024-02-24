@@ -74,7 +74,9 @@ const {
     <meta property='og:image' content={metaImage} />
   </head>
   <body class='bg-gray-100 text-gray-900 dark:bg-gray-950'>
-    <NavBar client:load />
+    <!-- Se le pasa la ruta de la url actual al component react para 
+          conocer el item del menu que debe quedar activo -->
+    <NavBar pathname={Astro.url.pathname} client:load />
     <!-- <Drawer client:load /> -->
     <slot />
     {
