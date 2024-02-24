@@ -34,7 +34,7 @@ const items: itemDataType[] = [
 
 const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const activeItem = useStore($activeItem)
+  const activeItem = useStore($activeItem) || '0'
   const menuRef = useRef<HTMLDivElement>()
   const handleOpenMenu = (e) => {
     if (!menuRef.current?.contains(e.target) && isOpen) {
