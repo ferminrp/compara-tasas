@@ -12,12 +12,17 @@ const items: itemDataType[] = [
   {
     name: 'PESOS',
     url: '/',
-    icon: '🇦🇷'
+    icon: '🧉'
   },
   {
     name: 'DÓLARES',
     url: '/',
-    icon: 'US'
+    icon: '💵'
+  },
+  {
+    name: 'CRYPTO',
+    url: '/crypto',
+    icon: '⚡'
   }
 ]
 
@@ -42,8 +47,10 @@ const MenuDropdown = () => {
         className='flex items-center gap-1 text-gray-400'
       >
         <div className='flex content-between gap-2'>
-          <span>{items[activeItem]?.icon}</span>
-          <span className='font-semibold'>{items[activeItem]?.name}</span>
+          <span>{items[Number(activeItem)]?.icon}</span>
+          <span className='font-semibold'>
+            {items[Number(activeItem)]?.name}
+          </span>
         </div>
         <svg
           className='w-2.5 h-2.5 m-1'
