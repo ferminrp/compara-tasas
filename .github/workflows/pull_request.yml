@@ -9,8 +9,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - uses: oven-sh/setup-bun@v1
+
       - name: Install packages
         run: bun install
-      - name: Run Linter/Formatter
-        run: bun lint
+
+      - name: Check Prettier formatting
+        run: prettier --check "**/*.{md,mdx,astro}"
+
+      - name: Run ESLint
+        run: eslint "src/**/*.{astro,}"
+
+      - name: Check Biome configuration
+        run: npx @biomejs/biome check ./
