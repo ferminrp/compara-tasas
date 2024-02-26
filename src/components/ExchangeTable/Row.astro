@@ -14,15 +14,16 @@ const shouldRenderComponent = moneda !== 'ARS' && apy < 200
 {
   shouldRenderComponent && (
     <div
-      class={`p-2 ${isLastItem ? 'dark:bg-gray-900' : 'border-b-1 border-b border-gray-100 dark:border-gray-600 dark:bg-gray-900'}`}
+
+      class={`p-2 ${isLastItem ? 'dark:bg-gray-900' : 'border-b border-b-1 border-gray-100 dark:border-gray-600 dark:bg-gray-900'}`}
     >
       <div>
-        <div class='flex flex-row items-center justify-between'>
+        <div class='flex flex-row justify-between items-center'>
           <div class='flex items-center gap-2'>
             <img
               loading='lazy'
               style={{ width: '16px', height: '16px' }}
-              class='h-4 w-4 rounded-full'
+              class='rounded-full w-4 h-4'
               src={fullLogo + '?tr=w-16,h-16,f_webp'}
               alt={`${moneda} logo`}
             />
@@ -33,11 +34,11 @@ const shouldRenderComponent = moneda !== 'ARS' && apy < 200
             </div>
           </div>
           <div>
-            <p class='flex w-[150px] justify-end gap-1 align-middle'>
+            <p class='w-[150px] flex justify-end align-middle gap-1'>
               <span class='tabular-nums dark:text-gray-200'>
                 {apyFormatted}
               </span>
-              <span class='mt-[5px] text-xs dark:text-gray-200'>
+              <span class='dark:text-gray-200 text-xs mt-[5px]'>
                 APY
               </span>
             </p>
