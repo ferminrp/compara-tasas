@@ -13,20 +13,12 @@
     }
   },
   "formatter": {
-    "enabled": true,
-    "lineWidth": 70,
-    "indentStyle": "space",
-    "indentWidth": 2
+    "indentStyle": "space"
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "single"
-    }
-  },
-  "json": {
-    "formatter": {
-      "indentStyle": "space",
-      "indentWidth": 2
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single"
     }
   }
 }

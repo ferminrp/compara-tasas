@@ -14,7 +14,7 @@ const MenuItem = ({
   return (
     <>
       {hasTopBorder && (
-        <hr className="bg-[#CAD0E0] dark:bg-[#292B2E] w-full h-px border-0" />
+        <hr className='bg-[#CAD0E0] dark:bg-[#292B2E] w-full h-px border-0' />
       )}
       <li
         className={`${active && 'bg-indigo-500'} w-full ${
@@ -29,7 +29,7 @@ const MenuItem = ({
           }`}
           href={url}
         >
-          <span className="pr-5">{icon}</span> {name}
+          <span className='pr-5'>{icon}</span> {name}
         </a>
       </li>
     </>
