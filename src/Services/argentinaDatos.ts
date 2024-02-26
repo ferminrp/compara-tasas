@@ -1,7 +1,8 @@
-import type { Investment } from '../model/business'
-import banks from '../data/banks.json'
+import banks from '../data/banks.json';
+import type { Investment } from '../model/business';
 
-const apiEndpoint = 'https://api.argentinadatos.com/v1/finanzas/tasas/plazoFijo'
+const apiEndpoint =
+  'https://api.argentinadatos.com/v1/finanzas/tasas/plazoFijo';
 
 /* Respuesta API:
 [
@@ -15,39 +16,41 @@ const apiEndpoint = 'https://api.argentinadatos.com/v1/finanzas/tasas/plazoFijo'
 */
 
 const getPFData = async () => {
-  const response = await fetch(apiEndpoint)
-  const data = await response.json()
+  const response = await fetch(apiEndpoint);
+  const data = await response.json();
 
   const filteredList = data.filter((fund) => {
-    const normalizedEntity = fund.entidad.trim().toUpperCase()
-    return banks.some((bank) => bank.entidad === normalizedEntity)
-  })
+    const normalizedEntity = fund.entidad.trim().toUpperCase();
+    return banks.some((bank) => bank.entidad === normalizedEntity);
+  });
 
-  return filteredList
-}
+  return filteredList;
+};
 
 const replacePFData = (rawData) => {
-  const newData = []
+  const newData = [];
 
-  rawData.forEach((fund) => {
-    const normalizedEntity = fund.entidad.trim().toUpperCase()
-    const matchBank = banks.find((b) => b.entidad === normalizedEntity)
+  for (const fund of rawData) {
+    const normalizedEntity = fund.entidad.trim().toUpperCase();
+    const matchBank = banks.find(
+      (b) => b.entidad === normalizedEntity,
+    );
     if (matchBank) {
-      fund['nombre'] = matchBank.nombre
-      fund['logo'] = matchBank.logo
-      fund['url'] = matchBank.url
-      newData.push(fund)
+      fund.nombre = matchBank.nombre;
+      fund.logo = matchBank.logo;
+      fund.url = matchBank.url;
+      newData.push(fund);
     }
-  })
+  }
 
-  return newData
-}
+  return newData;
+};
 
 const composePFData = (data): Investment => {
-  const tem = Math.pow(1 + data.tnaClientes / 12, 1) - 1
-  const dailyRate = (Math.pow(1 + tem, 1 / 30) - 1) * 100
-  const tea = (Math.pow(1 + data.tnaClientes / 12, 12) - 1) * 100
-  const tna = data.tnaClientes * 100
+  const tem = (1 + data.tnaClientes / 12) ** 1 - 1;
+  const dailyRate = ((1 + tem) ** (1 / 30) - 1) * 100;
+  const tea = ((1 + data.tnaClientes / 12) ** 12 - 1) * 100;
+  const tna = data.tnaClientes * 100;
   const pfInvestment: Investment = {
     name: data.nombre as string,
     tasa_diaria: dailyRate,
@@ -58,20 +61,20 @@ const composePFData = (data): Investment => {
     type: 'pf',
     detail: 'Plazo fijo a 30 días',
     tna: tna,
-    tea: tea
-  }
+    tea: tea,
+  };
 
-  return pfInvestment
-}
+  return pfInvestment;
+};
 
 export const getPFInvestments = async (): Promise<Investment[]> => {
-  const rawData = await getPFData()
-  const data = replacePFData(rawData)
-  const InvestmentList: Investment[] = []
+  const rawData = await getPFData();
+  const data = replacePFData(rawData);
+  const InvestmentList: Investment[] = [];
 
-  data.forEach((fund) => {
-    InvestmentList.push(composePFData(fund))
-  })
+  for (const fund of data) {
+    InvestmentList.push(composePFData(fund));
+  }
 
-  return InvestmentList
-}
+  return InvestmentList;
+};

@@ -1,4 +1,4 @@
-export type Rate = 'TNA' | 'TEA'
+export type Rate = 'TNA' | 'TEA';
 
 export type InvestmentType =
   | 'cuenta_remunerada'
@@ -6,19 +6,19 @@ export type InvestmentType =
   | 'pf'
   | 'criptopesos'
   | 'buendolar'
-  | 'fiwind'
+  | 'fiwind';
 
 export interface Investment {
-  id?: number
-  name: string
-  tasa_diaria: number
-  logo: string
-  display: boolean
-  full_liquidity: boolean
-  url: string
-  type: InvestmentType
-  detail: string
-  tna: number
-  tea: number
-  title?: string
+  id?: number;
+  name: string;
+  tasa_diaria: number;
+  logo: string;
+  display: boolean;
+  full_liquidity: boolean;
+  url: string;
+  type: InvestmentType;
+  detail: string;
+  tna: number;
+  tea: number;
+  title?: string;
 }
