@@ -16,10 +16,10 @@ jobs:
         run: bun install
 
       - name: Check Prettier formatting
-        run: prettier --check "**/*.{md,mdx,astro}"
+        run: bunx prettier --check "**/*.{md,mdx,astro}"
 
       - name: Run ESLint
-        run: eslint "src/**/*.{astro,}"
+        run: bunx eslint "src/**/*.{astro,}"
 
       - name: Check Biome configuration
-        run: npx @biomejs/biome check ./
+        run: bunx @biomejs/biome check ./
