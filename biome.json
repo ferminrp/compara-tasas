@@ -14,7 +14,7 @@
   },
   "formatter": {
     "enabled": true,
-    "lineWidth": 70,
+    "lineWidth": 80,
     "indentStyle": "space",
     "indentWidth": 2
   },

@@ -9,35 +9,39 @@ import { getPFInvestments } from '../Services/argentinaDatos'
 import { getReturns } from '../client/argentinaDatos'
 import { getFCIInvestments } from '../Services/argentinaDatosFCI'
 
-//console.log(await getFCIInvestments())
-
 // Define your API endpoint and API keys
-/* const apiEndpoint =
+const apiEndpoint =
   'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*'
-const apiKey = import.meta.env.PUBLIC_SUPABASE_KEY */
+const apiKey = import.meta.env.PUBLIC_SUPABASE_KEY
 
 // Configure your fetch request with headers
 
-/* const response = await fetch(apiEndpoint, {
+const response = await fetch(apiEndpoint, {
   method: 'GET',
   headers: {
     Authorization: `Bearer ${apiKey}`,
     apikey: apiKey
   }
-}) */
+})
 
-const dataFCI = await getFCIInvestments()
-
+const dataSupabase = await response.json()
+const FCIData = await getFCIInvestments()
 const dataReturns = await getReturns()
 
-// Quitar los plazos fijos que vienen de supabase
-const filteredData = dataFCI.filter((d) => d.type != 'pf')
+// Solo usamos la info de criptopesos y buendolar de Supabase
+const filteredSBData = dataSupabase.filter(
+  (d) => d.type === 'criptopesos' || d.type === 'buendolar'
+)
 
 // Plazos fijos de ArgentinaDatos
 const PFData = await getPFInvestments()
 
 // Concatenar arrays
-const allData = Array.prototype.concat(filteredData, ...PFData)
+const allData = Array.prototype.concat(
+  filteredSBData,
+  ...PFData,
+  ...FCIData
+)
 
 const sortedData = allData.sort((a, b) => {
   if (a.tea < b.tea) {
