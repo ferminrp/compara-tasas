@@ -35,7 +35,7 @@ const mergedFCIData = async (): Promise<FCIData[]> => {
   const lastList = await getFCIData(EndpointFCILast)
   const mergedList = []
 
-  lastList.forEach((lastFCI) => {
+  for (const lastFCI of lastList) {
     const apFCI = penultList.find((f) => lastFCI.fondo === f.fondo)
     const apDate = new Date(apFCI.fecha)
     const lastDate = new Date(lastFCI.fecha)
@@ -51,20 +51,20 @@ const mergedFCIData = async (): Promise<FCIData[]> => {
       penultimoValorvcp: apFCI.vcp,
       dias: diffDays
     })
-  })
+  }
 
   return mergedList
 }
 
 /** Calcula la Tasa Efectiva Diaria */
 const calcFCITED = (penultVCP: number, lastVCP: number, diffDays: number) => {
-  const TED = Math.pow(lastVCP / penultVCP, 1 / diffDays) - 1
+  const TED = (lastVCP / penultVCP) ** (1 / diffDays) - 1
   return TED
 }
 
 /** Calcula la Tasa Efectiva Anual */
 const calcFCITEA = (TED: number) => {
-  const TEA = Math.pow(1 + TED, 365) - 1
+  const TEA = (1 + TED) ** 365 - 1
   return TEA
 }
 
