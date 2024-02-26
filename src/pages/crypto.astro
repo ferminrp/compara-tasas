@@ -4,9 +4,7 @@ import CriptoUsd from '../components/Sections/CriptoUsd.astro'
 import { type Exchange } from '../model/exchange'
 import { getReturns } from '../client/argentinaDatos'
 
-
 const returns = await getReturns()
-
 
 const exchanges = [
   {
@@ -45,22 +43,25 @@ const exchanges = [
     name: 'Belo'
   }
 ] as Exchange[]
-
 ---
 
-<Layout title='Compara Rendimientos Crypto' metaDescription='Compara los rendimientos en crypto que ofrecen los principales exchanges del pais.' metaImage='/images/crypto.png'>
+<Layout
+  title='Compara Rendimientos Crypto'
+  metaDescription='Compara los rendimientos en crypto que ofrecen los principales exchanges del pais.'
+  metaImage='/images/crypto.png'
+>
   <div
     id='containter'
-    class='container mx-auto mx-4 px-4 my-6 max-w-sm sm:max-w-sm md:max-w-md lg:max-w-lg'
+    class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
     <h1
-      class='text-3xl text-gray-900 font-bold my-6 dark:text-gray-100'
+      class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'
     >
       ¡Encontra las <span class='text-indigo-500'
         >mejores inversiones en crypto</span
       > para vos!
     </h1>
-    
+
     <CriptoUsd
       exchanges={exchanges}
       subtitle={'Compará en donde comprar crypto al mejor precio en'}
