@@ -1,10 +1,6 @@
 import React from 'react'
-import Drawer from '../Drawer'
 import MenuDropdown from './MenuDropdown'
-// @ts-ignore
-import LogoLight from '../../assets/logo-light.svg?react'
-// @ts-ignore
-import LogoDark from '../../assets/logo-dark.svg?react'
+import Logo from '../../assets/Logo'
 
 const NavBar = ({
   pathname
@@ -18,10 +14,10 @@ const NavBar = ({
       <div className='py-4'>
         <div className='border-l-[3px] border-indigo-500 text-neutral-900 dark:text-white flex items-center justify-between px-4 sm:pl-4 sm:pr-0'>
           <div className='hidden dark:block'>
-            <LogoDark />
+            <Logo darkMode />
           </div>
           <div className='dark:hidden'>
-            <LogoLight />
+            <Logo />
           </div>
           <MenuDropdown pathname={pathname} />
         </div>
