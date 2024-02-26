@@ -5,15 +5,15 @@ module.exports = {
   pluginSearchDirs: [__dirname],
   plugins: [
     require.resolve('prettier-plugin-astro'),
-    'prettier-plugin-tailwindcss'
+    'prettier-plugin-tailwindcss',
   ],
   overrides: [
     {
       files: '*.astro',
       options: {
         parser: 'astro',
-        printWidth: 70
-      }
-    }
-  ]
-}
+        printWidth: 70,
+      },
+    },
+  ],
+};
