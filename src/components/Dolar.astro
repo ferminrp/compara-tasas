@@ -1,5 +1,5 @@
 ---
-import { formatCurrency } from "../utils/formats"
+import { formatCurrency } from '../utils/formats'
 
 const { name, precioCompra, precioVenta } = Astro.props
 const formattedCompra = formatCurrency(precioCompra)
@@ -8,7 +8,7 @@ const formattedVenta = formatCurrency(precioVenta)
 
 <tr>
   <td
-    class='px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-sm w-full'
+    class='w-full border-b border-gray-200 bg-white px-4 py-2 text-sm dark:border-gray-800 dark:bg-gray-900'
   >
     <p class='text-gray whitespace-no-wrap dark:text-gray-200'>
       {
@@ -21,14 +21,14 @@ const formattedVenta = formatCurrency(precioVenta)
     </p>
   </td>
   <td
-    class='px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-sm text-right w-auto whitespace-nowrap'
+    class='w-auto whitespace-nowrap border-b border-gray-200 bg-white px-4 py-2 text-right text-sm dark:border-gray-800 dark:bg-gray-900'
   >
     <p class='text-gray whitespace-no-wrap dark:text-gray-200'>
       {formattedCompra}
     </p>
   </td>
   <td
-    class='px-4 py-2 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-sm text-right w-auto whitespace-nowrap'
+    class='w-auto whitespace-nowrap border-b border-gray-200 bg-white px-4 py-2 text-right text-sm dark:border-gray-800 dark:bg-gray-900'
   >
     <p class='text-gray whitespace-no-wrap dark:text-gray-200'>
       {formattedVenta}
