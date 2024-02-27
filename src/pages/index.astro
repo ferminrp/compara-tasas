@@ -1,15 +1,13 @@
 ---
-
-import Layout from '../layouts/Layout.astro'
-import Dolares from '../components/Dolares.astro'
-import InvestmentSection from '../components/Sections/InvestmentSection.astro'
-import CriptoUsd from '../components/Sections/CriptoUsd.astro'
-import { type Exchange } from '../model/exchange'
-import { type Investment } from '../model/business'
-import { getPFInvestments } from '../Services/argentinaDatos'
-import { getReturns } from '../client/argentinaDatos'
-import { getFCIInvestments } from '../Services/argentinaDatosFCI'
-
+import Layout from '../layouts/Layout.astro';
+import Dolares from '../components/Dolares.astro';
+import InvestmentSection from '../components/Sections/InvestmentSection.astro';
+import CriptoUsd from '../components/Sections/CriptoUsd.astro';
+import { type Exchange } from '../model/exchange';
+import { type Investment } from '../model/business';
+import { getPFInvestments } from '../Services/argentinaDatos';
+import { getReturns } from '../client/argentinaDatos';
+import { getFCIInvestments } from '../Services/argentinaDatosFCI';
 
 // Define your API endpoint and API keys
 const apiEndpoint =
@@ -26,26 +24,20 @@ const response = await fetch(apiEndpoint, {
   },
 });
 
-const dataSupabase = await response.json()
-const FCIData = await getFCIInvestments()
-const dataReturns = await getReturns()
+const dataSupabase = await response.json();
+const FCIData = await getFCIInvestments();
+const dataReturns = await getReturns();
 
 // Solo usamos la info de criptopesos y buendolar de Supabase
 const filteredSBData = dataSupabase.filter(
-  (d) => d.type === 'criptopesos' || d.type === 'buendolar'
-)
-
+  (d) => d.type === 'criptopesos' || d.type === 'buendolar',
+);
 
 // Plazos fijos de ArgentinaDatos
 const PFData = await getPFInvestments();
 
 // Concatenar arrays
-const allData = Array.prototype.concat(
-  filteredSBData,
-  ...PFData,
-  ...FCIData
-)
-
+const allData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
 
 const sortedData = allData.sort((a, b) => {
   if (a.tea < b.tea) {

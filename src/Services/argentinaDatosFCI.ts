@@ -1,47 +1,47 @@
-import fciWhitelist from '../data/fci.json'
+import fciWhitelist from '../data/fci.json';
 import type {
   FCIData,
   FCIResponse,
   FCIWhitelist,
-  Investment
-} from '../model/business'
+  Investment,
+} from '../model/business';
 
 const EndpointFCILast =
-  'https://api.argentinadatos.com/v1/finanzas/fci/mercadoDinero/ultimo'
+  'https://api.argentinadatos.com/v1/finanzas/fci/mercadoDinero/ultimo';
 const EndpointFCIpenult =
-  'https://api.argentinadatos.com/v1/finanzas/fci/mercadoDinero/penultimo'
+  'https://api.argentinadatos.com/v1/finanzas/fci/mercadoDinero/penultimo';
 
 /** Devuelve la cotización de los FCI filtrada por la whitelist */
 const getFCIData = async (endpoint) => {
-  const response = await fetch(endpoint)
-  const data = (await response.json()) as FCIResponse[]
+  const response = await fetch(endpoint);
+  const data = (await response.json()) as FCIResponse[];
 
-  const filteredList: FCIResponse[] = []
+  const filteredList: FCIResponse[] = [];
 
   for (const fci of Object.keys(fciWhitelist)) {
-    const whitelisted = fciWhitelist[fci] as FCIWhitelist
+    const whitelisted = fciWhitelist[fci] as FCIWhitelist;
     const found = data.find(
-      (dataFCI) => dataFCI.fondo === whitelisted.nombreOficial
-    )
-    if (found) filteredList.push(found)
+      (dataFCI) => dataFCI.fondo === whitelisted.nombreOficial,
+    );
+    if (found) filteredList.push(found);
   }
 
-  return filteredList
-}
+  return filteredList;
+};
 
 /** Devuelve la informacion de ambos endpoints mergeada, con la diferencia en días */
 const mergedFCIData = async (): Promise<FCIData[]> => {
-  const penultList = await getFCIData(EndpointFCIpenult)
-  const lastList = await getFCIData(EndpointFCILast)
-  const mergedList = []
+  const penultList = await getFCIData(EndpointFCIpenult);
+  const lastList = await getFCIData(EndpointFCILast);
+  const mergedList = [];
 
   for (const lastFCI of lastList) {
-    const apFCI = penultList.find((f) => lastFCI.fondo === f.fondo)
-    const apDate = new Date(apFCI.fecha)
-    const lastDate = new Date(lastFCI.fecha)
+    const apFCI = penultList.find((f) => lastFCI.fondo === f.fondo);
+    const apDate = new Date(apFCI.fecha);
+    const lastDate = new Date(lastFCI.fecha);
     const diffDays = Math.floor(
-      (lastDate.getTime() - apDate.getTime()) / (1000 * 3600 * 24)
-    )
+      (lastDate.getTime() - apDate.getTime()) / (1000 * 3600 * 24),
+    );
 
     mergedList.push({
       fondo: lastFCI.fondo,
@@ -49,38 +49,38 @@ const mergedFCIData = async (): Promise<FCIData[]> => {
       ultimaFecha: lastFCI.fecha,
       ultimoValorvcp: lastFCI.vcp,
       penultimoValorvcp: apFCI.vcp,
-      dias: diffDays
-    })
+      dias: diffDays,
+    });
   }
 
-  return mergedList
-}
+  return mergedList;
+};
 
 /** Calcula la Tasa Efectiva Diaria */
 const calcFCITED = (penultVCP: number, lastVCP: number, diffDays: number) => {
-  const TED = (lastVCP / penultVCP) ** (1 / diffDays) - 1
-  return TED
-}
+  const TED = (lastVCP / penultVCP) ** (1 / diffDays) - 1;
+  return TED;
+};
 
 /** Calcula la Tasa Efectiva Anual */
 const calcFCITEA = (TED: number) => {
-  const TEA = (1 + TED) ** 365 - 1
-  return TEA
-}
+  const TEA = (1 + TED) ** 365 - 1;
+  return TEA;
+};
 
 /** Calcula la Tasa Nominal Anual */
-const calcFCITNA = (TED: number) => TED * 365
+const calcFCITNA = (TED: number) => TED * 365;
 
 /** Devuelve el array con toda la información en el formato correspondiente */
 export const getFCIInvestments = async (): Promise<Investment[]> => {
-  const FCIInvestments: Investment[] = []
-  const fciList = await mergedFCIData()
+  const FCIInvestments: Investment[] = [];
+  const fciList = await mergedFCIData();
 
   for (const fci of Object.keys(fciWhitelist)) {
-    const whitelisted = fciWhitelist[fci] as FCIWhitelist
+    const whitelisted = fciWhitelist[fci] as FCIWhitelist;
     const found = fciList.find(
-      (dataFCI) => dataFCI.fondo === whitelisted.nombreOficial
-    )
+      (dataFCI) => dataFCI.fondo === whitelisted.nombreOficial,
+    );
 
     /* La 2da condición evita que se filtren FCI con información
      * incompleta producto de que algún fondo no haya realizado
@@ -89,10 +89,10 @@ export const getFCIInvestments = async (): Promise<Investment[]> => {
       const TED = calcFCITED(
         found.penultimoValorvcp,
         found.ultimoValorvcp,
-        found.dias
-      )
-      const TEA = calcFCITEA(TED) * 100
-      const TNA = calcFCITNA(TED) * 100
+        found.dias,
+      );
+      const TEA = calcFCITEA(TED) * 100;
+      const TNA = calcFCITNA(TED) * 100;
 
       FCIInvestments.push({
         name: fci,
@@ -104,10 +104,10 @@ export const getFCIInvestments = async (): Promise<Investment[]> => {
         type: whitelisted.type,
         detail: whitelisted.nombreSimplificado,
         tna: TNA,
-        tea: TEA
-      })
+        tea: TEA,
+      });
     }
   }
 
-  return FCIInvestments
-}
+  return FCIInvestments;
+};
