@@ -1,4 +1,5 @@
 ---
+
 import Layout from '../layouts/Layout.astro'
 import Dolares from '../components/Dolares.astro'
 import InvestmentSection from '../components/Sections/InvestmentSection.astro'
@@ -9,10 +10,11 @@ import { getPFInvestments } from '../Services/argentinaDatos'
 import { getReturns } from '../client/argentinaDatos'
 import { getFCIInvestments } from '../Services/argentinaDatosFCI'
 
+
 // Define your API endpoint and API keys
 const apiEndpoint =
-  'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*'
-const apiKey = import.meta.env.PUBLIC_SUPABASE_KEY
+  'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*';
+const apiKey = import.meta.env.PUBLIC_SUPABASE_KEY;
 
 // Configure your fetch request with headers
 
@@ -20,9 +22,9 @@ const response = await fetch(apiEndpoint, {
   method: 'GET',
   headers: {
     Authorization: `Bearer ${apiKey}`,
-    apikey: apiKey
-  }
-})
+    apikey: apiKey,
+  },
+});
 
 const dataSupabase = await response.json()
 const FCIData = await getFCIInvestments()
@@ -33,8 +35,9 @@ const filteredSBData = dataSupabase.filter(
   (d) => d.type === 'criptopesos' || d.type === 'buendolar'
 )
 
+
 // Plazos fijos de ArgentinaDatos
-const PFData = await getPFInvestments()
+const PFData = await getPFInvestments();
 
 // Concatenar arrays
 const allData = Array.prototype.concat(
@@ -43,15 +46,16 @@ const allData = Array.prototype.concat(
   ...FCIData
 )
 
+
 const sortedData = allData.sort((a, b) => {
   if (a.tea < b.tea) {
-    return 1 // for descending order, return 1 if the first item is less than the second
+    return 1; // for descending order, return 1 if the first item is less than the second
   } else if (a.tea > b.tea) {
-    return -1 // return -1 if the first item is greater than the second
+    return -1; // return -1 if the first item is greater than the second
   } else {
-    return 0 // return 0 if they're equal
+    return 0; // return 0 if they're equal
   }
-})
+});
 
 const exchanges = [
   {
@@ -59,63 +63,63 @@ const exchanges = [
     link: 'https://buenbit.com?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734',
     altLogo: 'buenbit logo',
-    name: 'Buenbit'
+    name: 'Buenbit',
   },
   {
     data: dataReturns?.fiwind ?? [],
     link: 'https://fiwind.io?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696',
     altLogo: 'fiwind logo',
-    name: 'Fiwind'
+    name: 'Fiwind',
   },
   {
     data: dataReturns?.letsbit ?? [],
     link: 'https://letsbit.io/?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269',
     altLogo: 'letsbit logo',
-    name: 'LetsBit'
+    name: 'LetsBit',
   },
   {
     data: dataReturns?.lemoncash ?? [],
     link: 'https://lemon.me/?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/lemon.jpg?updatedAt=1708468450310',
     altLogo: 'lemoncash logo',
-    name: 'Lemon'
+    name: 'Lemon',
   },
   {
     data: dataReturns?.belo ?? [],
     link: 'https://belo.app/?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/belo.jpg?updatedAt=1708468600237',
     altLogo: 'belo logo',
-    name: 'Belo'
-  }
-] as Exchange[]
+    name: 'Belo',
+  },
+] as Exchange[];
 
 const investments: {
-  filterInvestment: Investment['type']
-  title: string
+  filterInvestment: Investment['type'];
+  title: string;
 }[] = [
   {
     filterInvestment: 'cuenta_remunerada',
-    title: 'Inversión Automática'
+    title: 'Inversión Automática',
   },
   {
     filterInvestment: 'tradicional',
-    title: 'Experiencia Tradicional'
+    title: 'Experiencia Tradicional',
   },
   {
     filterInvestment: 'pf',
-    title: 'Plazos Fijos'
+    title: 'Plazos Fijos',
   },
   {
     filterInvestment: 'criptopesos',
-    title: 'Cripto Pesos'
+    title: 'Cripto Pesos',
   },
   {
     filterInvestment: 'buendolar',
-    title: 'Fondos en USD'
-  }
-]
+    title: 'Fondos en USD',
+  },
+];
 ---
 
 <Layout
@@ -127,12 +131,9 @@ const investments: {
     id='containter'
     class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
-    <h1
-      class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'
-    >
-      ¡Elegí el fondo con <span class='text-indigo-500'
-        >más rendimientos</span
-      > para vos!
+    <h1 class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'>
+      ¡Elegí el fondo con <span class='text-indigo-500'>más rendimientos</span> para
+      vos!
     </h1>
     <Dolares />
     {

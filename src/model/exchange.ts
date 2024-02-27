@@ -12,12 +12,7 @@ export interface Return {
   fecha: string;
 }
 
-export type App =
-  | 'letsbit'
-  | 'fiwind'
-  | 'buenbit'
-  | 'belo'
-  | 'lemoncash';
+export type App = 'letsbit' | 'fiwind' | 'buenbit' | 'belo' | 'lemoncash';
 
 export interface ReturnsResponse {
   entidad: App;

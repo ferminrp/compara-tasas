@@ -1,7 +1,7 @@
 ---
-import ExchangeTable from '../ExchangeTable/ExchangeTable.astro'
+import ExchangeTable from '../ExchangeTable/ExchangeTable.astro';
 
-const { title, subtitle, exchanges } = Astro.props
+const { title, subtitle, exchanges } = Astro.props;
 ---
 
 <div class='my-6 flex flex-col gap-4'>
@@ -21,7 +21,7 @@ const { title, subtitle, exchanges } = Astro.props
 
   {
     exchanges.map((exchange) => {
-      return <ExchangeTable exchange={exchange} key={exchange.name} />
+      return <ExchangeTable exchange={exchange} key={exchange.name} />;
     })
   }
 </div>

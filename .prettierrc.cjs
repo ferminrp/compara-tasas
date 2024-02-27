@@ -14,8 +14,8 @@ module.exports = {
       files: '*.astro',
       options: {
         parser: 'astro',
-        printWidth: 80
-      }
-    }
-  ]
-}
+        printWidth: 80,
+      },
+    },
+  ],
+};
