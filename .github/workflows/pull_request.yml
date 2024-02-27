@@ -1,7 +1,6 @@
 name: Code quality
 
 on:
-  push:
   pull_request:
 
 jobs:
@@ -10,9 +9,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Biome
-        uses: biomejs/setup-biome@v2
-        with:
-          version: latest
-      - name: Run Biome
-        run: biome ci .
+
+      - uses: oven-sh/setup-bun@v1
+
+      - name: Install packages
+        run: bun install
+
+      - name: Check Prettier formatting
+        run: bunx prettier --check "**/*.{md,mdx,astro}"
+
+      - name: Run ESLint
+        run: bunx eslint "src/**/*.{astro,}"
+
+      - name: Check Biome configuration
+        run: bunx biome check ./

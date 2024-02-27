@@ -32,9 +32,7 @@ const replacePFData = (rawData) => {
 
   for (const fund of rawData) {
     const normalizedEntity = fund.entidad.trim().toUpperCase();
-    const matchBank = banks.find(
-      (b) => b.entidad === normalizedEntity,
-    );
+    const matchBank = banks.find((b) => b.entidad === normalizedEntity);
     if (matchBank) {
       fund.nombre = matchBank.nombre;
       fund.logo = matchBank.logo;

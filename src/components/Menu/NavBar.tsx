@@ -1,13 +1,13 @@
-import React from 'react'
-import MenuDropdown from './MenuDropdown'
-import Logo from '../../assets/Logo'
+import React from 'react';
+import Logo from '../../assets/Logo';
+import MenuDropdown from './MenuDropdown';
 
 const NavBar = ({
-  pathname
+  pathname,
 }: {
   /** Utiliza la ruta actual para indicar
    * cual item del menu está activo **/
-  pathname: string
+  pathname: string;
 }) => {
   return (
     <div className='w-full mx-auto sm:px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'>
@@ -23,7 +23,7 @@ const NavBar = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

@@ -1,11 +1,11 @@
 ---
-import { formatPercentage } from '../../utils/formats'
+import { formatPercentage } from '../../utils/formats';
 
-const { logo, tna, tea, detail, title, name, url } = Astro.props
+const { logo, tna, tea, detail, title, name, url } = Astro.props;
 
-const tnaRate = formatPercentage(tna)
-const teaRate = formatPercentage(tea)
-const logoImg = logo + '?tr=w-32,h-32,f_webp'
+const tnaRate = formatPercentage(tna);
+const teaRate = formatPercentage(tea);
+const logoImg = logo + '?tr=w-32,h-32,f_webp';
 ---
 
 <a
@@ -35,16 +35,13 @@ const logoImg = logo + '?tr=w-32,h-32,f_webp'
       </div>
       <div>
         <p class='flex w-[150px] justify-end gap-1 align-middle'>
-          <span class='tabular-nums dark:text-gray-200'
-            >{tnaRate}</span
-          ><span class='mt-[5px] text-xs dark:text-gray-200'>TNA</span
+          <span class='tabular-nums dark:text-gray-200'>{tnaRate}</span><span
+            class='mt-[5px] text-xs dark:text-gray-200'>TNA</span
           >
         </p>
         <p class='flex w-[150px] justify-end gap-1 align-middle'>
-          <span class='text-xs tabular-nums text-gray-400'
-            >{teaRate}</span
-          ><span class='text-xs tracking-wider text-gray-400'
-            >TEA</span
+          <span class='text-xs tabular-nums text-gray-400'>{teaRate}</span><span
+            class='text-xs tracking-wider text-gray-400'>TEA</span
           >
         </p>
       </div>
