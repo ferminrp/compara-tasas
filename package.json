@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "lint": "prettier --write  \"**/*.{md,mdx,astro}\" && eslint --fix \"src/**/*.{astro,}\" && npx @biomejs/biome check --apply-unsafe ./",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/partytown": "2.0.4",
