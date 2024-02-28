@@ -6,6 +6,7 @@ interface Props {
   title: string;
   metaImage: string;
   metaDescription: string;
+  metaKeywords: string;
   isFooterVisible?: boolean;
   hideNav?: boolean;
 }
@@ -14,6 +15,7 @@ const {
   title,
   metaImage,
   metaDescription,
+  metaKeywords,
   isFooterVisible = true,
   hideNav = false,
 } = Astro.props;
@@ -57,11 +59,7 @@ const {
     <meta name='twitter:image' content={metaImage} />
     <title>{title}</title>
     <meta name='description' content={metaDescription} />
-    <meta
-      name='keywords'
-      content='Comparar tasas, tasas de interes Argentina, mejores tasas de interes, Comparar FCI, mejores tasas FCI, comparar 
-			tasas de interes, plazo fijo argentina, plazo fijo vs fci'
-    />
+    <meta name='keywords' content={metaKeywords} />
     <link rel='icon' href='favicon.ico' type='image/x-icon' />
     <meta property='og:image' content={metaImage} />
   </head>
