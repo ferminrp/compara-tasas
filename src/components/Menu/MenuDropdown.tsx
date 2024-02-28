@@ -38,9 +38,9 @@ const MenuDropdown = ({ pathname }: { pathname: string }) => {
       {isOpen && (
         <div
           ref={menuRef}
-          className='w-[50%] min-w-[200px] max-w-[300px] flex flex-col rounded-lg border-[#CAD0E0] dark:border-[#292B2E] border-[1px] bg-white dark:bg-gray-900 absolute top-0 right-0'
+          className='absolute right-0 top-0 flex w-[50%] min-w-[200px] max-w-[300px] flex-col rounded-lg border-[1px] border-[#CAD0E0] bg-white dark:border-[#292B2E] dark:bg-gray-900'
         >
-          <ul className='flex flex-col gap-3 content-between items-center py-2'>
+          <ul className='flex flex-col content-between items-center gap-3 py-2'>
             {menuItemsData.map((item, index) => (
               <MenuItem active={item.url === pathname} data={item} />
             ))}
