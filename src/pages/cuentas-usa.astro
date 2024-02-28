@@ -15,6 +15,42 @@ const accounts = [
       'Tarjeta Virtual': false,
       'Tarjeta Física': false
     }
+  },
+  {
+    name: 'Dolarapp',
+    logo: 'https://ik.imagekit.io/ferminrp/dolarapp.png?updatedAt=1709130134048',
+    url: 'https://dolarapp.com/en-AR',
+    attributes: {
+      'Comisión por recibir': '0%',
+      'Comisión por extraer': '3%',
+      'Cuenta USA a tu nombre': true,
+      'Extracciones en pesos': true,
+      Rendimientos: false,
+      'Tarjeta Virtual': false,
+      'Tarjeta Física': false
+    },
+    subscription: {
+      Costo: 'U$S 4,99',
+      Rendimientos: '4.5%'
+    }
+  },
+  {
+    name: 'Utoppia',
+    logo: 'https://ik.imagekit.io/ferminrp/utoppia.png?updatedAt=1709121463821',
+    url: 'https://www.utoppia.com/',
+    attributes: {
+      'Comisión por recibir': '0%',
+      'Comisión por extraer': '3%',
+      'Cuenta USA a tu nombre': true,
+      'Extracciones en pesos': true,
+      Rendimientos: false,
+      'Tarjeta Virtual': false,
+      'Tarjeta Física': false
+    },
+    subscription: {
+      Costo: 'U$S 4,99',
+      Rendimientos: '4.5%'
+    }
   }
 ]
 
@@ -30,8 +66,15 @@ const booleanToSVG = (value) =>
   metaImage='/images/cuentas-usa.png'
 >
   <div
-    class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
+    class='container mx-4 mx-auto my-6 flex max-w-sm flex-col gap-4 px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
+    <h1
+      class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'
+    >
+      Compara las mejores opciones para <span class='text-indigo-500'
+        >cobrar afuera</span
+      >
+    </h1>
     {
       accounts.map((account) => (
         <a
@@ -62,6 +105,28 @@ const booleanToSVG = (value) =>
                   />
                 </li>
               )
+            )}
+            {account.subscription && (
+              <>
+                <div class='flex items-center'>
+                  <div class='flex-grow border-t border-gray-300' />
+                  <span class='mx-4 flex-shrink text-gray-800'>
+                    Suscripción
+                  </span>
+                  <div class='flex-grow border-t border-gray-300' />
+                </div>
+
+                {Object.entries(account.subscription).map(
+                  ([key, value]) => (
+                    <li
+                      class='flex justify-between font-light'
+                      key={key}
+                    >
+                      {key}: <span>{value}</span>
+                    </li>
+                  )
+                )}
+              </>
             )}
           </ul>
         </a>
