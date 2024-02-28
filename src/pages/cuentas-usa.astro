@@ -91,7 +91,6 @@ const booleanToSVG = (value) =>
       accounts.map((account) => (
         <a
           class='block rounded bg-white p-4 shadow-sm'
-          key={account.name}
           href={account.url}
         >
           <div class='flex items-center gap-2 pb-4'>
@@ -106,7 +105,7 @@ const booleanToSVG = (value) =>
           <ul class='flex flex-col gap-1'>
             {Object.entries(account.attributes).map(
               ([key, value]) => (
-                <li class='flex justify-between font-light' key={key}>
+                <li class='flex justify-between font-light'>
                   {key}:{' '}
                   <span
                     set:html={
@@ -130,10 +129,7 @@ const booleanToSVG = (value) =>
 
                 {Object.entries(account.subscription).map(
                   ([key, value]) => (
-                    <li
-                      class='flex justify-between font-light'
-                      key={key}
-                    >
+                    <li class='flex justify-between font-light'>
                       {key}: <span>{value}</span>
                     </li>
                   )
