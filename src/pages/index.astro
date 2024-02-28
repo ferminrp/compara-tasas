@@ -30,7 +30,10 @@ const dataReturns = await getReturns();
 
 // Solo usamos la info de criptopesos y buendolar de Supabase
 const filteredSBData = dataSupabase.filter(
-  (d) => d.type === 'criptopesos' || d.type === 'buendolar',
+  (d: Investment) =>
+    d.type === 'criptopesos' ||
+    d.type === 'buendolar' ||
+    d.name === 'Naranja X',
 );
 
 // Plazos fijos de ArgentinaDatos
