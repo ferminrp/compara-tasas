@@ -1,12 +1,13 @@
 ---
 import NavBar from '../components/Menu/NavBar';
-import githubSVG from '../assets/github.svg';
+import Footer from '../components/Sections/Footer.astro';
 
 interface Props {
   title: string;
   metaImage: string;
   metaDescription: string;
   isFooterVisible?: boolean;
+  hideNav?: boolean;
 }
 
 const {
@@ -14,6 +15,7 @@ const {
   metaImage,
   metaDescription,
   isFooterVisible = true,
+  hideNav = false,
 } = Astro.props;
 ---
 
@@ -66,41 +68,9 @@ const {
   <body class='bg-gray-100 text-gray-900 dark:bg-gray-950'>
     <!-- Se le pasa la ruta de la url actual al component react para 
           conocer el item del menu que debe quedar activo -->
-    <NavBar pathname={Astro.url.pathname} client:load />
+    {!hideNav && <NavBar pathname={Astro.url.pathname} client:load />}
     <slot />
-    {
-      isFooterVisible ? (
-        <div
-          id='containter'
-          class='container mx-4 mx-auto my-6 flex max-w-sm flex-col gap-4 px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
-        >
-          <p class='my-4 text-sm text-gray-600 dark:text-gray-400'>
-            Comparatasas.ar® es un proyecto colaborativo que tiene como fin,
-            reflejar las tasas disponibles en el mercado actual. Para mayor
-            información, visitá la sección{' '}
-            <a
-              class='underline dark:text-gray-200'
-              href='/legal'
-              target='_blank'
-            >
-              Aviso Legal
-            </a>
-          </p>
-          <div class='flex items-center gap-4'>
-            <img src={githubSVG.src} alt='GitHub Logo' />
-            <p class='my-4 text-sm text-gray-600 dark:text-gray-400'>
-              Podés contribuir a este proyecto{' '}
-              <a
-                class='underline dark:text-gray-200'
-                href='https://github.com/ferminrp/compara-tasas'
-              >
-                en este repositorio.
-              </a>
-            </p>
-          </div>
-        </div>
-      ) : null
-    }
+    <Footer isFooterVisible={isFooterVisible} />
   </body>
   <!-- Google tag (gtag.js) -->
   <script async src='https://www.googletagmanager.com/gtag/js?id=G-MVDC98G0E2'
