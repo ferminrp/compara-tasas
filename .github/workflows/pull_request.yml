@@ -22,4 +22,4 @@ jobs:
         run: bunx eslint "src/**/*.{astro,}"
 
       - name: Check Biome configuration
-        run: bunx biome check ./
+        run: bunx biome check --no-errors-on-unmatched --files-ignore-unknown=true ./
