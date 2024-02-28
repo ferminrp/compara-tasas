@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro'
 
 const accounts = [
   {
@@ -13,8 +13,8 @@ const accounts = [
       'Extracciones en pesos': true,
       Rendimientos: false,
       'Tarjeta Virtual': false,
-      'Tarjeta Física': false,
-    },
+      'Tarjeta Física': false
+    }
   },
   {
     name: 'Dolarapp',
@@ -26,12 +26,12 @@ const accounts = [
       'Cuenta USA a tu nombre': true,
       'Extracciones en pesos': true,
       'Tarjeta Virtual': false,
-      'Tarjeta Física': false,
+      'Tarjeta Física': false
     },
     subscription: {
       Costo: 'U$S 4,99',
-      Rendimientos: '4.00%',
-    },
+      Rendimientos: '4.00%'
+    }
   },
   {
     name: 'Grabrfi',
@@ -44,8 +44,8 @@ const accounts = [
       'Extracciones en pesos': false,
       Rendimientos: false,
       'Tarjeta Virtual': false,
-      'Tarjeta Física': false,
-    },
+      'Tarjeta Física': false
+    }
   } /* OCULTADO HASTA QUE VUELVAN A ABRIR CUENTAS
   {
     name: 'Utoppia',
@@ -63,13 +63,13 @@ const accounts = [
       Costo: 'U$S 4,99',
       Rendimientos: '4.5%'
     }
-  }*/,
-];
+  }*/
+]
 
 const booleanToSVG = (value) =>
   value
     ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#047857" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>'
-    : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#b91c1c" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>';
+    : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#b91c1c" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>'
 ---
 
 <Layout
@@ -80,34 +80,45 @@ const booleanToSVG = (value) =>
   <div
     class='container mx-4 mx-auto my-6 flex max-w-sm flex-col gap-4 px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
-    <h1 class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'>
+    <h1
+      class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'
+    >
       Compara las mejores opciones para <span class='text-indigo-500'
         >cobrar afuera</span
       >
     </h1>
     {
       accounts.map((account) => (
-        <a class='block rounded bg-white p-4 shadow-sm' href={account.url}>
+        <a
+          class='block rounded bg-white p-4 shadow-sm'
+          href={account.url}
+        >
           <div class='flex items-center gap-2 pb-4'>
             <img
               class='h-8 w-8 rounded-full'
-              src={account.logo}
+              src={account.logo + '?tr=w-32,h-32,f_webp'}
               alt={account.name}
+              width='32'
+              height='32'
             />
             <h3 class='text-lg font-bold'>{account.name}</h3>
           </div>
 
           <ul class='flex flex-col gap-1'>
-            {Object.entries(account.attributes).map(([key, value]) => (
-              <li class='flex justify-between font-light'>
-                {key}:{' '}
-                <span
-                  set:html={
-                    typeof value === 'boolean' ? booleanToSVG(value) : value
-                  }
-                />
-              </li>
-            ))}
+            {Object.entries(account.attributes).map(
+              ([key, value]) => (
+                <li class='flex justify-between font-light'>
+                  {key}:{' '}
+                  <span
+                    set:html={
+                      typeof value === 'boolean'
+                        ? booleanToSVG(value)
+                        : value
+                    }
+                  />
+                </li>
+              )
+            )}
             {account.subscription && (
               <>
                 <div class='flex items-center'>
@@ -118,11 +129,13 @@ const booleanToSVG = (value) =>
                   <div class='flex-grow border-t border-gray-300' />
                 </div>
 
-                {Object.entries(account.subscription).map(([key, value]) => (
-                  <li class='flex justify-between font-light'>
-                    {key}: <span>{value}</span>
-                  </li>
-                ))}
+                {Object.entries(account.subscription).map(
+                  ([key, value]) => (
+                    <li class='flex justify-between font-light'>
+                      {key}: <span>{value}</span>
+                    </li>
+                  )
+                )}
               </>
             )}
           </ul>
