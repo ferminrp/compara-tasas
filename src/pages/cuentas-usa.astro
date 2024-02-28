@@ -2,30 +2,67 @@
 import Layout from '../layouts/Layout.astro'
 
 const accounts = [
-    {
-        'name': 'Takenos',
-        'logo': 'https://ik.imagekit.io/ferminrp/Takenos%20logo.jpeg?updatedAt=1709119639419',
-        'url': 'https://app.takenos.com/referral?referral=3019da20-6746-4f43-81ba-a489cd833a0d',
-        'attributes':{
-            'Comisión por recibir':'0%',
-            'Comisión por extraer':'3%',
-            'Cuenta USA a tu nombre': true,
-            'Extracciones en pesos': true,
-            'Rendimientos': false,
-            'Tarjeta Virtual': false,
-            'Tarjeta Física': false
-        },
+  {
+    name: 'Takenos',
+    logo: 'https://ik.imagekit.io/ferminrp/Takenos%20logo.jpeg?updatedAt=1709119639419',
+    url: 'https://app.takenos.com/referral?referral=3019da20-6746-4f43-81ba-a489cd833a0d',
+    attributes: {
+      'Comisión por recibir': '0%',
+      'Comisión por extraer': '3%',
+      'Cuenta USA a tu nombre': true,
+      'Extracciones en pesos': true,
+      Rendimientos: false,
+      'Tarjeta Virtual': false,
+      'Tarjeta Física': false
     }
-];
+  }
+]
 
-
+// Función para traducir booleanos a svg
+const booleanToYesNo = (value) =>
+  value
+    ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#047857" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>'
+    : 'No'
 ---
 
 <Layout
-  title='Compara Rendimientos Crypto'
-  metaDescription='Compara los rendimientos en crypto que ofrecen los principales exchanges del pais.'
-  metaImage='/images/crypto.png'
+  title='Cuentas para Freelancers'
+  metaDescription='Compara las distintas opciones para cobrar afuera.'
+  metaImage='/images/cuentas-usa.png'
 >
+  <div
+    class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
+  >
+    {
+      accounts.map((account) => (
+        <a
+          class='block rounded bg-white p-4 shadow-sm'
+          key={account.name}
+          href={account.url}
+        >
+          <div class='flex items-center gap-2'>
+            <img
+              class='h-8 w-8 rounded-full'
+              src={account.logo}
+              alt={account.name}
+            />
+            <h3 class='text-lg font-bold'>{account.name}</h3>
+          </div>
 
-
+          <ul>
+            {Object.entries(account.attributes).map(
+              ([key, value]) => (
+                <li key={key}>
+                  {key}:{' '}
+                  {typeof value === 'boolean'
+                    ? booleanToYesNo(value)
+                    : value}
+                </li>
+              )
+            )}
+          </ul>
+        </a>
+      ))
+    }
+  </div>
 </Layout>
