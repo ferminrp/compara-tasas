@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import CriptoUsd from '../components/Sections/CriptoUsd.astro'
-import { type Exchange } from '../model/exchange'
-import { getReturns } from '../client/argentinaDatos'
+import Layout from '../layouts/Layout.astro';
+import CriptoUsd from '../components/Sections/CriptoUsd.astro';
+import { type Exchange } from '../model/exchange';
+import { getReturns } from '../client/argentinaDatos';
 
-const returns = await getReturns()
+const returns = await getReturns();
 
 const exchanges = [
   {
@@ -12,37 +12,37 @@ const exchanges = [
     link: 'https://buenbit.com?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734',
     altLogo: 'buenbit logo',
-    name: 'Buenbit'
+    name: 'Buenbit',
   },
   {
     data: returns?.fiwind ?? [],
     link: 'https://fiwind.io?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696',
     altLogo: 'fiwind logo',
-    name: 'Fiwind'
+    name: 'Fiwind',
   },
   {
     data: returns?.letsbit ?? [],
     link: 'https://letsbit.io/?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269',
     altLogo: 'letsbit logo',
-    name: 'LetsBit'
+    name: 'LetsBit',
   },
   {
     data: returns?.lemoncash ?? [],
     link: 'https://lemon.me/?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/lemon.jpg?updatedAt=1708468450310',
     altLogo: 'lemoncash logo',
-    name: 'Lemon'
+    name: 'Lemon',
   },
   {
     data: returns?.belo ?? [],
     link: 'https://belo.app/?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/belo.jpg?updatedAt=1708468600237',
     altLogo: 'belo logo',
-    name: 'Belo'
-  }
-] as Exchange[]
+    name: 'Belo',
+  },
+] as Exchange[];
 ---
 
 <Layout
@@ -54,9 +54,7 @@ const exchanges = [
     id='containter'
     class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
-    <h1
-      class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'
-    >
+    <h1 class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'>
       ¡Encontra las <span class='text-indigo-500'
         >mejores inversiones en crypto</span
       > para vos!

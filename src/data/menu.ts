@@ -1,10 +1,10 @@
-import type { MenuItemType } from '../model/menu'
+import type { MenuItemType } from '../model/menu';
 
 export const menuItemsData: MenuItemType[] = [
   {
     name: 'INICIO',
     url: '/',
-    icon: '📊'
+    icon: '📊',
   },
   /*   {
       name: 'PESOS',
@@ -19,7 +19,7 @@ export const menuItemsData: MenuItemType[] = [
   {
     name: 'CRYPTO',
     url: '/crypto',
-    icon: '⚡'
+    icon: '⚡',
   },
   {
     name: 'Cuentas USA',
@@ -30,6 +30,6 @@ export const menuItemsData: MenuItemType[] = [
     name: 'AVISO LEGAL',
     url: '/legal',
     icon: '⚖️',
-    hasTopBorder: true
-  }
-]
+    hasTopBorder: true,
+  },
+];

@@ -8,8 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "lint": "prettier --write  \"**/*.{md,mdx,astro}\" && eslint --fix \"src/**/*.{astro,}\" && npx @biomejs/biome check --apply-unsafe ./",
-    "astro": "astro"
+    "lint": "prettier --write  \"**/*.{md,mdx,astro}\" && eslint --fix \"src/**/*.{astro,}\" && biome check --apply-unsafe --no-errors-on-unmatched --files-ignore-unknown=true ./",
+    "astro": "astro",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/partytown": "2.0.4",
@@ -26,9 +27,19 @@
     "@typescript-eslint/parser": "7.0.2",
     "eslint": "8.57.0",
     "eslint-plugin-astro": "0.31.4",
-    "prettier": "^3.2.5",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "3.2.5",
     "prettier-config-standard": "7.0.0",
     "prettier-plugin-astro": "0.13.0",
-    "prettier-plugin-tailwindcss": "0.5.11"
+    "prettier-plugin-tailwindcss": "0.5.11",
+    "typescript": "5.3.3"
+  },
+  "lint-staged": {
+    "*.astro": "eslint --fix",
+    "*.{astro,md}": "prettier --write",
+    "*": [
+      "biome check --apply-unsafe --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
   }
 }

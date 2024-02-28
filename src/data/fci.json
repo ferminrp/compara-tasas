@@ -1,0 +1,107 @@
+{
+  "Personal Pay": {
+    "nombreOficial": "Delta Pesos - Clase X",
+    "nombreSimplificado": "Delta Pesos (X)",
+    "logo": "https://ik.imagekit.io/ferminrp/PersonalPay.jpg?updatedAt=1705751679088",
+    "url": "https://www.personalpay.com.ar/",
+    "type": "cuenta_remunerada"
+  },
+  "Prex": {
+    "nombreOficial": "Allaria Ahorro - Clase A",
+    "nombreSimplificado": "Allaria Ahorro (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/prex.jpeg?updatedAt=1705751733760",
+    "url": "https://www.prexcard.com.ar/",
+    "type": "cuenta_remunerada"
+  },
+  "Uala": {
+    "nombreOficial": "Ualintec Ahorro Pesos - Clase A",
+    "nombreSimplificado": "Ualintec Ahorro Pesos (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/uala.jpeg?updatedAt=1705751593746",
+    "url": "https://uala.com.ar",
+    "type": "tradicional"
+  },
+  "Mercado Pago": {
+    "nombreOficial": "Mercado Fondo - Clase A",
+    "nombreSimplificado": "Mercado Fondo A",
+    "logo": "https://ik.imagekit.io/ferminrp/mp.jpeg?updatedAt=1705750753226",
+    "url": "https://mercadopago.com.ar/",
+    "type": "cuenta_remunerada"
+  },
+  "Cocos": {
+    "nombreOficial": "Cocos Ahorro - Clase A",
+    "nombreSimplificado": "Cocos Ahorro A",
+    "logo": "https://ik.imagekit.io/ferminrp/cocos.jpeg?updatedAt=1705788191899",
+    "url": "https://cocos.capital/",
+    "type": "tradicional"
+  },
+  "IEB": {
+    "nombreOficial": "IEB Ahorro - Clase A",
+    "nombreSimplificado": "IEB Ahorro (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/ieb.jpeg?updatedAt=1705789266724",
+    "url": "https://www.grupoieb.com.ar/iebmas/",
+    "type": "tradicional"
+  },
+  "Santander": {
+    "nombreOficial": "Super Ahorro $ - Clase A",
+    "nombreSimplificado": "Super Ahorro (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/santander.png?updatedAt=1705840513218",
+    "url": "https://www.santander.com.ar/",
+    "type": "tradicional"
+  },
+  "Galicia": {
+    "nombreOficial": "Fima Premium - Clase A",
+    "nombreSimplificado": "Fima Premium (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/galicia.jpeg?updatedAt=1705840853900",
+    "url": "https://www.galicia.ar/personas",
+    "type": "tradicional"
+  },
+  "Balanz": {
+    "nombreOficial": "Balanz Capital Money Market - Clase A",
+    "nombreSimplificado": "Balanz Capital MM (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/balanz.jpeg?updatedAt=1705789663773",
+    "url": "https://balanz.com",
+    "type": "tradicional"
+  },
+  "Claro Pay": {
+    "nombreOficial": "SBS Ahorro Pesos - Clase A",
+    "nombreSimplificado": "SBS Ahorro (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/Clarop.png?updatedAt=1706271125722",
+    "url": "https://claropay.com.ar/landing",
+    "type": "cuenta_remunerada"
+  },
+  "n1u": {
+    "nombreOficial": "Delta Pesos - Clase A",
+    "nombreSimplificado": "Delta Pesos (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/n1u.jpeg?updatedAt=1706028849006",
+    "url": "https://linktr.ee/n1u.app",
+    "type": "cuenta_remunerada"
+  },
+  "ICBC": {
+    "nombreOficial": "Alpha Pesos - Clase A",
+    "nombreSimplificado": "Alpha Pesos (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/icbc.jpeg?updatedAt=1706451184543",
+    "url": "https://www.icbc.com.ar/personas",
+    "type": "cuenta_remunerada"
+  },
+  "BBVA": {
+    "nombreOficial": "FBA Renta Pesos - Clase A",
+    "nombreSimplificado": "FBA Renta Pesos (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/BBVA%20logo.png?updatedAt=1706709935806",
+    "url": "https://www.bbva.com.ar/",
+    "type": "tradicional"
+  },
+  "Supervielle": {
+    "nombreOficial": "Premier Renta CP en Pesos - Clase A",
+    "nombreSimplificado": "Premier Renta CP (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/Superv.jpg?updatedAt=1706968842493",
+    "url": "https://www.supervielle.com.ar/personas",
+    "type": "tradicional"
+  },
+  "Banza": {
+    "nombreOficial": "Adcap Ahorro Pesos Fondo de Dinero - Clase A",
+    "nombreSimplificado": "Adcap Ahorro Pesos (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/banza.jpeg?updatedAt=1707312127346",
+    "url": "https://www.banza.com.ar/",
+    "type": "tradicional"
+  }
+}
