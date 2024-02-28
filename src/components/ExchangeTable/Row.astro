@@ -1,14 +1,14 @@
 ---
-import { formatPercentage } from '../../utils/formats'
+import { formatPercentage } from '../../utils/formats';
 
-const { isLastItem, moneda, apy, logo, defaultLogo } = Astro.props
+const { isLastItem, moneda, apy, logo, defaultLogo } = Astro.props;
 
-const apyFormatted = formatPercentage(apy)
+const apyFormatted = formatPercentage(apy);
 
-const fullLogo = logo ?? defaultLogo
+const fullLogo = logo ?? defaultLogo;
 
 // Regla para que no aparezca ars de letsbit o apys ridiculos de mas de 200%
-const shouldRenderComponent = moneda !== 'ARS' && apy < 200
+const shouldRenderComponent = moneda !== 'ARS' && apy < 200;
 ---
 
 {
@@ -37,9 +37,7 @@ const shouldRenderComponent = moneda !== 'ARS' && apy < 200
               <span class='tabular-nums dark:text-gray-200'>
                 {apyFormatted}
               </span>
-              <span class='mt-[5px] text-xs dark:text-gray-200'>
-                APY
-              </span>
+              <span class='mt-[5px] text-xs dark:text-gray-200'>APY</span>
             </p>
           </div>
         </div>

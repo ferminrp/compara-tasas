@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 const ArrowDown = () => (
   <svg
     className='w-2.5 h-2.5 m-1'
@@ -15,5 +15,5 @@ const ArrowDown = () => (
       d='m1 1 4 4 4-4'
     />
   </svg>
-)
-export default ArrowDown
+);
+export default ArrowDown;

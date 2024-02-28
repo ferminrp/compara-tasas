@@ -1,20 +1,22 @@
 ---
-import NavBar from '../components/Menu/NavBar'
-import githubSVG from '../assets/github.svg'
+import NavBar from '../components/Menu/NavBar';
+import Footer from '../components/Sections/Footer.astro';
 
 interface Props {
-  title: string
-  metaImage: string
-  metaDescription: string
-  isFooterVisible?: boolean
+  title: string;
+  metaImage: string;
+  metaDescription: string;
+  isFooterVisible?: boolean;
+  hideNav?: boolean;
 }
 
 const {
   title,
   metaImage,
   metaDescription,
-  isFooterVisible = true
-} = Astro.props
+  isFooterVisible = true,
+  hideNav = false,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -26,42 +28,30 @@ const {
     <script>
       function setThemeColor() {
         const isDarkMode = window.matchMedia(
-          '(prefers-color-scheme: dark)'
-        ).matches
-        const metaThemeColor = document.querySelector(
-          'meta[name=theme-color]'
-        )
+          '(prefers-color-scheme: dark)',
+        ).matches;
+        const metaThemeColor = document.querySelector('meta[name=theme-color]');
 
         if (isDarkMode) {
-          metaThemeColor.setAttribute('content', '#020617')
+          metaThemeColor.setAttribute('content', '#020617');
         } else {
-          metaThemeColor.setAttribute('content', '#f1f5f9')
+          metaThemeColor.setAttribute('content', '#f1f5f9');
         }
       }
 
       // Initial set
-      setThemeColor()
+      setThemeColor();
 
       // Listen for changes
       window
         .matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener('change', setThemeColor)
+        .addEventListener('change', setThemeColor);
     </script>
-    <link
-      rel='apple-touch-icon'
-      sizes='180x180'
-      href='apple-touch-icon.png'
-    />
+    <link rel='apple-touch-icon' sizes='180x180' href='apple-touch-icon.png' />
     <meta name='apple-mobile-web-app-capable' content='yes' />
     <meta name='apple-mobile-web-app-title' content='Compara Tasas' />
-    <meta
-      name='apple-mobile-web-app-status-bar-style'
-      content='default'
-    />
-    <meta
-      name='viewport'
-      content='width=device-width, initial-scale=1.0'
-    />
+    <meta name='apple-mobile-web-app-status-bar-style' content='default' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:title' content={title} />
     <meta name='twitter:image' content={metaImage} />
@@ -78,62 +68,28 @@ const {
   <body class='bg-gray-100 text-gray-900 dark:bg-gray-950'>
     <!-- Se le pasa la ruta de la url actual al component react para 
           conocer el item del menu que debe quedar activo -->
-    <NavBar pathname={Astro.url.pathname} client:load />
+    {!hideNav && <NavBar pathname={Astro.url.pathname} client:load />}
     <slot />
-    {
-      isFooterVisible ? (
-        <div
-          id='containter'
-          class='flex flex-col gap-4 container mx-auto mx-4 px-4 my-6 max-w-sm sm:max-w-sm md:max-w-md lg:max-w-lg'
-        >
-          <p class='my-4 text-gray-600 text-sm dark:text-gray-400'>
-            Comparatasas.ar® es un proyecto colaborativo que tiene
-            como fin, reflejar las tasas disponibles en el mercado
-            actual. Para mayor información, visitá la sección{' '}
-            <a
-              class='underline dark:text-gray-200'
-              href='/legal'
-              target='_blank'
-            >
-              Aviso Legal
-            </a>
-          </p>
-          <div class='flex items-center gap-4'>
-            <img src={githubSVG.src} alt='GitHub Logo' />
-            <p class='my-4 text-gray-600 text-sm dark:text-gray-400'>
-              Podés contribuir a este proyecto{' '}
-              <a
-                class='underline dark:text-gray-200'
-                href='https://github.com/ferminrp/compara-tasas'
-              >
-                en este repositorio.
-              </a>
-            </p>
-          </div>
-        </div>
-      ) : null
-    }
+    <Footer isFooterVisible={isFooterVisible} />
   </body>
   <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src='https://www.googletagmanager.com/gtag/js?id=G-MVDC98G0E2'
+  <script async src='https://www.googletagmanager.com/gtag/js?id=G-MVDC98G0E2'
   ></script>
   <script>
     // @ts-ignore
-    window.dataLayer = window.dataLayer || []
+    window.dataLayer = window.dataLayer || [];
     function gtag() {
       // @ts-ignore
-      dataLayer.push(arguments)
+      dataLayer.push(arguments);
     }
     // @ts-ignore
-    gtag('js', new Date())
+    gtag('js', new Date());
     // @ts-ignore
-    gtag('config', 'G-MVDC98G0E2')
+    gtag('config', 'G-MVDC98G0E2');
   </script>
   <script>
-    console.log('La Competencia nos eleva — Pierpaolo Barbieri')
-    console.log('Camine señora, camine — Lita de Lazzari')
+    console.log('La Competencia nos eleva — Pierpaolo Barbieri');
+    console.log('Camine señora, camine — Lita de Lazzari');
   </script>
 </html>
 
