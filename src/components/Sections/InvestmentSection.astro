@@ -1,7 +1,7 @@
 ---
 import Card from '../Card/Card.astro';
 
-const { investmentFilter, data, title } = Astro.props;
+const { data, title } = Astro.props;
 ---
 
 <div class='my-6 flex flex-col gap-4'>
@@ -11,9 +11,5 @@ const { investmentFilter, data, title } = Astro.props;
     </h2>
   </div>
 
-  {
-    data
-      ?.filter((item) => item.type === investmentFilter)
-      .map((item) => <Card {...item} />)
-  }
+  {data?.map((item) => <Card {...item} />)}
 </div>

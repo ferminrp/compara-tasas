@@ -5,11 +5,13 @@ import cn from '../../utils/cn';
 const MenuItem = ({
   active,
   data,
+  disabled,
 }: {
   /** Determina si el item esta activo o no en el momento **/
   active: boolean;
   /** Contiene un objecto ItemDataType con los datos del item  */
   data: MenuItemType;
+  disabled: boolean;
 }) => {
   const { hasTopBorder, url, icon, name } = data;
   return (
@@ -25,6 +27,7 @@ const MenuItem = ({
             'bg-indigo-500 text-white': active,
             'text-[#6E727A] hover:bg-gray-100 group-hover:text-[#6E727A] dark:hover:bg-gray-950':
               !active,
+            'pointer-events-none': disabled,
           },
         )}
         href={url}

@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import InvestmentSection from '../components/Sections/InvestmentSection.astro';
+import { type Investment } from '../model/business';
+import { getPFInvestments } from '../Services/argentinaDatos';
+import { getFCIInvestments } from '../Services/argentinaDatosFCI';
+import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
+
+const apiEndpoint =
+  'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*';
+const apiKey = import.meta.env.PUBLIC_SUPABASE_KEY;
+
+const response = await fetch(apiEndpoint, {
+  method: 'GET',
+  headers: {
+    Authorization: `Bearer ${apiKey}`,
+    apikey: apiKey,
+  },
+});
+const dataSupabase = await response.json();
+
+const filteredSBData = dataSupabase.filter(
+  (d: Investment) =>
+    d.type === 'criptopesos' ||
+    d.type === 'buendolar' ||
+    d.name === 'Naranja X',
+);
+
+const PFData = await getPFInvestments();
+
+const FCIData = await getFCIInvestments();
+
+// Concatenar arrays
+const allData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
+
+const sortedData: Investment[] = allData.sort((a, b) => {
+  if (a.tea < b.tea) {
+    return 1; // for descending order, return 1 if the first item is less than the second
+  } else if (a.tea > b.tea) {
+    return -1; // return -1 if the first item is greater than the second
+  } else {
+    return 0; // return 0 if they're equal
+  }
+});
+
+interface FilteredData {
+  pf: Investment[];
+  tradicional: Investment[];
+  otros: Investment[];
+  cuenta_remunerada: Investment[];
+}
+
+// Objeto resultante
+const categories: FilteredData = {
+  pf: [],
+  tradicional: [],
+  cuenta_remunerada: [],
+  otros: [],
+};
+
+// Organizar los objetos en las categorías correspondientes
+sortedData.forEach((investment) => {
+  switch (investment.type) {
+    case 'pf':
+      categories.pf.push(investment);
+      break;
+    case 'tradicional':
+      categories.tradicional.push(investment);
+      break;
+    case 'cuenta_remunerada':
+      categories.cuenta_remunerada.push(investment);
+      break;
+    default:
+      categories.otros.push(investment);
+  }
+});
+---
+
+<!-- Replace meta Image -->
+<Layout
+  title='Compara Rendimientos en Pesos'
+  metaDescription='Compara los rendimientos en pesos que ofrecen los principales bancos del pais.'
+  metaKeywords='rendimientos pesos, rendimiento pesos argentinos, bancos argentina'
+  metaImage='/images/crypto.png'
+>
+  <div
+    id='containter'
+    class='container mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
+  >
+    <h1 class='my-2 text-3xl font-bold text-gray-900 dark:text-gray-100'>
+      ¡Encontra las <span class='text-indigo-500'
+        >mejores inversiones en pesos</span
+      > para vos!
+    </h1>
+    <p class='text-ms my-0 text-gray-600 dark:text-gray-400'>
+      {sortedData.length} Inversiones en Pesos
+    </p>
+
+    {
+      Object.entries(categories).map(([key, values]) => {
+        return (
+          <InvestmentSection
+            title={`${TYPE_INVESTMENT_PESOS_MAPPING[key]} (${values.length})`}
+            data={values}
+            key={key}
+          />
+        );
+      })
+    }
+  </div>
+</Layout>

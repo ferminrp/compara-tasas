@@ -9,7 +9,7 @@ const MenuDropdown = ({ pathname }: { pathname: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>();
 
-  const activeItem = menuItemsData.find((item) => item.url === pathname);
+  const activeItem = menuItemsData.find((item) => item?.url === pathname);
 
   /** Cierra el menu si el usuario clickea
    * cualquier otro lugar luego de abrirlo */
@@ -42,12 +42,13 @@ const MenuDropdown = ({ pathname }: { pathname: string }) => {
           ref={menuRef}
           className='absolute right-0 top-0 flex w-[50%] min-w-[200px] max-w-[300px] flex-col rounded-lg border border-[#CAD0E0] bg-white dark:border-[#292B2E] dark:bg-gray-900'
         >
-          <ul className='flex flex-col items-center'>
+          <ul className='flex flex-col content-between items-center gap-3 py-2'>
             {menuItemsData.map((item) => (
               <MenuItem
                 key={item.name}
                 active={item.url === pathname}
                 data={item}
+                disabled={activeItem.name === item.name}
               />
             ))}
           </ul>

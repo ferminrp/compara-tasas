@@ -1,35 +1,37 @@
-import type { MenuItemType } from '../model/menu'
+import type { MenuItemType } from '../model/menu';
 
 export const menuItemsData: MenuItemType[] = [
   {
     name: 'INICIO',
     url: '/',
-    icon: '📊'
+    icon: '📊',
   },
-  /*   {
-      name: 'PESOS',
-      url: '/pesos',
-      icon: '🧉'
-    },
+  {
+    name: 'PESOS',
+    url: '/pesos',
+    icon: '🧉',
+  },
+  /*
     {
       name: 'DÓLARES',
       url: '/dolares',
       icon: '💵'
-    }, */
+    }, */ undefined,
+  undefined,
   {
     name: 'CRYPTO',
     url: '/crypto',
-    icon: '⚡'
+    icon: '⚡',
   },
   {
     name: 'Cuentas USA',
     url: '/cuentas-usa',
-    icon: '🇺🇸'
+    icon: '🇺🇸',
   },
   {
     name: 'AVISO LEGAL',
     url: '/legal',
     icon: '⚖️',
-    hasTopBorder: true
-  }
-]
+    hasTopBorder: true,
+  },
+];
