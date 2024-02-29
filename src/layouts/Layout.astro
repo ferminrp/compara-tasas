@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import NavBar from '../components/Menu/NavBar';
 import Footer from '../components/Sections/Footer.astro';
 
@@ -58,6 +59,7 @@ const {
     <meta name='twitter:title' content={title} />
     <meta name='twitter:image' content={metaImage} />
     <title>{title}</title>
+    <ViewTransitions />
     <meta name='description' content={metaDescription} />
     <meta name='keywords' content={metaKeywords} />
     <link rel='icon' href='favicon.ico' type='image/x-icon' />
@@ -69,29 +71,27 @@ const {
     {!hideNav && <NavBar pathname={Astro.url.pathname} client:load />}
     <slot />
     <Footer isFooterVisible={isFooterVisible} />
-  </body>
-  <!-- Google tag (gtag.js) -->
-  <script async src='https://www.googletagmanager.com/gtag/js?id=G-MVDC98G0E2'
-  ></script>
-  <script>
-    // @ts-ignore
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
+    <script async src='https://www.googletagmanager.com/gtag/js?id=G-MVDC98G0E2'
+    ></script>
+    <script>
       // @ts-ignore
-      dataLayer.push(arguments);
-    }
-    // @ts-ignore
-    gtag('js', new Date());
-    // @ts-ignore
-    gtag('config', 'G-MVDC98G0E2');
-  </script>
-  <script>
-    console.log('La Competencia nos eleva — Pierpaolo Barbieri');
-    console.log('Camine señora, camine — Lita de Lazzari');
-  </script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        // @ts-ignore
+        dataLayer.push(arguments);
+      }
+      // @ts-ignore
+      gtag('js', new Date());
+      // @ts-ignore
+      gtag('config', 'G-MVDC98G0E2');
+    </script>
+    <script>
+      console.log('La Competencia nos eleva — Pierpaolo Barbieri');
+      console.log('Camine señora, camine — Lita de Lazzari');
+    </script>
+    <style is:global>
+      :root {
+      }
+    </style>
+  </body><!-- Google tag (gtag.js) -->
 </html>
-
-<style is:global>
-  :root {
-  }
-</style>
