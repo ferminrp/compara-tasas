@@ -16,8 +16,7 @@ export const menuItemsData: MenuItemType[] = [
       name: 'DÓLARES',
       url: '/dolares',
       icon: '💵'
-    }, */ undefined,
-  undefined,
+    }, */
   {
     name: 'CRYPTO',
     url: '/crypto',
