@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Layout from '../layouts/Layout.astro';
 
 const accounts = [
   {
@@ -14,8 +14,8 @@ const accounts = [
       'Retiros Crypto': true,
       Rendimientos: false,
       'Tarjeta Virtual': false,
-      'Tarjeta Física': false
-    }
+      'Tarjeta Física': false,
+    },
   },
   {
     name: 'Dolarapp',
@@ -28,13 +28,13 @@ const accounts = [
       'Retiros en pesos': true,
       'Tarjeta Virtual': false,
       'Tarjeta Física': false,
-      'Retiros Crypto': false
+      'Retiros Crypto': false,
     },
     subscription: {
       Costo: 'U$S 6,99',
       Rendimientos: '4,00%',
       Cashback: '1,00%',
-    }
+    },
   },
   {
     name: 'Grabrfi',
@@ -48,8 +48,8 @@ const accounts = [
       Rendimientos: false,
       'Tarjeta Virtual': false,
       'Tarjeta Física': false,
-      'Retiros Crypto': false
-    }
+      'Retiros Crypto': false,
+    },
   } /* OCULTADO HASTA QUE VUELVAN A ABRIR CUENTAS
   {
     name: 'Utoppia',
@@ -68,26 +68,25 @@ const accounts = [
       Costo: 'U$S 4,99',
       Rendimientos: '4,50%'
     }
-  }*/
-]
+  }*/,
+];
 
 const booleanToSVG = (value) =>
   value
     ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#047857" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>'
-    : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#b91c1c" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>'
+    : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#b91c1c" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>';
 ---
 
 <Layout
   title='Cuentas para Freelancers'
   metaDescription='Compara las distintas opciones para cobrar afuera.'
+  metaKeywords='Cuenta en dolares, freelancer, comparar comisiones, traer dolares, cobrar en dolares, pesos a dolares'
   metaImage='/images/cuentas-usa.png'
 >
   <div
     class='container mx-4 mx-auto my-6 flex max-w-sm flex-col gap-4 px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
-    <h1
-      class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'
-    >
+    <h1 class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'>
       Compara las mejores opciones para <span class='text-indigo-500'
         >cobrar afuera</span
       >
@@ -110,20 +109,16 @@ const booleanToSVG = (value) =>
           </div>
 
           <ul class='flex flex-col gap-1'>
-            {Object.entries(account.attributes).map(
-              ([key, value]) => (
-                <li class='flex justify-between font-light dark:text-gray-200'>
-                  {key}{' '}
-                  <span
-                    set:html={
-                      typeof value === 'boolean'
-                        ? booleanToSVG(value)
-                        : value
-                    }
-                  />
-                </li>
-              )
-            )}
+            {Object.entries(account.attributes).map(([key, value]) => (
+              <li class='flex justify-between font-light dark:text-gray-200'>
+                {key}{' '}
+                <span
+                  set:html={
+                    typeof value === 'boolean' ? booleanToSVG(value) : value
+                  }
+                />
+              </li>
+            ))}
             {account.subscription && (
               <>
                 <div class='flex items-center'>
@@ -134,13 +129,11 @@ const booleanToSVG = (value) =>
                   <div class='flex-grow border-t border-gray-300' />
                 </div>
 
-                {Object.entries(account.subscription).map(
-                  ([key, value]) => (
-                    <li class='flex justify-between font-light dark:text-gray-200'>
-                      {key} <span>{value}</span>
-                    </li>
-                  )
-                )}
+                {Object.entries(account.subscription).map(([key, value]) => (
+                  <li class='flex justify-between font-light dark:text-gray-200'>
+                    {key} <span>{value}</span>
+                  </li>
+                ))}
               </>
             )}
           </ul>
