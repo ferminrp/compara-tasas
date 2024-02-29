@@ -1,5 +1,6 @@
 import React from 'react';
 import type { MenuItemType } from '../../model/menu';
+import cn from '../../utils/cn';
 
 const MenuItem = ({
   active,
@@ -14,24 +15,22 @@ const MenuItem = ({
   return (
     <>
       {hasTopBorder && (
-        <hr className='bg-[#CAD0E0] dark:bg-[#292B2E] w-full h-px border-0' />
+        <hr className='h-px w-full border-0 bg-[#CAD0E0] dark:bg-[#292B2E]' />
       )}
-      <li
-        className={`${active && 'bg-indigo-500'} w-full ${
-          !active && 'hover:bg-gray-100 dark:hover:bg-gray-950'
-        } group`}
+
+      <a
+        className={cn(
+          'w-full px-6 py-3 font-semibold first:rounded-t-lg last:rounded-b-lg',
+          {
+            'bg-indigo-500 text-white': active,
+            'text-[#6E727A] hover:bg-gray-100 group-hover:text-[#6E727A] dark:hover:bg-gray-950':
+              !active,
+          },
+        )}
+        href={url}
       >
-        <a
-          className={`${
-            active ? 'text-white' : 'text-[#6E727A]'
-          } px-6 py-3 block font-semibold ${
-            !active && 'group-hover:text-[#6E727A]'
-          }`}
-          href={url}
-        >
-          <span className='pr-5'>{icon}</span> {name}
-        </a>
-      </li>
+        <span className='pr-5'>{icon}</span> {name}
+      </a>
     </>
   );
 };
