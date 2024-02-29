@@ -112,7 +112,7 @@ const booleanToSVG = (value) =>
             {Object.entries(account.attributes).map(
               ([key, value]) => (
                 <li class='flex justify-between font-light dark:text-gray-200'>
-                  {key}:{' '}
+                  {key}{' '}
                   <span
                     set:html={
                       typeof value === 'boolean'
@@ -136,7 +136,7 @@ const booleanToSVG = (value) =>
                 {Object.entries(account.subscription).map(
                   ([key, value]) => (
                     <li class='flex justify-between font-light dark:text-gray-200'>
-                      {key}: <span>{value}</span>
+                      {key} <span>{value}</span>
                     </li>
                   )
                 )}
