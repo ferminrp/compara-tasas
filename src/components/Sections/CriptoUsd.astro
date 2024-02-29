@@ -21,7 +21,9 @@ const { title, subtitle, exchanges } = Astro.props;
 
   {
     exchanges.map((exchange) => {
-      return <ExchangeTable exchange={exchange} key={exchange.name} />;
+      return exchange.data.length ? (
+        <ExchangeTable exchange={exchange} key={exchange.name} />
+      ) : null;
     })
   }
 </div>
