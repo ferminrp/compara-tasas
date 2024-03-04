@@ -17,7 +17,7 @@
     "@astrojs/react": "3.0.10",
     "@astrojs/sitemap": "3.1.1",
     "@astrojs/tailwind": "5.1.0",
-    "@astrojs/vercel": "7.3.3",
+    "@astrojs/vercel": "7.3.4",
     "@vercel/speed-insights": "1.0.10",
     "astro": "4.4.4",
     "bunx": "^0.1.0",
