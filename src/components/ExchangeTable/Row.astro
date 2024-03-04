@@ -1,7 +1,17 @@
 ---
+import cn from '../../utils/cn';
 import { formatPercentage } from '../../utils/formats';
 
-const { isLastItem, moneda, apy, logo, defaultLogo } = Astro.props;
+const {
+  isLastItem,
+  moneda,
+  apy,
+  logo,
+  defaultLogo,
+  className,
+  exchange,
+  isBestSection,
+} = Astro.props;
 
 const apyFormatted = formatPercentage(apy);
 
@@ -9,27 +19,39 @@ const fullLogo = logo ?? defaultLogo;
 
 // Regla para que no aparezca ars de letsbit o apys ridiculos de mas de 200%
 const shouldRenderComponent = moneda !== 'ARS' && apy < 200;
+
+const sizes = {
+  width: isBestSection ? '32px' : '16px',
+  height: isBestSection ? '32px' : '16px',
+};
+
+const title = isBestSection ? exchange : moneda;
+const subTitle = isBestSection ? moneda : exchange;
 ---
 
 {
   shouldRenderComponent && (
     <div
-      class={`p-2 ${isLastItem ? 'dark:bg-gray-900' : 'border-b-1 border-b border-gray-100 dark:border-gray-600 dark:bg-gray-900'}`}
+      class={cn('p-2 dark:bg-gray-900', className, {
+        'border-b-1 border-b border-gray-100 dark:border-gray-600 dark:bg-gray-900':
+          !isLastItem,
+      })}
     >
       <div>
         <div class='flex flex-row items-center justify-between'>
           <div class='flex items-center gap-2'>
             <img
               loading='lazy'
-              style={{ width: '16px', height: '16px' }}
+              style={sizes}
               class='h-4 w-4 rounded-full'
               src={fullLogo + '?tr=w-16,h-16,f_webp'}
-              alt={`${moneda} logo`}
+              alt={`${title} logo`}
             />
             <div>
-              <p class='font-semibold capitalize dark:text-gray-200'>
-                {moneda}
-              </p>
+              <p class='font-semibold capitalize dark:text-gray-200'>{title}</p>
+              <span class='text-xs capitalize dark:text-gray-400'>
+                {subTitle}
+              </span>
             </div>
           </div>
           <div>
