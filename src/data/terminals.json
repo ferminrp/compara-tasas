@@ -1,0 +1,105 @@
+[
+  {
+    "provider": "Mercado Pago",
+    "terminals": ["Point Smart", "Point Plus", "Point Mini"],
+    "url": "pago.com.ar/herramientas-para-vender/lectores-point",
+    "deadlineFees": [
+      {
+        "deadline": "Inmediato",
+        "debit": "3,39% + IVA",
+        "credit": "6,99% + IVA"
+      },
+      {
+        "deadline": "2 días",
+        "debit": "3,19% + IVA",
+        "credit": "-"
+      },
+      {
+        "deadline": "10 días",
+        "debit": "-",
+        "credit": "4,49% + IVA"
+      },
+      {
+        "deadline": "18 días",
+        "debit": "-",
+        "credit": "3,39% + IVA"
+      },
+      {
+        "deadline": "35 días",
+        "debit": "-",
+        "credit": "1,49% + IVA"
+      }
+    ]
+  },
+  {
+    "provider": "Ualá bis",
+    "terminals": ["POS Pro", "POS mini"],
+    "url": "https://www.ualabis.com.ar/",
+    "deadlineFees": [
+      {
+        "deadline": "Inmediato",
+        "debit": "2,9% + IVA",
+        "credit": "4,90% + IVA"
+      }
+    ]
+  },
+  {
+    "provider": "Naranja X",
+    "terminals": ["Toque"],
+    "url": "https://toque.naranjax.com/",
+    "deadlineFees": [
+      {
+        "deadline": "Inmediato",
+        "debit": "3,15% + IVA",
+        "credit": "5,79% + IVA"
+      },
+      {
+        "deadline": "14 días",
+        "debit": "-",
+        "credit": "3,39% + IVA"
+      },
+      {
+        "deadline": "60 días",
+        "debit": "-",
+        "credit": "Sin costo"
+      }
+    ]
+  },
+  {
+    "provider": "Getnet",
+    "terminals": [
+      "Get Smart",
+      "Get Classic",
+      "Get Classic Black",
+      "Get Aparatito"
+    ],
+    "url": "https://www.getnet.com.ar/cobra-en-tu-negocio",
+    "deadlineFees": [
+      {
+        "deadline": "Inmediato",
+        "debit": "3,19% + IVA",
+        "credit": "6,39% + IVA"
+      },
+      {
+        "deadline": "2 días",
+        "debit": "2,99% + IVA",
+        "credit": "-"
+      },
+      {
+        "deadline": "10 días",
+        "debit": "-",
+        "credit": "3,29% + IVA"
+      },
+      {
+        "deadline": "20 días",
+        "debit": "-",
+        "credit": "1,69% + IVA"
+      },
+      {
+        "deadline": "35 días",
+        "debit": "-",
+        "credit": "Sin costo"
+      }
+    ]
+  }
+]

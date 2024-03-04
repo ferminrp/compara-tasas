@@ -136,8 +136,9 @@ const investments: {
     {
       investments.map((investment) => (
         <InvestmentSection
-          data={sortedData}
-          investmentFilter={investment?.filterInvestment}
+          data={sortedData?.filter(
+            (item) => item.type === investment.filterInvestment,
+          )}
           title={investment.title}
         />
       ))

@@ -48,3 +48,10 @@ export const MAPPING_RETURNS = {
     logo: 'https://ik.imagekit.io/ferminrp/USDC%20Logo.png?updatedAt=1706873507983',
   },
 };
+
+export const TYPE_INVESTMENT_PESOS_MAPPING = {
+  pf: 'Plazos Fijos',
+  tradicional: 'Tradicionales',
+  cuenta_remunerada: 'Cuenta Remuneradas',
+  otros: 'Otros',
+};
