@@ -1,5 +1,6 @@
 ---
 import ExchangeTable from '../ExchangeTable/ExchangeTable.astro';
+import Banner from '../banner.astro';
 
 const { title, subtitle, exchanges } = Astro.props;
 ---
@@ -22,7 +23,12 @@ const { title, subtitle, exchanges } = Astro.props;
   {
     exchanges.map((exchange) => {
       return exchange.data.length ? (
-        <ExchangeTable exchange={exchange} key={exchange.name} />
+        <>
+          <ExchangeTable exchange={exchange} key={exchange.name} />
+          {exchange.name === 'Buenbit' ? (
+            <Banner size='large' company='letsbit' />
+          ) : null}
+        </>
       ) : null;
     })
   }
