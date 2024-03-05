@@ -8,6 +8,7 @@ import { type Investment } from '../model/business';
 import { getPFInvestments } from '../Services/argentinaDatos';
 import { getReturns } from '../client/argentinaDatos';
 import { getFCIInvestments } from '../Services/argentinaDatosFCI';
+import NavBar from '../components/Menu/NavBar';
 
 // Define your API endpoint and API keys
 const apiEndpoint =
@@ -123,6 +124,7 @@ const investments: {
   metaDescription='Compara las tasas de rendimiento que ofrecen las principales billeteras digitales y sacale mas jugo a tu pesos.'
   metaKeywords='Comparar tasas, tasas de interes Argentina, mejores tasas de interes, Comparar FCI, mejores tasas FCI, comparar tasas de interes, plazo fijo argentina, plazo fijo vs fci'
 >
+  <NavBar pathname='/' client:load />
   <div
     id='containter'
     class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'

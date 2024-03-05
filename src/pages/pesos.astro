@@ -5,6 +5,7 @@ import { type Investment } from '../model/business';
 import { getPFInvestments } from '../Services/argentinaDatos';
 import { getFCIInvestments } from '../Services/argentinaDatosFCI';
 import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
+import NavBar from '../components/Menu/NavBar';
 
 const apiEndpoint =
   'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*';
@@ -83,6 +84,7 @@ sortedData.forEach((investment) => {
   metaKeywords='rendimientos pesos, rendimiento pesos argentinos, bancos argentina'
   metaImage='/images/crypto.png'
 >
+  <NavBar pathname='/pesos' client:load />
   <div
     id='containter'
     class='container mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
