@@ -4,6 +4,7 @@ import CriptoUsd from '../components/Sections/CriptoUsd.astro';
 import Banner from '../components/banner.astro';
 import { type Exchange } from '../model/exchange';
 import { getReturns } from '../client/argentinaDatos';
+import NavBar from '../components/Menu/NavBar';
 
 const returns = await getReturns();
 
@@ -52,6 +53,7 @@ const exchanges = [
   metaKeywords='rendimientos crypto, rendimiento usdt, exchanges argentina,stablecoin argentina, dolares crypto'
   metaImage='/images/crypto.png'
 >
+  <NavBar pathname='/crypto' client:load />
   <div
     id='containter'
     class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
