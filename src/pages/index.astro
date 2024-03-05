@@ -8,6 +8,7 @@ import { type Investment } from '../model/business';
 import { getPFInvestments } from '../Services/argentinaDatos';
 import { getReturns } from '../client/argentinaDatos';
 import { getFCIInvestments } from '../Services/argentinaDatosFCI';
+import Banner from '../components/banner.astro';
 
 // Define your API endpoint and API keys
 const apiEndpoint =
@@ -133,6 +134,7 @@ const investments: {
       >
     </h1>
     <Dolares />
+    <Banner size='small' />
     {
       investments.map((investment) => (
         <InvestmentSection
