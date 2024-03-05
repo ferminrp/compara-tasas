@@ -32,8 +32,8 @@ const MenuDropdown = ({ pathname }: { pathname: string }) => {
         className='flex items-center gap-1 text-[#6E727A]'
       >
         <div className='flex content-between gap-2'>
-          <span>{activeItem.icon}</span>
-          <span className='font-semibold'>{activeItem.name}</span>
+          <span>{activeItem?.icon}</span>
+          <span className='font-semibold'>{activeItem?.name}</span>
         </div>
         <ArrowDown />
       </button>
