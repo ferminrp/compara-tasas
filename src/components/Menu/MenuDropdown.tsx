@@ -42,7 +42,7 @@ const MenuDropdown = ({ pathname }: { pathname: string }) => {
           ref={menuRef}
           className='absolute right-0 top-0 flex w-[50%] min-w-[200px] max-w-[300px] flex-col rounded-lg border border-[#CAD0E0] bg-white dark:border-[#292B2E] dark:bg-gray-900'
         >
-          <ul className='flex flex-col content-between items-center gap-3 py-2'>
+          <ul className='flex flex-col content-between items-center gap-3'>
             {menuItemsData.map((item) => (
               <MenuItem
                 key={item.name}
