@@ -21,10 +21,7 @@ const response = await fetch(apiEndpoint, {
 const dataSupabase = await response.json();
 
 const filteredSBData = dataSupabase.filter(
-  (d: Investment) =>
-    d.type === 'criptopesos' ||
-    d.type === 'buendolar' ||
-    d.name === 'Naranja X',
+  (d: Investment) => d.type === 'criptopesos' || d.name === 'Naranja X',
 );
 
 const PFData = await getPFInvestments();
@@ -53,23 +50,23 @@ interface FilteredData {
 
 // Objeto resultante
 const categories: FilteredData = {
-  pf: [],
-  tradicional: [],
   cuenta_remunerada: [],
+  tradicional: [],
+  pf: [],
   otros: [],
 };
 
 // Organizar los objetos en las categorías correspondientes
 sortedData.forEach((investment) => {
   switch (investment.type) {
-    case 'pf':
-      categories.pf.push(investment);
+    case 'cuenta_remunerada':
+      categories.cuenta_remunerada.push(investment);
       break;
     case 'tradicional':
       categories.tradicional.push(investment);
       break;
-    case 'cuenta_remunerada':
-      categories.cuenta_remunerada.push(investment);
+    case 'pf':
+      categories.pf.push(investment);
       break;
     default:
       categories.otros.push(investment);
