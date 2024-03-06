@@ -1,7 +1,9 @@
 ---
+import cn from '../../utils/cn';
 import { formatPercentage } from '../../utils/formats';
 
-const { logo, tna, tea, detail, title, name, url } = Astro.props;
+const { logo, tna, tea, detail, title, name, url, disableRounded, className } =
+  Astro.props;
 
 const tnaRate = formatPercentage(tna);
 const teaRate = formatPercentage(tea);
@@ -9,7 +11,13 @@ const logoImg = logo + '?tr=w-32,h-32,f_webp';
 ---
 
 <a
-  class='text-gray rounded-lg border-gray-300 bg-white p-4 shadow-sm dark:bg-gray-900'
+  class={cn(
+    'text-gray  border-gray-300 bg-white p-4 shadow-sm dark:bg-gray-900',
+    className,
+    {
+      'rounded-lg': !disableRounded,
+    },
+  )}
   href={`${url}?ref=comparatasas.ar`}
 >
   <div class=''>
