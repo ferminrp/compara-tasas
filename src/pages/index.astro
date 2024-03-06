@@ -1,16 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Dolares from '../components/Dolares.astro';
-import InvestmentSection from '../components/Sections/InvestmentSection.astro';
-import CriptoUsd from '../components/Sections/CriptoUsd.astro';
-import { type Exchange } from '../model/exchange';
+import { EXCHANGES } from '../data/exchanges';
+import Best from '../components/BestInvestments/Best.astro';
+import { type Return } from '../model/exchange';
 import { type Investment } from '../model/business';
 import { getPFInvestments } from '../Services/argentinaDatos';
 import { getReturns } from '../client/argentinaDatos';
 import { getFCIInvestments } from '../Services/argentinaDatosFCI';
 import Banner from '../components/banner.astro';
 import NavBar from '../components/Menu/NavBar';
-
+import Card from '../components/Card/Card.astro';
+import Row from '../components/ExchangeTable/Row.astro';
 
 // Define your API endpoint and API keys
 const apiEndpoint =
@@ -39,85 +40,51 @@ const filteredSBData = dataSupabase.filter(
     d.name === 'Naranja X',
 );
 
+const TOP_INVESTMENT_QUANTITY = 3;
+
 // Plazos fijos de ArgentinaDatos
 const PFData = await getPFInvestments();
 
 // Concatenar arrays
-const allData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
+const allPfData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
+const allFciData = Array.prototype.concat(filteredSBData, ...FCIData);
 
-const sortedData = allData.sort((a, b) => {
-  if (a.tea < b.tea) {
-    return 1; // for descending order, return 1 if the first item is less than the second
-  } else if (a.tea > b.tea) {
-    return -1; // return -1 if the first item is greater than the second
-  } else {
-    return 0; // return 0 if they're equal
-  }
+const pesos = ['cuenta_remunerada', 'tradicional', 'pf'];
+
+const isPesoCoin = (value: Return) =>
+  value.moneda === 'ARS' || value.moneda === 'NUARS' || value.moneda === 'NARS';
+
+const sortedPfData: Investment[] = allPfData
+  .filter((item) => pesos.includes(item.type))
+  .sort((a, b) => {
+    if (a.tea < b.tea) {
+      return 1; // for descending order, return 1 if the first item is less than the second
+    } else if (a.tea > b.tea) {
+      return -1; // return -1 if the first item is greater than the second
+    } else {
+      return 0; // return 0 if they're equal
+    }
+  });
+
+const sortedFciData: Investment[] = allFciData
+  .filter((item) => pesos.includes(item.type))
+  .sort((a, b) => {
+    if (a.tea < b.tea) {
+      return 1; // for descending order, return 1 if the first item is less than the second
+    } else if (a.tea > b.tea) {
+      return -1; // return -1 if the first item is greater than the second
+    } else {
+      return 0; // return 0 if they're equal
+    }
+  });
+
+let sortedCriptoData = [];
+Object.entries(dataReturns).forEach(([exchange, values]) => {
+  values.forEach((value) => {
+    if (value.apy <= 0 || isPesoCoin(value)) return null;
+    sortedCriptoData.push({ exchange, ...value });
+  });
 });
-
-const exchanges = [
-  {
-    data: dataReturns?.buenbit ?? [],
-    link: 'https://buenbit.com?ref=comparatasas.ar',
-    logo: 'https://ik.imagekit.io/ferminrp/nDMEc3-Y_400x400.png?updatedAt=1702030494734',
-    altLogo: 'buenbit logo',
-    name: 'Buenbit',
-  },
-  {
-    data: dataReturns?.fiwind ?? [],
-    link: 'https://fiwind.io?ref=comparatasas.ar',
-    logo: 'https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696',
-    altLogo: 'fiwind logo',
-    name: 'Fiwind',
-  },
-  {
-    data: dataReturns?.letsbit ?? [],
-    link: 'https://letsbit.io/?ref=comparatasas.ar',
-    logo: 'https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269',
-    altLogo: 'letsbit logo',
-    name: 'LetsBit',
-  },
-  {
-    data: dataReturns?.lemoncash ?? [],
-    link: 'https://lemon.me/?ref=comparatasas.ar',
-    logo: 'https://ik.imagekit.io/ferminrp/lemon.jpg?updatedAt=1708468450310',
-    altLogo: 'lemoncash logo',
-    name: 'Lemon',
-  },
-  {
-    data: dataReturns?.belo ?? [],
-    link: 'https://belo.app/?ref=comparatasas.ar',
-    logo: 'https://ik.imagekit.io/ferminrp/belo.jpg?updatedAt=1708468600237',
-    altLogo: 'belo logo',
-    name: 'Belo',
-  },
-] as Exchange[];
-
-const investments: {
-  filterInvestment: Investment['type'];
-  title: string;
-}[] = [
-  {
-    filterInvestment: 'cuenta_remunerada',
-    title: 'Inversión Automática',
-  },
-  {
-    filterInvestment: 'tradicional',
-    title: 'Experiencia Tradicional',
-  },
-  {
-    filterInvestment: 'pf',
-    title: 'Plazos Fijos',
-  },
-  {
-    filterInvestment: 'criptopesos',
-    title: 'Cripto Pesos',
-  },
-  {
-    filterInvestment: 'buendolar',
-    title: 'Fondos en USD',
-  },
-];
 ---
 
 <Layout
@@ -138,35 +105,61 @@ const investments: {
     </h1>
     <Dolares />
     <Banner size='small' />
-    {
-      investments.map((investment) => (
-        <InvestmentSection
-          data={sortedData?.filter(
-            (item) => item.type === investment.filterInvestment,
-          )}
-          title={investment.title}
-        />
-      ))
-    }
-
-    <CriptoUsd
-      exchanges={exchanges}
-      title={'Cripto'}
-      subtitle={'Compará en donde comprar crypto al mejor precio en'}
-    />
-
-    <a
-      id='cafecito'
-      href='https://cafecito.app/ferminrp'
-      rel='noopener'
-      target='_blank'
-      ><img
-        width='192'
-        height='40'
-        srcset='https://cdn.cafecito.app/imgs/buttons/button_3.png 1x, https://cdn.cafecito.app/imgs/buttons/button_3_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_3_3.75x.png 3.75x'
-        src='https://cdn.cafecito.app/imgs/buttons/button_3.png'
-        alt='Invitame un café en cafecito.app'
-      /></a
-    >
+    <Best link={'/pesos'} sectionName='Fondos Comunes'>
+      <div class='flex flex-col'>
+        {
+          sortedFciData
+            .slice(0, 3)
+            .map((item, index) => (
+              <Card
+                {...item}
+                key={index}
+                disableRounded
+                className={`border-b-1 border-b border-gray-100  dark:border-gray-600 ${index === TOP_INVESTMENT_QUANTITY - 1 && 'rounded-b-lg border-none'}`}
+              />
+            ))
+        }
+      </div>
+    </Best>
+    <Best link={'/pesos'} sectionName='Plazos Fijos'>
+      <div class='flex flex-col'>
+        {
+          sortedPfData
+            .slice(0, 3)
+            .map((item, index) => (
+              <Card
+                {...item}
+                key={index}
+                disableRounded
+                className={`border-b-1 border-b border-gray-100  dark:border-gray-600 ${index === TOP_INVESTMENT_QUANTITY - 1 && 'rounded-b-lg border-none'}`}
+              />
+            ))
+        }
+      </div>
+    </Best>
+    <Best link={'/crypto'} sectionName='Cripto'>
+      <div class='flex flex-col'>
+        {
+          sortedCriptoData
+            .sort((a, b) => b.apy - a.apy)
+            .slice(0, 3)
+            .map((item, index) => {
+              const isLastItem = index === TOP_INVESTMENT_QUANTITY - 1;
+              return (
+                <Row
+                  key={index}
+                  logo={EXCHANGES[item.exchange].logo}
+                  apy={item.apy}
+                  moneda={item.moneda}
+                  className={`border-b-1 border-b border-gray-100 bg-white px-4  dark:border-gray-600 ${isLastItem && 'rounded-b-lg'} `}
+                  isBestSection
+                  isLastItem={isLastItem}
+                  exchange={item.exchange}
+                />
+              );
+            })
+        }
+      </div>
+    </Best>
   </div>
 </Layout>
