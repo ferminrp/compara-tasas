@@ -18,7 +18,7 @@ export const EXCHANGES = {
     name: 'Fiwind',
   },
   letsbit: {
-    link: 'https://letsbit.io/?ref=comparatasas.ar',
+    link: 'https://dub.sh/letsbit',
     logo: 'https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269',
     altLogo: 'letsbit logo',
     name: 'LetsBit',
