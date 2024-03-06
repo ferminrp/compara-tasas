@@ -46,14 +46,27 @@ const TOP_INVESTMENT_QUANTITY = 3;
 const PFData = await getPFInvestments();
 
 // Concatenar arrays
-const allData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
+const allPfData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
+const allFciData = Array.prototype.concat(filteredSBData, ...FCIData);
 
 const pesos = ['cuenta_remunerada', 'tradicional', 'pf'];
 
 const isPesoCoin = (value: Return) =>
   value.moneda === 'ARS' || value.moneda === 'NUARS' || value.moneda === 'NARS';
 
-const sortedPesosData: Investment[] = allData
+const sortedPfData: Investment[] = allPfData
+  .filter((item) => pesos.includes(item.type))
+  .sort((a, b) => {
+    if (a.tea < b.tea) {
+      return 1; // for descending order, return 1 if the first item is less than the second
+    } else if (a.tea > b.tea) {
+      return -1; // return -1 if the first item is greater than the second
+    } else {
+      return 0; // return 0 if they're equal
+    }
+  });
+
+const sortedFciData: Investment[] = allFciData
   .filter((item) => pesos.includes(item.type))
   .sort((a, b) => {
     if (a.tea < b.tea) {
@@ -92,10 +105,26 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
     </h1>
     <Dolares />
     <Banner size='small' />
-    <Best link={'/pesos'} sectionName='Pesos'>
+    <Best link={'/pesos'} sectionName='Fondos Comunes'>
       <div class='flex flex-col'>
         {
-          sortedPesosData
+          sortedFciData
+            .slice(0, 3)
+            .map((item, index) => (
+              <Card
+                {...item}
+                key={index}
+                disableRounded
+                className={`border-b-1 border-b border-gray-100  dark:border-gray-600 ${index === TOP_INVESTMENT_QUANTITY - 1 && 'rounded-b-lg border-none'}`}
+              />
+            ))
+        }
+      </div>
+    </Best>
+    <Best link={'/pesos'} sectionName='Plazos Fijos'>
+      <div class='flex flex-col'>
+        {
+          sortedPfData
             .slice(0, 3)
             .map((item, index) => (
               <Card
@@ -122,7 +151,7 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
                   logo={EXCHANGES[item.exchange].logo}
                   apy={item.apy}
                   moneda={item.moneda}
-                  className={`px-4 ${isLastItem && 'rounded-b-lg'} `}
+                  className={`border-b-1 border-b border-gray-100 bg-white px-4  dark:border-gray-600 ${isLastItem && 'rounded-b-lg'} `}
                   isBestSection
                   isLastItem={isLastItem}
                   exchange={item.exchange}
@@ -132,18 +161,5 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
         }
       </div>
     </Best>
-    <a
-      id='cafecito'
-      href='https://cafecito.app/ferminrp'
-      rel='noopener'
-      target='_blank'
-      ><img
-        width='192'
-        height='40'
-        srcset='https://cdn.cafecito.app/imgs/buttons/button_3.png 1x, https://cdn.cafecito.app/imgs/buttons/button_3_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_3_3.75x.png 3.75x'
-        src='https://cdn.cafecito.app/imgs/buttons/button_3.png'
-        alt='Invitame un café en cafecito.app'
-      /></a
-    >
   </div>
 </Layout>
