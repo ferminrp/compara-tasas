@@ -151,7 +151,7 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
                   logo={EXCHANGES[item.exchange].logo}
                   apy={item.apy}
                   moneda={item.moneda}
-                  className={`border-b-1 border-b border-gray-100 bg-white px-4  dark:border-gray-600 ${isLastItem && 'rounded-b-lg'} `}
+                  className={`  bg-white px-4  dark:border-gray-600 ${isLastItem ? 'rounded-b-lg' : 'border-b-1 border-b border-gray-100'} `}
                   isBestSection
                   isLastItem={isLastItem}
                   exchange={item.exchange}
