@@ -99,9 +99,10 @@ sortedData.forEach((investment) => {
       Object.entries(categories).map(([key, values]) => {
         return (
           <InvestmentSection
-            title={`${TYPE_INVESTMENT_PESOS_MAPPING[key]} (${values.length})`}
+            title={`${TYPE_INVESTMENT_PESOS_MAPPING[key].title} (${values.length})`}
             data={values}
             key={key}
+            sectionId={TYPE_INVESTMENT_PESOS_MAPPING[key].sectionId}
           />
         );
       })
