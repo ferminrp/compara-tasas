@@ -99,7 +99,7 @@
   },
   "Banza": {
     "nombreOficial": "Adcap Ahorro Pesos Fondo de Dinero - Clase A",
-    "nombreSimplificado": "Adcap Ahorro Pesos (A)",
+    "nombreSimplificado": "Adcap Ahorro (A)",
     "logo": "https://ik.imagekit.io/ferminrp/banza.jpeg?updatedAt=1707312127346",
     "url": "https://www.banza.com.ar/",
     "type": "tradicional"
@@ -110,5 +110,12 @@
     "logo": "https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269",
     "url": "https://letsbit.page.link/zyxz",
     "type": "cuenta_remunerada"
+  },
+  "Macro": {
+    "nombreOficial": "Pionero Pesos - Clase A",
+    "nombreSimplificado": "Pionero Pesos (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/macro.png?updatedAt=1709932052422",
+    "url": "https://www.macro.com.ar/home-page",
+    "type": "tradicional"
   }
 }

@@ -12,6 +12,7 @@ import Banner from '../components/banner.astro';
 import NavBar from '../components/Menu/NavBar';
 import Card from '../components/Card/Card.astro';
 import Row from '../components/ExchangeTable/Row.astro';
+import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
 
 // Define your API endpoint and API keys
 const apiEndpoint =
@@ -50,6 +51,12 @@ const allPfData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
 const allFciData = Array.prototype.concat(filteredSBData, ...FCIData);
 
 const pesos = ['cuenta_remunerada', 'tradicional', 'pf'];
+const pesosLinks = {
+  cuenta_remunerada: TYPE_INVESTMENT_PESOS_MAPPING.cuenta_remunerada.sectionId,
+  tradicional: TYPE_INVESTMENT_PESOS_MAPPING.tradicional.sectionId,
+  pf: TYPE_INVESTMENT_PESOS_MAPPING.pf.sectionId,
+  otros: TYPE_INVESTMENT_PESOS_MAPPING.otros.sectionId,
+};
 
 const isPesoCoin = (value: Return) =>
   value.moneda === 'ARS' || value.moneda === 'NUARS' || value.moneda === 'NARS';
@@ -105,7 +112,7 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
     </h1>
     <Dolares />
     <Banner size='small' />
-    <Best link={'/pesos'} sectionName='FCI'>
+    <Best link={`/pesos#${pesosLinks.cuenta_remunerada}`} sectionName='FCI'>
       <div class='flex flex-col'>
         {
           sortedFciData
@@ -121,7 +128,7 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
         }
       </div>
     </Best>
-    <Best link={'/pesos'} sectionName='Plazos Fijos'>
+    <Best link={`/pesos#${pesosLinks.pf}`} sectionName='Plazos Fijos'>
       <div class='flex flex-col'>
         {
           sortedPfData
