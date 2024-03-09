@@ -28,6 +28,11 @@ export const menuItemsData: MenuItemType[] = [
     icon: '🗽',
   },
   {
+    name: 'Cobros',
+    url: '/cobros',
+    icon: '🛒',
+  },
+  {
     name: 'AVISO LEGAL',
     url: '/legal',
     icon: '⚖️',

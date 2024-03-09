@@ -1,7 +1,8 @@
 [
   {
     "provider": "Mercado Pago",
-    "terminals": ["Point Smart", "Point Plus", "Point Mini"],
+    "providerImg": "https://ik.imagekit.io/ferminrp/mercado%20point.png?updatedAt=1709997947762",
+    "lectores": ["Point Smart", "Point Plus", "Point Mini"],
     "url": "pago.com.ar/herramientas-para-vender/lectores-point",
     "deadlineFees": [
       {
@@ -33,7 +34,8 @@
   },
   {
     "provider": "Ualá bis",
-    "terminals": ["POS Pro", "POS mini"],
+    "providerImg": "https://ik.imagekit.io/ferminrp/uala%20bis%20.png?updatedAt=1709999036086",
+    "lectores": ["POS Pro", "POS mini"],
     "url": "https://www.ualabis.com.ar/",
     "deadlineFees": [
       {
@@ -45,7 +47,8 @@
   },
   {
     "provider": "Naranja X",
-    "terminals": ["Toque"],
+    "providerImg": "https://ik.imagekit.io/ferminrp/toque.png?updatedAt=1709999082302",
+    "lectores": ["Toque"],
     "url": "https://toque.naranjax.com/",
     "deadlineFees": [
       {
@@ -67,7 +70,8 @@
   },
   {
     "provider": "Getnet",
-    "terminals": [
+    "providerImg": "https://ik.imagekit.io/ferminrp/lector%20getnet.png?updatedAt=1709999292679",
+    "lectores": [
       "Get Smart",
       "Get Classic",
       "Get Classic Black",
