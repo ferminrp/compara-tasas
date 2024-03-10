@@ -1,38 +1,5 @@
 [
   {
-    "provider": "Mercado Pago",
-    "providerImg": "https://ik.imagekit.io/ferminrp/mercado%20point.png?updatedAt=1709997947762",
-    "lectores": ["Point Smart", "Point Plus", "Point Mini"],
-    "url": "http://mpago.li/2whPLrr",
-    "deadlineFees": [
-      {
-        "deadline": "Inmediato",
-        "debit": "3,39% + IVA",
-        "credit": "6,99% + IVA"
-      },
-      {
-        "deadline": "2 días",
-        "debit": "3,19% + IVA",
-        "credit": "-"
-      },
-      {
-        "deadline": "10 días",
-        "debit": "-",
-        "credit": "4,49% + IVA"
-      },
-      {
-        "deadline": "18 días",
-        "debit": "-",
-        "credit": "3,39% + IVA"
-      },
-      {
-        "deadline": "35 días",
-        "debit": "-",
-        "credit": "1,49% + IVA"
-      }
-    ]
-  },
-  {
     "provider": "Ualá bis",
     "providerImg": "https://ik.imagekit.io/ferminrp/uala%20bis%20.png?updatedAt=1709999036086",
     "lectores": ["POS Pro", "POS mini"],
@@ -103,6 +70,39 @@
         "deadline": "35 días",
         "debit": "-",
         "credit": "Sin costo"
+      }
+    ]
+  },
+  {
+    "provider": "Mercado Pago",
+    "providerImg": "https://ik.imagekit.io/ferminrp/mercado%20point.png?updatedAt=1709997947762",
+    "lectores": ["Point Smart", "Point Plus", "Point Mini"],
+    "url": "http://mpago.li/2whPLrr",
+    "deadlineFees": [
+      {
+        "deadline": "Inmediato",
+        "debit": "3,39% + IVA",
+        "credit": "6,99% + IVA"
+      },
+      {
+        "deadline": "2 días",
+        "debit": "3,19% + IVA",
+        "credit": "-"
+      },
+      {
+        "deadline": "10 días",
+        "debit": "-",
+        "credit": "4,49% + IVA"
+      },
+      {
+        "deadline": "18 días",
+        "debit": "-",
+        "credit": "3,39% + IVA"
+      },
+      {
+        "deadline": "35 días",
+        "debit": "-",
+        "credit": "1,49% + IVA"
       }
     ]
   }

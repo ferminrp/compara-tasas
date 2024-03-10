@@ -8,7 +8,7 @@ import terminals from '../data/terminals.json';
 <Layout
   title='Compara terminales y comisiones de cobro'
   metaDescription='Conocé los costos y opciones disponibles para tu negocio.'
-  metaKeywords='rendimientos crypto, rendimiento usdt, exchanges argentina,stablecoin argentina, dolares crypto'
+  metaKeywords='terminales de cobro, comisiones terminales de cobro, comparar terminales, cobrar con terminal'
   metaImage='https://comparatasas.ar/images/crypto.png'
 >
   <NavBar pathname='/cobros' client:load />
@@ -16,10 +16,10 @@ import terminals from '../data/terminals.json';
     id='containter'
     class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
-    <h1 class='my-6 text-3xl font-bold text-gray-900 dark:text-gray-100'>
+    <h1 class='my-2 text-3xl font-bold text-gray-900 dark:text-gray-100'>
       Terminales y comisiones de cobro
     </h1>
-    <p class='mb-8 dark:text-gray-500'>
+    <p class='mb-10 dark:text-gray-500'>
       Conocé los costos y opciones disponibles para tu negocio.
     </p>
     <div class='flex flex-col gap-6'>
@@ -38,39 +38,41 @@ import terminals from '../data/terminals.json';
                     {terminal.provider}
                   </h2>
                   <p class='dark:text-gray-500'>
-                    {terminal.lectores.map((device, index) => (
-                      <span key={index}>
-                        {device}
-                        {index === terminal.lectores.length - 1 ? '.' : ','}
-                      </span>
-                    ))}
-                    <a class='underline' href={terminal.url}>
+                    <span>
+                      {terminal.lectores.map(
+                        (device, index) =>
+                          device +
+                          (index === terminal.lectores.length - 1 ? '.' : ', '),
+                      )}
+                    </span>
+                    <a class='underline underline-offset-4' href={terminal.url}>
                       Más Info
                     </a>
                   </p>
                 </div>
               </div>
-              <div class='rounded-md bg-gray-50 px-4 dark:bg-slate-900'>
-                <table class='w-full table-auto rounded-md dark:bg-slate-900'>
-                  <thead>
-                    <tr class='border-b border-gray-200 text-gray-600 dark:border-gray-700 dark:text-gray-500'>
-                      <th class='py-4 text-left'>Plazo</th>
-                      <th class='py-4 text-right'>T. Débito</th>
-                      <th class='py-4 text-right'>T. Crédito</th>
+              <div class='relative -z-10 rounded-md bg-gray-50 px-4 shadow-sm dark:bg-slate-900'>
+                <span class='absolute left-0 -z-20 w-full overflow-hidden rounded-t-md border-b border-indigo-100 bg-indigo-100 p-7 dark:border-indigo-950 dark:bg-indigo-950' />
+                <table class='w-full table-auto rounded-md'>
+                  <thead class='bg-indigo-100 dark:bg-indigo-950'>
+                    <tr class='border-b border-gray-200 text-gray-600 dark:border-gray-700 dark:text-indigo-200'>
+                      <th class='p-4 text-left'>Plazo</th>
+                      <th class='p-4 text-right'>T. Débito</th>
+                      <th class='p-4 text-right'>T. Crédito</th>
                     </tr>
                   </thead>
                   <tbody>
                     {terminal.deadlineFees.map((plazo, index) => (
-                      <tr class='border-b border-gray-200 last:border-b-0 dark:border-gray-700 dark:text-gray-100'>
-                        <td class='py-4 text-left'>{plazo.deadline}</td>
-                        <td class='py-4 text-right'>{plazo.debit}</td>
-                        <td class='py-4 text-right'>{plazo.credit}</td>
+                      <tr class='border-b border-gray-200 bg-gray-50 last:border-b-0 dark:border-gray-700 dark:bg-slate-900 dark:text-gray-100'>
+                        <td class='p-4 text-left'>{plazo.deadline}</td>
+                        <td class='p-4 text-right'>{plazo.debit}</td>
+                        <td class='p-4 text-right'>{plazo.credit}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
-              {terminal.provider === 'Mercado Pago' ? (
+              {terminal.provider === 'Ualá bis' ? (
                 <Banner size='small' />
               ) : null}{' '}
             </section>
