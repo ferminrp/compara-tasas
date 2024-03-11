@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
-    "@typescript-eslint/parser": "7.1.0",
+    "@typescript-eslint/parser": "7.1.1",
     "eslint": "8.57.0",
     "eslint-plugin-astro": "0.31.4",
     "husky": "^9.0.11",
