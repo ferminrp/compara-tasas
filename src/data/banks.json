@@ -32,19 +32,19 @@
   {
     "entidad": "BANCO MACRO S.A.",
     "nombre": "Macro",
-    "logo": "https://www.bcra.gob.ar/Imagenes/logosbancos1/00285.jpg",
+    "logo": "https://ik.imagekit.io/ferminrp/macro.png?updatedAt=1709932052422",
     "url": "https://www.macro.com.ar/"
   },
   {
     "entidad": "HSBC BANK ARGENTINA S.A.",
     "nombre": "HSBC",
-    "logo": "https://www.bcra.gob.ar/Imagenes/logosbancos1/00150.jpg",
+    "logo": "https://ik.imagekit.io/ferminrp/hsbc.jpeg?updatedAt=1710254799445",
     "url": "https://www.hsbc.com.ar/"
   },
   {
     "entidad": "BANCO CREDICOOP COOPERATIVO LIMITADO",
     "nombre": "Credicoop",
-    "logo": "https://www.bcra.gob.ar/Imagenes/logosbancos1/00191.jpg",
+    "logo": "https://ik.imagekit.io/ferminrp/Banco%20Credicoop%20Logo.jpg?updatedAt=1710255095108",
     "url": "https://www.bancocredicoop.coop/personas/"
   },
   {
@@ -62,7 +62,7 @@
   {
     "entidad": "BANCO HIPOTECARIO S.A.",
     "nombre": "Hipotecario",
-    "logo": "https://www.bcra.gob.ar/Imagenes/logosbancos1/00044.jpg",
+    "logo": "https://ik.imagekit.io/ferminrp/Banco%20Hipotecario.jpg?updatedAt=1710254913917",
     "url": "https://buhobank.com"
   }
 ]
