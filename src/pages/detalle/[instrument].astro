@@ -2,14 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import NavBar from '../../components/Menu/NavBar';
 import fciList from '../../data/fci.json';
-
+import { getFCIInvestments } from '../../Services/argentinaDatosFCI';
+import { formatPercentage } from '../../utils/formats';
 interface paramsType {
   params: {
     instrument: string;
-    title: string;
-    nombreSimplificado: string;
-    logo: string;
-    url: string;
+  };
+  props: {
+    name: string;
   };
 }
 
@@ -20,36 +20,42 @@ export function getStaticPaths() {
     params.push({
       params: {
         instrument: fciData.slug,
-        title: fciKey,
-        nombreSimplificado: fciData.nombreSimplificado,
-        logo: fciData.logo,
-        url: fciData.url,
+      },
+      props: {
+        name: fciKey,
       },
     });
   }
   return params;
 }
 
-const { instrument, title, nombreSimplificado, logo, url } = Astro.params;
+const { instrument } = Astro.params;
+const { name } = Astro.props;
+
+const FCIData = await getFCIInvestments();
+const fci = FCIData.find((data) => data.name === name);
 ---
 
 <Layout
-  title=`${title} - Rendimiento`
-  metaDescription='Compara los rendimientos en crypto que ofrecen los principales exchanges del pais.'
-  metaKeywords='rendimientos crypto, rendimiento usdt, exchanges argentina,stablecoin argentina, dolares crypto'
-  metaImage='https://comparatasas.ar/images/crypto.png'
+  title=`${fci?.name} - Rendimiento`
+  metaDescription='Compara los rendimientos en pesos que ofrecen los principales bancos del país.'
+  metaKeywords='rendimientos pesos, rendimiento pesos argentinos, bancos argentina'
+  metaImage='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
 >
   <NavBar pathname='/pesos' client:load />
   <div
     id='containter'
-    class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
+    class='container mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
     <div class='flex-column flex'>
-      <img src={logo} />
-      <div>
-        {title}
-      </div>
+      <img src={fci?.logo} />
+      <h1 class='font-bold text-white'>
+        {fci?.name}
+      </h1>
     </div>
-    <p class='text-white'>{instrument} detail page test</p>
+    <p class='text-white'>{instrument}</p>
+    <p class='text-white'>TNA {formatPercentage(fci?.tna || 0)}</p>
+    <p class='text-white'>TEA {formatPercentage(fci?.tea || 0)}</p>
+    <p class='text-white'>{fci?.detail}</p>
   </div>
 </Layout>
