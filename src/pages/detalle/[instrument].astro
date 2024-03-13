@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import NavBar from '../../components/Menu/NavBar';
+import fciList from '../../data/fci.json';
+
+interface paramsType {
+  params: {
+    instrument: string;
+    title: string;
+    nombreSimplificado: string;
+    logo: string;
+    url: string;
+  };
+}
+
+export function getStaticPaths() {
+  const params: paramsType[] = [];
+  for (const fciKey of Object.keys(fciList)) {
+    const fciData = fciList[fciKey];
+    params.push({
+      params: {
+        instrument: fciData.slug,
+        title: fciKey,
+        nombreSimplificado: fciData.nombreSimplificado,
+        logo: fciData.logo,
+        url: fciData.url,
+      },
+    });
+  }
+  return params;
+}
+
+const { instrument, title, nombreSimplificado, logo, url } = Astro.params;
+---
+
+<Layout
+  title=`${title} - Rendimiento`
+  metaDescription='Compara los rendimientos en crypto que ofrecen los principales exchanges del pais.'
+  metaKeywords='rendimientos crypto, rendimiento usdt, exchanges argentina,stablecoin argentina, dolares crypto'
+  metaImage='https://comparatasas.ar/images/crypto.png'
+>
+  <NavBar pathname='/pesos' client:load />
+  <div
+    id='containter'
+    class='container mx-4 mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
+  >
+    <div class='flex-column flex'>
+      <img src={logo} />
+      <div>
+        {title}
+      </div>
+    </div>
+    <p class='text-white'>{instrument} detail page test</p>
+  </div>
+</Layout>
