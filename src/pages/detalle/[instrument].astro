@@ -47,12 +47,16 @@ const fci = FCIData.find((data) => data.name === name);
     id='containter'
     class='container mx-auto my-6 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
-    <div class='flex-column flex'>
-      <img src={fci?.logo} />
-      <h1 class='font-bold text-white'>
-        {fci?.name}
-      </h1>
+    <div class='flex gap-4 dark:text-gray-100'>
+      <img class='h-12 w-12 rounded-full' src={fci?.logo} />
+      <div class='flex flex-col'>
+        <p>{fci.name}</p>
+        <h1 class='font-bold text-white'>
+          {fci?.nombreSimplificado}
+        </h1>
+      </div>
     </div>
+    <p class='text-gray-100'>{fci.description}</p>
     <p class='text-white'>{instrument}</p>
     <p class='text-white'>TNA {formatPercentage(fci?.tna || 0)}</p>
     <p class='text-white'>TEA {formatPercentage(fci?.tea || 0)}</p>

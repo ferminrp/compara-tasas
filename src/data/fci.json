@@ -5,7 +5,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/PersonalPay.jpg?updatedAt=1705751679088",
     "url": "https://www.personalpay.com.ar/",
     "type": "cuenta_remunerada",
-    "slug": "cuenta-remunerada-personal-pay"
+    "slug": "cuenta-remunerada-personal-pay",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Prex": {
     "nombreOficial": "Allaria Ahorro - Clase A",
@@ -13,7 +14,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/prex.jpeg?updatedAt=1705751733760",
     "url": "https://www.prexcard.com.ar/",
     "type": "cuenta_remunerada",
-    "slug": "cuenta-remunerada-prex"
+    "slug": "cuenta-remunerada-prex",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Uala": {
     "nombreOficial": "Ualintec Ahorro Pesos - Clase A",
@@ -21,7 +23,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/uala.jpeg?updatedAt=1705751593746",
     "url": "https://uala.com.ar",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-uala"
+    "slug": "fondo-comun-de-inversion-uala",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Mercado Pago": {
     "nombreOficial": "Mercado Fondo - Clase A",
@@ -29,7 +32,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/mp.jpeg?updatedAt=1705750753226",
     "url": "https://mercadopago.com.ar/",
     "type": "cuenta_remunerada",
-    "slug": "cuenta-remunerada-mercado-pago"
+    "slug": "cuenta-remunerada-mercado-pago",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Cocos": {
     "nombreOficial": "Cocos Ahorro - Clase A",
@@ -37,7 +41,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/cocos.jpeg?updatedAt=1705788191899",
     "url": "https://cocos.capital/",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-cocos"
+    "slug": "fondo-comun-de-inversion-cocos",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "IEB": {
     "nombreOficial": "IEB Ahorro - Clase A",
@@ -45,7 +50,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/ieb.jpeg?updatedAt=1705789266724",
     "url": "https://www.grupoieb.com.ar/iebmas/",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-ieb"
+    "slug": "fondo-comun-de-inversion-ieb",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Santander": {
     "nombreOficial": "Super Ahorro $ - Clase A",
@@ -53,7 +59,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/santander.png?updatedAt=1705840513218",
     "url": "https://www.santander.com.ar/",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-santander"
+    "slug": "fondo-comun-de-inversion-santander",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Galicia": {
     "nombreOficial": "Fima Premium - Clase A",
@@ -61,7 +68,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/galicia.jpeg?updatedAt=1705840853900",
     "url": "https://www.galicia.ar/personas",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-galicia"
+    "slug": "fondo-comun-de-inversion-galicia",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Balanz": {
     "nombreOficial": "Balanz Capital Money Market - Clase A",
@@ -69,7 +77,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/balanz.jpeg?updatedAt=1705789663773",
     "url": "https://balanz.com",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-balanz"
+    "slug": "fondo-comun-de-inversion-balanz",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Claro Pay": {
     "nombreOficial": "SBS Ahorro Pesos - Clase A",
@@ -77,7 +86,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/Clarop.png?updatedAt=1706271125722",
     "url": "https://claropay.com.ar/landing",
     "type": "cuenta_remunerada",
-    "slug": "cuenta_remunerada-claro-pay"
+    "slug": "cuenta_remunerada-claro-pay",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "n1u": {
     "nombreOficial": "Delta Pesos - Clase A",
@@ -85,7 +95,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/n1u.jpeg?updatedAt=1706028849006",
     "url": "https://linktr.ee/n1u.app",
     "type": "cuenta_remunerada",
-    "slug": "cuenta_remunerada-n1u-pay"
+    "slug": "cuenta_remunerada-n1u-pay",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "ICBC": {
     "nombreOficial": "Alpha Pesos - Clase A",
@@ -93,7 +104,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/icbc.jpeg?updatedAt=1706451184543",
     "url": "https://www.icbc.com.ar/personas",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-icbc"
+    "slug": "fondo-comun-de-inversion-icbc",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "BBVA": {
     "nombreOficial": "FBA Renta Pesos - Clase A",
@@ -101,7 +113,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/BBVA%20logo.png?updatedAt=1706709935806",
     "url": "https://www.bbva.com.ar/",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-bbva"
+    "slug": "fondo-comun-de-inversion-bbva",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Supervielle": {
     "nombreOficial": "Premier Renta CP en Pesos - Clase A",
@@ -109,7 +122,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/Superv.jpg?updatedAt=1706968842493",
     "url": "https://www.supervielle.com.ar/personas",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-supervielle"
+    "slug": "fondo-comun-de-inversion-supervielle",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Banza": {
     "nombreOficial": "Adcap Ahorro Pesos Fondo de Dinero - Clase A",
@@ -117,7 +131,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/banza.jpeg?updatedAt=1707312127346",
     "url": "https://www.banza.com.ar/",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-banza"
+    "slug": "fondo-comun-de-inversion-banza",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "LetsBit": {
     "nombreOficial": "ST Zero - Clase D",
@@ -125,7 +140,8 @@
     "logo": "https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269",
     "url": "https://letsbit.page.link/zyxz",
     "type": "cuenta_remunerada",
-    "slug": "cuenta-remunerada-letsbit"
+    "slug": "cuenta-remunerada-letsbit",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   },
   "Macro": {
     "nombreOficial": "Pionero Pesos - Clase A",
@@ -133,6 +149,7 @@
     "logo": "https://ik.imagekit.io/ferminrp/macro.png?updatedAt=1709932052422",
     "url": "https://www.macro.com.ar/home-page",
     "type": "tradicional",
-    "slug": "fondo-comun-de-inversion-macro"
+    "slug": "fondo-comun-de-inversion-macro",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor massa ut lorem hendrerit, id consequat ipsum porttitor."
   }
 }
