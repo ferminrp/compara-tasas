@@ -47,7 +47,6 @@ const TOP_INVESTMENT_QUANTITY = 3;
 const PFData = await getPFInvestments();
 
 // Concatenar arrays
-const allPfData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
 const allFciData = Array.prototype.concat(filteredSBData, ...FCIData);
 
 const pesos = ['cuenta_remunerada', 'tradicional', 'pf'];
@@ -61,17 +60,17 @@ const pesosLinks = {
 const isPesoCoin = (value: Return) =>
   value.moneda === 'ARS' || value.moneda === 'NUARS' || value.moneda === 'NARS';
 
-const sortedPfData: Investment[] = allPfData
-  .filter((item) => pesos.includes(item.type))
-  .sort((a, b) => {
-    if (a.tea < b.tea) {
-      return 1; // for descending order, return 1 if the first item is less than the second
-    } else if (a.tea > b.tea) {
-      return -1; // return -1 if the first item is greater than the second
-    } else {
-      return 0; // return 0 if they're equal
-    }
-  });
+const sortedPfData: Investment[] = PFData.filter((item) =>
+  pesos.includes(item.type),
+).sort((a, b) => {
+  if (a.tea < b.tea) {
+    return 1; // for descending order, return 1 if the first item is less than the second
+  } else if (a.tea > b.tea) {
+    return -1; // return -1 if the first item is greater than the second
+  } else {
+    return 0; // return 0 if they're equal
+  }
+});
 
 const sortedFciData: Investment[] = allFciData
   .filter((item) => pesos.includes(item.type))
