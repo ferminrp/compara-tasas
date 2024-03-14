@@ -81,7 +81,9 @@ const fci = FCIData.find((data) => data.name === name);
     <div class='rounded-lg dark:bg-slate-900'>
       <div class='flex justify-between'>
         <span class='px-6 py-4 text-gray-400'>Sociedad</span>
-        <span class='px-6 py-4 dark:text-gray-100'>
+        <span
+          class='max-w-1/2 overflow-hidden overflow-ellipsis whitespace-nowrap px-6 py-4 dark:text-gray-100'
+        >
           {fci?.sociedad}
         </span>
       </div>
