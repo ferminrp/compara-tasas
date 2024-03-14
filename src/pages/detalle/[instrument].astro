@@ -37,7 +37,7 @@ const fci = FCIData.find((data) => data.name === name);
 ---
 
 <Layout
-  title=`${fci?.name} - Rendimiento`
+  title={`${fci?.name} - Rendimiento`}
   metaDescription='Compara los rendimientos en pesos que ofrecen los principales bancos del país.'
   metaKeywords='rendimientos pesos, rendimiento pesos argentinos, bancos argentina'
   metaImage='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
@@ -56,10 +56,93 @@ const fci = FCIData.find((data) => data.name === name);
         </h1>
       </div>
     </div>
-    <p class='text-gray-100'>{fci.description}</p>
-    <p class='text-white'>{instrument}</p>
-    <p class='text-white'>TNA {formatPercentage(fci?.tna || 0)}</p>
-    <p class='text-white'>TEA {formatPercentage(fci?.tea || 0)}</p>
-    <p class='text-white'>{fci?.detail}</p>
+    <p class='my-6 dark:text-gray-400'>{fci.description}</p>
+    <h2 class='mb-6 text-lg font-semibold dark:text-gray-100'>Rendimientos</h2>
+    <div class='rounded-lg dark:bg-slate-900'>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>TNA</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {(fci?.tna || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>TEA</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {(fci?.tea || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+    </div>
+    <h2 class='my-6 text-lg font-semibold dark:text-gray-100'>
+      Detalle del Fondo
+    </h2>
+    <div class='rounded-lg dark:bg-slate-900'>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Sociedad</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {(fci?.tna || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Tipo de Renta</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {(fci?.tea || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Moneda</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {(fci?.tea || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Monto mínimo</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {(fci?.tea || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Plazo mínimo</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {(fci?.tea || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Horario</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {(fci?.tea || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+    </div>
+    <button class='my-6 w-full rounded-lg bg-indigo-500 py-4 dark:text-gray-100'
+      >Simulá tu inversión</button
+    >
+    <div class='flex items-center justify-center'>
+      <a class='text-indigo-500 underline' href=''>Visitá el sitio web</a>
+    </div>
   </div>
+
+  <!-- 
+    <p class='dark:text-gray-100'>{instrument}</p>
+    <p class='dark:text-gray-100'>TNA {formatPercentage(fci?.tna || 0)}</p>
+    <p class='dark:text-gray-100'>TEA {formatPercentage(fci?.tea || 0)}</p>
+    <p class='dark:text-gray-100'>{fci?.detail}</p>
+    -->
 </Layout>
