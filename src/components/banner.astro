@@ -18,7 +18,7 @@ if (company) {
 if (banners.length === 0) {
   throw new Error(`No banners found for company: '${company}'.`);
 }
-let selectedBanner = banners[Math.floor(Math.random() * banners.length)];
+const selectedBanner = banners[Math.floor(Math.random() * banners.length)];
 ---
 
 <a class='w-full rounded-lg' href={selectedBanner.url} target='_blank'>
