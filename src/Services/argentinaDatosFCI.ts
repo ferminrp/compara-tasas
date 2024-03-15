@@ -2,8 +2,9 @@ import fciWhitelist from '../data/fci.json';
 import type {
   FCIData,
   FCIResponse,
-  FCIWhitelist,
+  FullInvestmentData,
   Investment,
+  InvestmentJsonData,
 } from '../model/business';
 
 const EndpointFCILast =
@@ -19,7 +20,7 @@ const getFCIData = async (endpoint) => {
   const filteredList: FCIResponse[] = [];
 
   for (const fci of Object.keys(fciWhitelist)) {
-    const whitelisted = fciWhitelist[fci] as FCIWhitelist;
+    const whitelisted = fciWhitelist[fci] as InvestmentJsonData;
     const found = data.find(
       (dataFCI) => dataFCI.fondo === whitelisted.nombreOficial,
     );
@@ -72,12 +73,12 @@ const calcFCITEA = (TED: number) => {
 const calcFCITNA = (TED: number) => TED * 365;
 
 /** Devuelve el array con toda la información en el formato correspondiente */
-export const getFCIInvestments = async (): Promise<Investment[]> => {
-  const FCIInvestments: Investment[] = [];
+export const getFCIInvestments = async (): Promise<FullInvestmentData[]> => {
+  const FCIInvestments: FullInvestmentData[] = [];
   const fciList = await mergedFCIData();
 
   for (const fci of Object.keys(fciWhitelist)) {
-    const whitelisted = fciWhitelist[fci] as FCIWhitelist;
+    const whitelisted = fciWhitelist[fci] as InvestmentJsonData;
     const found = fciList.find(
       (dataFCI) => dataFCI.fondo === whitelisted.nombreOficial,
     );
@@ -114,6 +115,7 @@ export const getFCIInvestments = async (): Promise<Investment[]> => {
         detail: whitelisted.nombreSimplificado,
         tna: TNA,
         tea: TEA,
+        slug: whitelisted.slug,
       });
     }
   }

@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import NavBar from '../../components/Menu/NavBar';
 import fciList from '../../data/fci.json';
 import { getFCIInvestments } from '../../Services/argentinaDatosFCI';
-import { formatPercentage } from '../../utils/formats';
 interface paramsType {
   params: {
     instrument: string;
@@ -29,7 +28,6 @@ export function getStaticPaths() {
   return params;
 }
 
-const { instrument } = Astro.params;
 const { name } = Astro.props;
 
 const FCIData = await getFCIInvestments();
