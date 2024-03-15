@@ -1,8 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import { getFCIInvestments } from '../../Services/argentinaDatosFCI';
 import NavBar from '../../components/Menu/NavBar';
 import fciList from '../../data/fci.json';
-import { getFCIInvestments } from '../../Services/argentinaDatosFCI';
+import Layout from '../../layouts/Layout.astro';
+
 interface paramsType {
   params: {
     instrument: string;

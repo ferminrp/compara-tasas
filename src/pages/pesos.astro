@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import InvestmentSection from '../components/Sections/InvestmentSection.astro';
-import { type Investment } from '../model/business';
 import { getPFInvestments } from '../Services/argentinaDatos';
 import { getFCIInvestments } from '../Services/argentinaDatosFCI';
-import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
 import NavBar from '../components/Menu/NavBar';
+import InvestmentSection from '../components/Sections/InvestmentSection.astro';
+import Layout from '../layouts/Layout.astro';
+import type { Investment } from '../model/business';
+import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
 
 const apiEndpoint =
   'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*';
@@ -34,11 +34,11 @@ const allData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
 const sortedData: Investment[] = allData.sort((a, b) => {
   if (a.tea < b.tea) {
     return 1; // for descending order, return 1 if the first item is less than the second
-  } else if (a.tea > b.tea) {
-    return -1; // return -1 if the first item is greater than the second
-  } else {
-    return 0; // return 0 if they're equal
   }
+  if (a.tea > b.tea) {
+    return -1; // return -1 if the first item is greater than the second
+  }
+  return 0; // return 0 if they're equal
 });
 
 interface FilteredData {
@@ -57,7 +57,7 @@ const categories: FilteredData = {
 };
 
 // Organizar los objetos en las categorías correspondientes
-sortedData.forEach((investment) => {
+for (const investment of sortedData) {
   switch (investment.type) {
     case 'cuenta_remunerada':
       categories.cuenta_remunerada.push(investment);
@@ -71,7 +71,7 @@ sortedData.forEach((investment) => {
     default:
       categories.otros.push(investment);
   }
-});
+}
 ---
 
 <!-- Replace meta Image -->
