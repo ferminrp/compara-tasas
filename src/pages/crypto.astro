@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import CriptoUsd from '../components/Sections/CriptoUsd.astro';
-import Banner from '../components/banner.astro';
-import { type Exchange } from '../model/exchange';
 import { getReturns } from '../client/argentinaDatos';
 import NavBar from '../components/Menu/NavBar';
+import CriptoUsd from '../components/Sections/CriptoUsd.astro';
+import Banner from '../components/banner.astro';
+import Layout from '../layouts/Layout.astro';
+import type { Exchange } from '../model/exchange';
 
 const returns = await getReturns();
 
