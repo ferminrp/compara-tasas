@@ -48,18 +48,20 @@ const fci = FCIData.find((data) => data.name === name);
     <div class='flex gap-4 dark:text-gray-100'>
       <img class='h-12 w-12 rounded-full' src={fci?.logo} />
       <div class='flex flex-col'>
-        <p>{fci.name}</p>
-        <h1 class='font-bold text-white'>
+        <p class='text-gray-400'>{fci.name}</p>
+        <h1 class='font-bold text-neutral-900 dark:text-white'>
           {fci?.nombreSimplificado}
         </h1>
       </div>
     </div>
     <p class='my-6 dark:text-gray-400'>{fci.description}</p>
-    <h2 class='mb-6 text-lg font-semibold dark:text-gray-100'>Rendimientos</h2>
-    <div class='rounded-lg dark:bg-slate-900'>
+    <h2 class='mb-6 text-lg font-semibold text-neutral-900 dark:text-gray-100'>
+      Rendimientos
+    </h2>
+    <div class='rounded-lg bg-white shadow-md dark:bg-slate-900'>
       <div class='flex justify-between'>
         <span class='px-6 py-4 text-gray-400'>TNA</span>
-        <span class='px-6 py-4 dark:text-gray-100'>
+        <span class='px-6 py-4 font-bold text-neutral-900 dark:text-gray-100'>
           {(fci?.tna || 0).toFixed(2).replace('.', ',')} %
         </span>
       </div>
@@ -68,7 +70,7 @@ const fci = FCIData.find((data) => data.name === name);
       </div>
       <div class='flex justify-between'>
         <span class='px-6 py-4 text-gray-400'>TEA</span>
-        <span class='px-6 py-4 dark:text-gray-100'>
+        <span class='px-6 py-4 font-bold text-neutral-900 dark:text-gray-100'>
           {(fci?.tea || 0).toFixed(2).replace('.', ',')} %
         </span>
       </div>
@@ -76,7 +78,7 @@ const fci = FCIData.find((data) => data.name === name);
     <h2 class='my-6 text-lg font-semibold dark:text-gray-100'>
       Detalle del Fondo
     </h2>
-    <div class='rounded-lg dark:bg-slate-900'>
+    <div class='rounded-lg bg-white shadow-md dark:bg-slate-900'>
       <div class='flex justify-between'>
         <span class='px-6 py-4 text-gray-400'>Sociedad</span>
         <span
@@ -131,7 +133,8 @@ const fci = FCIData.find((data) => data.name === name);
         </span>
       </div>
     </div>
-    <button class='my-6 w-full rounded-lg bg-indigo-500 py-4 dark:text-gray-100'
+    <button
+      class='my-6 w-full rounded-lg bg-indigo-500 py-4 text-white dark:text-gray-100'
       >Simulá tu inversión</button
     >
     <div class='flex items-center justify-center'>
