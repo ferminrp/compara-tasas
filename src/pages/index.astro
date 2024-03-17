@@ -1,17 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Dolares from '../components/Dolares.astro';
-import { EXCHANGES } from '../data/exchanges';
-import Best from '../components/BestInvestments/Best.astro';
-import { type Return } from '../model/exchange';
-import { type Investment } from '../model/business';
 import { getPFInvestments } from '../Services/argentinaDatos';
-import { getReturns } from '../client/argentinaDatos';
 import { getFCIInvestments } from '../Services/argentinaDatosFCI';
-import Banner from '../components/banner.astro';
-import NavBar from '../components/Menu/NavBar';
+import { getReturns } from '../client/argentinaDatos';
+import Best from '../components/BestInvestments/Best.astro';
 import Card from '../components/Card/Card.astro';
+import Dolares from '../components/Dolares.astro';
 import Row from '../components/ExchangeTable/Row.astro';
+import NavBar from '../components/Menu/NavBar';
+import Banner from '../components/banner.astro';
+import { EXCHANGES } from '../data/exchanges';
+import Layout from '../layouts/Layout.astro';
+import type { Investment } from '../model/business';
+import type { Return } from '../model/exchange';
 import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
 
 // Define your API endpoint and API keys
@@ -65,11 +65,11 @@ const sortedPfData: Investment[] = PFData.filter((item) =>
 ).sort((a, b) => {
   if (a.tea < b.tea) {
     return 1; // for descending order, return 1 if the first item is less than the second
-  } else if (a.tea > b.tea) {
-    return -1; // return -1 if the first item is greater than the second
-  } else {
-    return 0; // return 0 if they're equal
   }
+  if (a.tea > b.tea) {
+    return -1; // return -1 if the first item is greater than the second
+  }
+  return 0; // return 0 if they're equal
 });
 
 const sortedFciData: Investment[] = allFciData
@@ -77,20 +77,21 @@ const sortedFciData: Investment[] = allFciData
   .sort((a, b) => {
     if (a.tea < b.tea) {
       return 1; // for descending order, return 1 if the first item is less than the second
-    } else if (a.tea > b.tea) {
-      return -1; // return -1 if the first item is greater than the second
-    } else {
-      return 0; // return 0 if they're equal
     }
+    if (a.tea > b.tea) {
+      return -1; // return -1 if the first item is greater than the second
+    }
+    return 0; // return 0 if they're equal
   });
 
-let sortedCriptoData = [];
-Object.entries(dataReturns).forEach(([exchange, values]) => {
-  values.forEach((value) => {
-    if (value.apy <= 0 || isPesoCoin(value)) return null;
+const sortedCriptoData = [];
+for (const [exchange, values] of Object.entries(dataReturns)) {
+  for (const value of values) {
+    if (value.apy <= 0 || isPesoCoin(value)) continue;
+
     sortedCriptoData.push({ exchange, ...value });
-  });
-});
+  }
+}
 ---
 
 <Layout
