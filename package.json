@@ -17,7 +17,7 @@
     "@astrojs/react": "3.1.0",
     "@astrojs/sitemap": "3.1.1",
     "@astrojs/tailwind": "5.1.0",
-    "@astrojs/vercel": "7.3.4",
+    "@astrojs/vercel": "7.3.6",
     "@fontsource/inter": "^5.0.17",
     "@vercel/speed-insights": "1.0.10",
     "astro": "4.5.5",
