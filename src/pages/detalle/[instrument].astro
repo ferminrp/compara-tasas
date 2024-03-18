@@ -36,7 +36,7 @@ const fci = FCIData.find((data) => data.name === name);
 ---
 
 <Layout
-  title={`${fci?.name} - Rendimiento`}
+  title={`${name} - Rendimiento`}
   metaDescription='Compara los rendimientos en pesos que ofrecen los principales bancos del país.'
   metaKeywords='rendimientos pesos, rendimiento pesos argentinos, bancos argentina'
   metaImage='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
@@ -49,13 +49,15 @@ const fci = FCIData.find((data) => data.name === name);
     <div class='flex gap-4 dark:text-gray-100'>
       <img class='h-12 w-12 rounded-full' src={fci?.logo} />
       <div class='flex flex-col'>
-        <p class='text-gray-400'>{fci.name}</p>
+        <p class='text-gray-400'>{name}</p>
         <h1 class='font-bold text-neutral-900 dark:text-white'>
-          {fci?.nombreSimplificado}
+          {fci?.nombreSimplificado || 'Información no disponible'}
         </h1>
       </div>
     </div>
-    <p class='my-6 dark:text-gray-400'>{fci.description}</p>
+    <p class='my-6 dark:text-gray-400'>
+      {fci?.description || 'Información no disponible'}
+    </p>
     <h2 class='mb-6 text-lg font-semibold text-neutral-900 dark:text-gray-100'>
       Rendimientos
     </h2>
