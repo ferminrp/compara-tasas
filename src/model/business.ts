@@ -2,6 +2,8 @@ export type Rate = 'TNA' | 'TEA';
 export type Currency = 'Pesos' | 'Dólares';
 export type IncomeType = 'Fija' | 'Variable' | 'Mixta';
 export type FullInvestmentData = InvestmentJsonData & Omit<Investment, 'url'>;
+export type FullBankData = Omit<BankJsonData, 'nombre'> &
+  Omit<Investment, 'url'>;
 
 export type InvestmentType =
   | 'cuenta_remunerada'
@@ -34,6 +36,13 @@ export interface FCIResponse {
   horizonte: string;
 }
 
+export interface PlazoFijoResponse {
+  entidad: string;
+  logo: string;
+  tnaClientes: number;
+  tnaNoClientes: number;
+}
+
 export interface InvestmentJsonData {
   nombreOficial: string;
   nombreSimplificado: string;
@@ -50,6 +59,11 @@ export interface InvestmentJsonData {
   description: string;
 }
 
+export interface BankJsonData
+  extends Omit<InvestmentJsonData, 'nombreOficial' | 'nombreSimplificado'> {
+  entidad: string;
+  nombre: string;
+}
 export interface FCIData {
   fondo: string;
   horizonte: string;

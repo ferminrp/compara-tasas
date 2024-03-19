@@ -1,0 +1,154 @@
+---
+import { getPFInvestments } from '../../Services/argentinaDatos';
+import NavBar from '../../components/Menu/NavBar';
+import bankList from '../../data/banks.json';
+import Layout from '../../layouts/Layout.astro';
+
+interface paramsType {
+  params: {
+    bank: string;
+  };
+  props: {
+    name: string;
+  };
+}
+
+export function getStaticPaths() {
+  const params: paramsType[] = [];
+  for (let i = 0; i < bankList.length; i++) {
+    const bankData = bankList[i];
+    params.push({
+      params: {
+        bank: bankData.slug,
+      },
+      props: {
+        name: bankData.nombre,
+      },
+    });
+  }
+  return params;
+}
+
+const { name } = Astro.props;
+
+const BanksData = await getPFInvestments();
+const bank = BanksData.find((data) => data.name === name);
+---
+
+<Layout
+  title={`${name} - Rendimiento`}
+  metaDescription='Compara los rendimientos en pesos que ofrecen los principales bancos del país.'
+  metaKeywords='rendimientos pesos, rendimiento pesos argentinos, bancos argentina'
+  metaImage='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
+>
+  <NavBar pathname='/pesos' client:load />
+  <div
+    id='containter'
+    class='container mx-auto my-6 mb-12 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
+  >
+    <div class='flex gap-4 dark:text-gray-100'>
+      <img class='h-12 w-12 rounded-full' src={bank?.logo} />
+      <div class='flex flex-col'>
+        <p class='text-gray-400'>{name}</p>
+        <h1 class='font-bold text-neutral-900 dark:text-white'>
+          {bank?.name || 'Información no disponible'}
+        </h1>
+      </div>
+    </div>
+    <p class='my-6 dark:text-gray-400'>
+      {bank?.description || 'Información no disponible'}
+    </p>
+    <h2 class='mb-6 text-lg font-semibold text-neutral-900 dark:text-gray-100'>
+      Rendimientos
+    </h2>
+    <div class='rounded-lg bg-white shadow-md dark:bg-slate-900'>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>TNA</span>
+        <span class='px-6 py-4 font-bold text-neutral-900 dark:text-gray-100'>
+          {(bank?.tna || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>TEA</span>
+        <span class='px-6 py-4 font-bold text-neutral-900 dark:text-gray-100'>
+          {(bank?.tea || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+    </div>
+    <h2 class='my-6 text-lg font-semibold dark:text-gray-100'>
+      Detalle del Fondo
+    </h2>
+    <div class='rounded-lg bg-white shadow-md dark:bg-slate-900'>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Sociedad</span>
+        <span
+          class='max-w-1/2 overflow-hidden overflow-ellipsis whitespace-nowrap px-6 py-4 dark:text-gray-100'
+        >
+          {bank?.sociedad}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Tipo de Renta</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {bank?.renta}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Moneda</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {bank?.moneda}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Monto mínimo</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {bank?.montoMinimo}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Plazo mínimo</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {bank?.plazoMinimo}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Horario</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {bank?.horario}
+        </span>
+      </div>
+    </div>
+    <button
+      class='my-6 w-full rounded-lg bg-indigo-500 py-4 text-white dark:text-gray-100'
+      >Simulá tu inversión</button
+    >
+    <div class='flex items-center justify-center'>
+      <a class='text-indigo-500 underline' href=''>Visitá el sitio web</a>
+    </div>
+  </div>
+
+  <!-- 
+    <p class='dark:text-gray-100'>{instrument}</p>
+    <p class='dark:text-gray-100'>TNA {formatPercentage(fci?.tna || 0)}</p>
+    <p class='dark:text-gray-100'>TEA {formatPercentage(fci?.tea || 0)}</p>
+    <p class='dark:text-gray-100'>{fci?.detail}</p>
+    -->
+</Layout>
