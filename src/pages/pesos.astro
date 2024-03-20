@@ -7,29 +7,12 @@ import Layout from '../layouts/Layout.astro';
 import type { Investment } from '../model/business';
 import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
 
-const apiEndpoint =
-  'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*';
-const apiKey = import.meta.env.PUBLIC_SUPABASE_KEY;
-
-const response = await fetch(apiEndpoint, {
-  method: 'GET',
-  headers: {
-    Authorization: `Bearer ${apiKey}`,
-    apikey: apiKey,
-  },
-});
-const dataSupabase = await response.json();
-
-const filteredSBData = dataSupabase.filter(
-  (d: Investment) => d.type === 'criptopesos' || d.name === 'Naranja X',
-);
-
 const PFData = await getPFInvestments();
 
 const FCIData = await getFCIInvestments();
 
 // Concatenar arrays
-const allData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
+const allData = Array.prototype.concat(...PFData, ...FCIData);
 
 const sortedData: Investment[] = allData.sort((a, b) => {
   if (a.tea < b.tea) {
@@ -53,7 +36,6 @@ const categories: FilteredData = {
   cuenta_remunerada: [],
   tradicional: [],
   pf: [],
-  otros: [],
 };
 
 // Organizar los objetos en las categorías correspondientes
