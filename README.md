@@ -39,7 +39,7 @@ Si deseas contribuir con código, por favor:
 5. Asegúrate de seguir las guías de estilo del código existente.
 6. Envía un Pull Request hacia la branch develop con una descripción detallada de los cambios propuestos y referencia el issue relacionado.
 
-### Contribuir con ideas, bugs o feedbac
+### Contribuir con ideas, bugs o feedback
 
 Si tienes ideas, encuentras un bug o quieres dar feedback sobre el proyecto:
 
