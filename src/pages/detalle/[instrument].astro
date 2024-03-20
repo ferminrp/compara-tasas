@@ -1,0 +1,154 @@
+---
+import { getFCIInvestments } from '../../Services/argentinaDatosFCI';
+import NavBar from '../../components/Menu/NavBar';
+import fciList from '../../data/fci.json';
+import Layout from '../../layouts/Layout.astro';
+
+interface paramsType {
+  params: {
+    instrument: string;
+  };
+  props: {
+    name: string;
+  };
+}
+
+export function getStaticPaths() {
+  const params: paramsType[] = [];
+  for (const fciKey of Object.keys(fciList)) {
+    const fciData = fciList[fciKey];
+    params.push({
+      params: {
+        instrument: fciData.slug,
+      },
+      props: {
+        name: fciKey,
+      },
+    });
+  }
+  return params;
+}
+
+const { name } = Astro.props;
+
+const FCIData = await getFCIInvestments();
+const fci = FCIData.find((data) => data.name === name);
+---
+
+<Layout
+  title={`${name} - Rendimiento`}
+  metaDescription='Compara los rendimientos en pesos que ofrecen los principales bancos del país.'
+  metaKeywords='rendimientos pesos, rendimiento pesos argentinos, bancos argentina'
+  metaImage='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
+>
+  <NavBar pathname='/pesos' client:load />
+  <div
+    id='containter'
+    class='container mx-auto my-6 mb-12 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
+  >
+    <div class='flex gap-4 dark:text-gray-100'>
+      <img class='h-12 w-12 rounded-full' src={fci?.logo} />
+      <div class='flex flex-col'>
+        <p class='text-gray-400'>{name}</p>
+        <h1 class='font-bold text-neutral-900 dark:text-white'>
+          {fci?.nombreSimplificado || 'Información no disponible'}
+        </h1>
+      </div>
+    </div>
+    <p class='my-6 dark:text-gray-400'>
+      {fci?.description || 'Información no disponible'}
+    </p>
+    <h2 class='mb-6 text-lg font-semibold text-neutral-900 dark:text-gray-100'>
+      Rendimientos
+    </h2>
+    <div class='rounded-lg bg-white shadow-md dark:bg-slate-900'>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>TNA</span>
+        <span class='px-6 py-4 font-bold text-neutral-900 dark:text-gray-100'>
+          {(fci?.tna || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>TEA</span>
+        <span class='px-6 py-4 font-bold text-neutral-900 dark:text-gray-100'>
+          {(fci?.tea || 0).toFixed(2).replace('.', ',')} %
+        </span>
+      </div>
+    </div>
+    <h2 class='my-6 text-lg font-semibold dark:text-gray-100'>
+      Detalle del Fondo
+    </h2>
+    <div class='rounded-lg bg-white shadow-md dark:bg-slate-900'>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Sociedad</span>
+        <span
+          class='max-w-1/2 overflow-hidden overflow-ellipsis whitespace-nowrap px-6 py-4 dark:text-gray-100'
+        >
+          {fci?.sociedad}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Tipo de Renta</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {fci?.renta}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Moneda</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {fci?.moneda}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Monto mínimo</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {fci?.montoMinimo}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Plazo mínimo</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {fci?.plazoMinimo}
+        </span>
+      </div>
+      <div class='px-6'>
+        <hr class='dark:border-gray-700' />
+      </div>
+      <div class='flex justify-between'>
+        <span class='px-6 py-4 text-gray-400'>Horario</span>
+        <span class='px-6 py-4 dark:text-gray-100'>
+          {fci?.horario}
+        </span>
+      </div>
+    </div>
+    <button
+      class='my-6 w-full rounded-lg bg-indigo-500 py-4 text-white dark:text-gray-100'
+      >Simulá tu inversión</button
+    >
+    <div class='flex items-center justify-center'>
+      <a class='text-indigo-500 underline' href=''>Visitá el sitio web</a>
+    </div>
+  </div>
+
+  <!-- 
+    <p class='dark:text-gray-100'>{instrument}</p>
+    <p class='dark:text-gray-100'>TNA {formatPercentage(fci?.tna || 0)}</p>
+    <p class='dark:text-gray-100'>TEA {formatPercentage(fci?.tea || 0)}</p>
+    <p class='dark:text-gray-100'>{fci?.detail}</p>
+    -->
+</Layout>

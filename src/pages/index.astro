@@ -1,45 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Dolares from '../components/Dolares.astro';
-import { EXCHANGES } from '../data/exchanges';
-import Best from '../components/BestInvestments/Best.astro';
-import { type Return } from '../model/exchange';
-import { type Investment } from '../model/business';
 import { getPFInvestments } from '../Services/argentinaDatos';
-import { getReturns } from '../client/argentinaDatos';
 import { getFCIInvestments } from '../Services/argentinaDatosFCI';
-import Banner from '../components/banner.astro';
-import NavBar from '../components/Menu/NavBar';
+import { getReturns } from '../client/argentinaDatos';
+import Best from '../components/BestInvestments/Best.astro';
 import Card from '../components/Card/Card.astro';
+import Dolares from '../components/Dolares.astro';
 import Row from '../components/ExchangeTable/Row.astro';
+import NavBar from '../components/Menu/NavBar';
+import Banner from '../components/banner.astro';
+import { EXCHANGES } from '../data/exchanges';
+import Layout from '../layouts/Layout.astro';
+import type { Investment } from '../model/business';
+import type { Return } from '../model/exchange';
 import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
 
-// Define your API endpoint and API keys
-const apiEndpoint =
-  'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*';
-const apiKey = import.meta.env.PUBLIC_SUPABASE_KEY;
-
-// Configure your fetch request with headers
-
-const response = await fetch(apiEndpoint, {
-  method: 'GET',
-  headers: {
-    Authorization: `Bearer ${apiKey}`,
-    apikey: apiKey,
-  },
-});
-
-const dataSupabase = await response.json();
 const FCIData = await getFCIInvestments();
 const dataReturns = await getReturns();
-
-// Solo usamos la info de criptopesos y buendolar de Supabase
-const filteredSBData = dataSupabase.filter(
-  (d: Investment) =>
-    d.type === 'criptopesos' ||
-    d.type === 'buendolar' ||
-    d.name === 'Naranja X',
-);
 
 const TOP_INVESTMENT_QUANTITY = 3;
 
@@ -47,8 +23,7 @@ const TOP_INVESTMENT_QUANTITY = 3;
 const PFData = await getPFInvestments();
 
 // Concatenar arrays
-const allPfData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
-const allFciData = Array.prototype.concat(filteredSBData, ...FCIData);
+const allFciData = Array.prototype.concat(...FCIData);
 
 const pesos = ['cuenta_remunerada', 'tradicional', 'pf'];
 const pesosLinks = {
@@ -61,37 +36,38 @@ const pesosLinks = {
 const isPesoCoin = (value: Return) =>
   value.moneda === 'ARS' || value.moneda === 'NUARS' || value.moneda === 'NARS';
 
-const sortedPfData: Investment[] = allPfData
-  .filter((item) => pesos.includes(item.type))
-  .sort((a, b) => {
-    if (a.tea < b.tea) {
-      return 1; // for descending order, return 1 if the first item is less than the second
-    } else if (a.tea > b.tea) {
-      return -1; // return -1 if the first item is greater than the second
-    } else {
-      return 0; // return 0 if they're equal
-    }
-  });
+const sortedPfData: Investment[] = PFData.filter((item) =>
+  pesos.includes(item.type),
+).sort((a, b) => {
+  if (a.tea < b.tea) {
+    return 1; // for descending order, return 1 if the first item is less than the second
+  }
+  if (a.tea > b.tea) {
+    return -1; // return -1 if the first item is greater than the second
+  }
+  return 0; // return 0 if they're equal
+});
 
 const sortedFciData: Investment[] = allFciData
   .filter((item) => pesos.includes(item.type))
   .sort((a, b) => {
     if (a.tea < b.tea) {
       return 1; // for descending order, return 1 if the first item is less than the second
-    } else if (a.tea > b.tea) {
-      return -1; // return -1 if the first item is greater than the second
-    } else {
-      return 0; // return 0 if they're equal
     }
+    if (a.tea > b.tea) {
+      return -1; // return -1 if the first item is greater than the second
+    }
+    return 0; // return 0 if they're equal
   });
 
-let sortedCriptoData = [];
-Object.entries(dataReturns).forEach(([exchange, values]) => {
-  values.forEach((value) => {
-    if (value.apy <= 0 || isPesoCoin(value)) return null;
+const sortedCriptoData = [];
+for (const [exchange, values] of Object.entries(dataReturns)) {
+  for (const value of values) {
+    if (value.apy <= 0 || isPesoCoin(value)) continue;
+
     sortedCriptoData.push({ exchange, ...value });
-  });
-});
+  }
+}
 ---
 
 <Layout
