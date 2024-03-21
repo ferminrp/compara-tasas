@@ -81,12 +81,12 @@
     "deadlineFees": [
       {
         "deadline": "Inmediato",
-        "debit": "3,39% + IVA",
+        "debit": "1,35% + IVA",
         "credit": "6,99% + IVA"
       },
       {
         "deadline": "2 días",
-        "debit": "3,19% + IVA",
+        "debit": "0,85% + IVA",
         "credit": "-"
       },
       {
@@ -103,6 +103,11 @@
         "deadline": "35 días",
         "debit": "-",
         "credit": "1,49% + IVA"
+      },
+      {
+        "deadline": "70 días",
+        "debit": "-",
+        "credit": "Gratis"
       }
     ]
   }
