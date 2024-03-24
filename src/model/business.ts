@@ -1,7 +1,10 @@
 export type Rate = 'TNA' | 'TEA';
 export type Currency = 'Pesos' | 'Dólares';
 export type IncomeType = 'Fija' | 'Variable' | 'Mixta';
+
+// Este tipo de dato lo usamos para los FCI
 export type FullInvestmentData = InvestmentJsonData & Omit<Investment, 'url'>;
+// Este tipo de dato lo usamos para los plazos fijos
 export type FullBankData = Omit<BankJsonData, 'nombre'> &
   Omit<Investment, 'url'>;
 
@@ -27,6 +30,7 @@ export interface Investment {
   tea: number;
 }
 
+// Tipos devueltos por la API ArgentinaDatos para los FCI
 export interface FCIResponse {
   fondo: string;
   fecha: string;
@@ -36,6 +40,7 @@ export interface FCIResponse {
   horizonte: string;
 }
 
+// Tipos devueltos por la API ArgentinaDatos para los Plazo Fijo
 export interface PlazoFijoResponse {
   entidad: string;
   logo: string;
@@ -43,6 +48,7 @@ export interface PlazoFijoResponse {
   tnaNoClientes: number;
 }
 
+// Define las propiedades y tipos que hay en la lista JSON de los FCI
 export interface InvestmentJsonData {
   nombreOficial: string;
   nombreSimplificado: string;
@@ -59,6 +65,7 @@ export interface InvestmentJsonData {
   description: string;
 }
 
+// Define las propiedades y tipos que hay en la lista JSON de los bancos
 export interface BankJsonData
   extends Omit<InvestmentJsonData, 'nombreOficial' | 'nombreSimplificado'> {
   entidad: string;
