@@ -46,6 +46,20 @@ const bank = BanksData.find((data) => data.name === name);
     id='containter'
     class='container mx-auto my-6 mb-12 max-w-sm px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
   >
+    <button class='mb-4' type='button' onclick='history.back()'>
+      <svg
+        width='24'
+        height='24'
+        viewBox='0 0 24 24'
+        class='fill-current text-neutral-900 dark:text-white'
+        xmlns='http://www.w3.org/2000/svg'
+      >
+        <title>Botón atrás</title>
+        <path
+          d='M17.835 3.86998L16.055 2.09998L6.16504 12L16.065 21.9L17.835 20.13L9.70504 12L17.835 3.86998Z'
+        ></path>
+      </svg>
+    </button>
     <div class='flex gap-4 dark:text-gray-100'>
       <img class='h-12 w-12 rounded-full' src={bank?.logo} />
       <div class='flex flex-col'>
@@ -141,7 +155,9 @@ const bank = BanksData.find((data) => data.name === name);
       >Simulá tu inversión</button
     >
     <div class='flex items-center justify-center'>
-      <a class='text-indigo-500 underline' href=''>Visitá el sitio web</a>
+      <a class='text-indigo-500 underline' target='_blank' href={bank?.url}
+        >Visitá el sitio web</a
+      >
     </div>
   </div>
 

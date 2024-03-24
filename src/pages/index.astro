@@ -10,7 +10,7 @@ import NavBar from '../components/Menu/NavBar';
 import Banner from '../components/banner.astro';
 import { EXCHANGES } from '../data/exchanges';
 import Layout from '../layouts/Layout.astro';
-import type { Investment } from '../model/business';
+import type { FullBankData, FullInvestmentData } from '../model/business';
 import type { Return } from '../model/exchange';
 import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
 
@@ -36,7 +36,7 @@ const pesosLinks = {
 const isPesoCoin = (value: Return) =>
   value.moneda === 'ARS' || value.moneda === 'NUARS' || value.moneda === 'NARS';
 
-const sortedPfData: Investment[] = PFData.filter((item) =>
+const sortedPfData: FullBankData[] = PFData.filter((item) =>
   pesos.includes(item.type),
 ).sort((a, b) => {
   if (a.tea < b.tea) {
@@ -48,7 +48,7 @@ const sortedPfData: Investment[] = PFData.filter((item) =>
   return 0; // return 0 if they're equal
 });
 
-const sortedFciData: Investment[] = allFciData
+const sortedFciData: FullInvestmentData[] = allFciData
   .filter((item) => pesos.includes(item.type))
   .sort((a, b) => {
     if (a.tea < b.tea) {
