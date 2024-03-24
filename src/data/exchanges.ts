@@ -29,4 +29,10 @@ export const EXCHANGES = {
     altLogo: 'belo logo',
     name: 'Belo',
   },
+  ripio: {
+    link: 'https://join.ripio.com/ref/fermin_r_0?ref=comparatasas.ar',
+    logo: 'https://ik.imagekit.io/ferminrp/ripio.jpg?updatedAt=1709314985547',
+    altLogo: 'ripio logo',
+    name: 'Ripio',
+  },
 };
