@@ -125,7 +125,7 @@ for (const [exchange, values] of Object.entries(dataReturns)) {
       <div class='flex flex-col'>
         {
           sortedCriptoData
-            .filter((item) => item.exchange !== 'ripio') // Agrega esta línea
+            .filter((item) => item.exchange !== '') // Usar esto para blacklistear exchanges
             .sort((a, b) => b.apy - a.apy)
             .slice(0, 3)
             .map((item, index) => {
