@@ -3,6 +3,7 @@ import { getPFInvestments } from '../../Services/argentinaDatos';
 import NavBar from '../../components/Menu/NavBar';
 import bankList from '../../data/banks.json';
 import Layout from '../../layouts/Layout.astro';
+import SimularInversion from '../../components/SimularInvestment/Dialog.tsx';
 
 interface paramsType {
   params: {
@@ -62,16 +63,19 @@ const bank = BanksData.find((data) => data.name === name);
       </svg>
     </button>
     <div class='flex gap-4 dark:text-gray-100'>
-      <img class='h-12 w-12 rounded-full' src={bank?.logo} />
+      <img class='h-12 w-12 rounded-full' src={bank?.logo} alt={bank?.name} />
       <div class='flex flex-col'>
         <p class='text-gray-400'>{name}</p>
         <h1 class='font-bold text-neutral-900 dark:text-white'>
-          {bank?.name || 'Información no disponible'}
+          {bank?.detail}
         </h1>
       </div>
     </div>
     <p class='my-6 dark:text-gray-400'>
-      {bank?.description || 'Información no disponible'}
+      {
+        bank?.description ||
+          'Inversión a 30 días mínimo, que paga una renta fija asegurada en pesos. Renovable automática o manualmente.'
+      }
     </p>
     <h2 class='mb-6 text-lg font-semibold text-neutral-900 dark:text-gray-100'>
       Rendimientos
@@ -151,16 +155,15 @@ const bank = BanksData.find((data) => data.name === name);
         </span>
       </div>
     </div>
-    <!--
-    <button
-      class='my-6 w-full rounded-lg bg-indigo-500 py-4 text-white dark:text-gray-100'
-      >Simulá tu inversión</button
-    >
-     -->
-    <div class='flex items-center justify-center'>
-      <a class='text-indigo-500 underline' target='_blank' href={bank?.url}
-        >Visitá el sitio web</a
-      >
+    <div class='mt-6 flex flex-col gap-2'>
+      <SimularInversion client:load data={bank} />
+      <div class='flex items-center justify-center'>
+        <a
+          class='text-sm text-indigo-500 underline'
+          target='_blank'
+          href={bank?.url}>Visitá el sitio web</a
+        >
+      </div>
     </div>
   </div>
 

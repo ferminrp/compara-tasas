@@ -144,8 +144,8 @@ const booleanToSVG = (value) =>
               <tbody class='px-4'>
                 {Object.entries(account.attributes).map(([key, value]) => (
                   <tr>
-                    <td class='border-b border-gray-300 px-4 py-4'>{key} </td>
-                    <td class='border-b border-gray-300 px-4 py-4 text-right'>
+                    <td class='border-b border-gray-600 px-4 py-4'>{key} </td>
+                    <td class='border-b border-gray-600 px-4 py-4 text-right'>
                       <span
                         class='flex justify-end'
                         set:html={
@@ -156,7 +156,7 @@ const booleanToSVG = (value) =>
                       />
                     </td>
                     {account.subscription && (
-                      <td class='border-b border-gray-300 px-4 py-4 text-right'>
+                      <td class='border-b border-gray-600 px-4 py-4 text-right'>
                         <span
                           class='flex justify-end'
                           set:html={
@@ -174,10 +174,10 @@ const booleanToSVG = (value) =>
                     {Object.entries(account.subscription).map(
                       ([key, value]) => (
                         <tr>
-                          <td class='border-b border-gray-300 px-4 py-4'>
+                          <td class='border-b border-gray-600 px-4 py-4'>
                             {key}
                           </td>
-                          <td class='border-b border-gray-300 px-4 py-4 text-right'>
+                          <td class='border-b border-gray-600 px-4 py-4 text-right'>
                             <span class='flex justify-end'>
                               <svg
                                 width='20'
@@ -192,7 +192,7 @@ const booleanToSVG = (value) =>
                               </svg>
                             </span>
                           </td>
-                          <td class='border-b border-gray-300 px-4 py-4 text-right'>
+                          <td class='border-b border-gray-600 px-4 py-4 text-right'>
                             {value}
                           </td>
                         </tr>
