@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": "."
+=======
+    "jsx": "react"
+>>>>>>> origin/simular-inversion
   },
   "extends": "astro/tsconfigs/base"
 }
