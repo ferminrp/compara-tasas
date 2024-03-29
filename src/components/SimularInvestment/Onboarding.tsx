@@ -239,7 +239,7 @@ export default function SimulacionOnboarding({
               <span>{(data?.tea || 0).toFixed(2).replace('.', ',')} %</span>
             </div>
             <div className='flex items-center justify-between border-b border-gray-200 py-2 dark:border-[#223455]'>
-              <p>Recibis</p>
+              <p>Recibís</p>
               <span>${recibisFormateado}</span>
             </div>
             <div className='flex items-center justify-between border-b border-gray-200 py-2 font-semibold text-gray-700 dark:border-[#223455] dark:text-gray-200'>
@@ -263,7 +263,7 @@ export default function SimulacionOnboarding({
               variant='ghost'
               className='w-full text-sm text-[#6469F2] underline'
             >
-              Nueva simulacion
+              Nueva simulación
             </Button>
           </div>
         </div>
