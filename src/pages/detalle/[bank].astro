@@ -155,8 +155,8 @@ const bank = BanksData.find((data) => data.name === name);
         </span>
       </div>
     </div>
-    <div class='mt-6 flex flex-col gap-2'>
-      <SimularInversion client:load data={bank} />
+    <div class='mt-8 flex flex-col gap-3'>
+      <SimularInversion multiplo30={true} client:load data={bank} />
       <div class='flex items-center justify-center'>
         <a
           class='text-sm text-indigo-500 underline'

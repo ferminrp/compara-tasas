@@ -5,14 +5,10 @@ import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 import { Button } from './ui/button';
 import SimulacionOnboarding from './Onboarding';
 
-export default function SimularInversion({ data }) {
+export default function SimularInversion({ data, multiplo30 }) {
   const [open, setOpen] = React.useState(false);
-
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
-  //   const parsedData = data ? JSON.parse(data) : {};
-
-  // Si el usuario esta en escritorio, mostar Modal
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
@@ -23,14 +19,12 @@ export default function SimularInversion({ data }) {
         </DialogTrigger>
         <DialogContent className='sm:max-w-[425px]'>
           <div className='flex justify-between'></div>
-
-          <SimulacionOnboarding data={data} />
+          <SimulacionOnboarding data={data} multiplo30={multiplo30} />
         </DialogContent>
       </Dialog>
     );
   }
 
-  // Si el usuario esta en mobile, mostrar drawer
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
@@ -39,7 +33,8 @@ export default function SimularInversion({ data }) {
         </Button>
       </DrawerTrigger>
       <DrawerContent>
-        <SimulacionOnboarding data={data} />
+        {multiplo30 && <p>This is shown if multiplo30 is true.</p>}
+        <SimulacionOnboarding data={data} multiplo30={multiplo30} />
       </DrawerContent>
     </Drawer>
   );
