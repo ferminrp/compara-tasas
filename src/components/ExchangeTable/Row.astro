@@ -32,9 +32,8 @@ const subTitle = isBestSection ? moneda : exchange;
 {
   shouldRenderComponent && (
     <div
-      class={cn('p-2 dark:bg-gray-900', className, {
-        'border-b-1 border-b border-gray-100 dark:border-gray-600 dark:bg-gray-900':
-          !isLastItem,
+      class={cn('border-gray-600 py-3 dark:border-gray-700', className, {
+        'border-b-1 border-b border-gray-600 dark:border-gray-700': !isLastItem,
       })}
     >
       <div>
