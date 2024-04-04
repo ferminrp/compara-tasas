@@ -1,5 +1,6 @@
 ---
 import NavBar from '../components/Menu/NavBar';
+import Banner from '../components/banner.astro';
 import Layout from '../layouts/Layout.astro';
 
 const accounts = [
@@ -111,53 +112,43 @@ const booleanToSVG = (value) =>
     </h1>
     {
       accounts.map((account) => (
-        <div class='my-6 overflow-x-auto'>
-          <div class='flex items-center justify-between gap-2 rounded p-4 pb-4 dark:text-gray-100'>
-            <div class='flex items-center gap-3'>
-              <img
-                class='h-8 w-8 rounded-full'
-                src={account.logo + '?tr=w-32,h-32,f_webp'}
-                alt={account.name}
-                width='32'
-                height='32'
-              />
-              <h3 class='text-xl font-bold'>{account.name}</h3>
+        <div>
+          <div class='my-6 overflow-x-auto'>
+            <div class='flex items-center justify-between gap-2 rounded p-4 pb-4 dark:text-gray-100'>
+              <div class='flex items-center gap-3'>
+                <img
+                  class='h-8 w-8 rounded-full'
+                  src={account.logo + '?tr=w-32,h-32,f_webp'}
+                  alt={account.name}
+                  width='32'
+                  height='32'
+                />
+                <h3 class='text-xl font-bold'>{account.name}</h3>
+              </div>
+              <a
+                class='text-indigo-500 underline underline-offset-2'
+                href={account.url}
+              >
+                Visitar Sitio
+              </a>
             </div>
-            <a
-              class='text-indigo-500 underline underline-offset-2'
-              href={account.url}
-            >
-              Visitar Sitio
-            </a>
-          </div>
-          <div class='!rounded-lg bg-gray-50 px-2 py-2 dark:bg-slate-900'>
-            <table class='w-full table-auto border-collapse bg-gray-50 dark:bg-slate-900 dark:text-gray-200'>
-              <thead>
-                <tr>
-                  <th class='px-4 py-4 text-left font-semibold'>Plan</th>
-                  <th class='px-4 py-4 text-right font-semibold'>Gratis</th>
-                  {account.subscription && (
-                    <th class='px-4 py-2 text-right'>Pago</th>
-                  )}
-                </tr>
-              </thead>
-              <tbody class='px-4'>
-                {Object.entries(account.attributes).map(([key, value]) => (
+            <div class='!rounded-lg bg-gray-50 px-2 py-2 dark:bg-slate-900'>
+              <table class='w-full table-auto border-collapse bg-gray-50 dark:bg-slate-900 dark:text-gray-200'>
+                <thead>
                   <tr>
-                    <td class='border-b border-gray-600 px-4 py-4 dark:border-gray-700'>
-                      {key}{' '}
-                    </td>
-                    <td class='border-b border-gray-600 px-4 py-4 text-right dark:border-gray-700'>
-                      <span
-                        class='flex justify-end'
-                        set:html={
-                          typeof value === 'boolean'
-                            ? booleanToSVG(value)
-                            : value
-                        }
-                      />
-                    </td>
+                    <th class='px-4 py-4 text-left font-semibold'>Plan</th>
+                    <th class='px-4 py-4 text-right font-semibold'>Gratis</th>
                     {account.subscription && (
+                      <th class='px-4 py-2 text-right'>Pago</th>
+                    )}
+                  </tr>
+                </thead>
+                <tbody class='px-4'>
+                  {Object.entries(account.attributes).map(([key, value]) => (
+                    <tr>
+                      <td class='border-b border-gray-600 px-4 py-4 dark:border-gray-700'>
+                        {key}{' '}
+                      </td>
                       <td class='border-b border-gray-600 px-4 py-4 text-right dark:border-gray-700'>
                         <span
                           class='flex justify-end'
@@ -168,43 +159,58 @@ const booleanToSVG = (value) =>
                           }
                         />
                       </td>
-                    )}
-                  </tr>
-                ))}
-                {account.subscription ? (
-                  <div>
-                    {Object.entries(account.subscription).map(
-                      ([key, value]) => (
-                        <tr>
-                          <td class='border-b border-gray-600 px-4 py-4'>
-                            {key}
-                          </td>
-                          <td class='border-b border-gray-600 px-4 py-4 text-right'>
-                            <span class='flex justify-end'>
-                              <svg
-                                width='20'
-                                height='20'
-                                fill='none'
-                                xmlns='http://www.w3.org/2000/svg'
-                              >
-                                <path
-                                  d='M10 0C4.47 0 0 4.47 0 10s4.47 10 10 10 10-4.47 10-10S15.53 0 10 0Zm5 13.59L13.59 15 10 11.41 6.41 15 5 13.59 8.59 10 5 6.41 6.41 5 10 8.59 13.59 5 15 6.41 11.41 10 15 13.59Z'
-                                  fill='#E73737'
-                                />
-                              </svg>
-                            </span>
-                          </td>
-                          <td class='border-b border-gray-600 px-4 py-4 text-right'>
-                            {value}
-                          </td>
-                        </tr>
-                      ),
-                    )}
-                  </div>
-                ) : null}
-              </tbody>
-            </table>
+                      {account.subscription && (
+                        <td class='border-b border-gray-600 px-4 py-4 text-right dark:border-gray-700'>
+                          <span
+                            class='flex justify-end'
+                            set:html={
+                              typeof value === 'boolean'
+                                ? booleanToSVG(value)
+                                : value
+                            }
+                          />
+                        </td>
+                      )}
+                    </tr>
+                  ))}
+                  {account.subscription ? (
+                    <div>
+                      {Object.entries(account.subscription).map(
+                        ([key, value]) => (
+                          <tr>
+                            <td class='border-b border-gray-600 px-4 py-4'>
+                              {key}
+                            </td>
+                            <td class='border-b border-gray-600 px-4 py-4 text-right'>
+                              <span class='flex justify-end'>
+                                <svg
+                                  width='20'
+                                  height='20'
+                                  fill='none'
+                                  xmlns='http://www.w3.org/2000/svg'
+                                >
+                                  <path
+                                    d='M10 0C4.47 0 0 4.47 0 10s4.47 10 10 10 10-4.47 10-10S15.53 0 10 0Zm5 13.59L13.59 15 10 11.41 6.41 15 5 13.59 8.59 10 5 6.41 6.41 5 10 8.59 13.59 5 15 6.41 11.41 10 15 13.59Z'
+                                    fill='#E73737'
+                                  />
+                                </svg>
+                              </span>
+                            </td>
+                            <td class='border-b border-gray-600 px-4 py-4 text-right'>
+                              {value}
+                            </td>
+                          </tr>
+                        ),
+                      )}
+                    </div>
+                  ) : null}
+                </tbody>
+              </table>
+            </div>
           </div>
+          {account.name === 'Takenos' || account.name === 'Grabrfi' ? (
+            <Banner size='small' />
+          ) : null}
         </div>
       ))
     }

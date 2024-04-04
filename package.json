@@ -17,7 +17,7 @@
     "@astrojs/react": "^3.1.0",
     "@astrojs/sitemap": "3.1.1",
     "@astrojs/tailwind": "5.1.0",
-    "@astrojs/vercel": "7.4.0",
+    "@astrojs/vercel": "7.5.0",
     "@fontsource/inter": "^5.0.17",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
@@ -26,7 +26,7 @@
     "@types/react": "^18.2.73",
     "@types/react-dom": "^18.2.23",
     "@vercel/speed-insights": "1.0.10",
-    "astro": "4.5.5",
+    "astro": "4.5.12",
     "bunx": "^0.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -39,8 +39,8 @@
     "vaul": "^0.9.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.6.2",
-    "@typescript-eslint/parser": "7.2.0",
+    "@biomejs/biome": "1.6.3",
+    "@typescript-eslint/parser": "7.4.0",
     "eslint": "8.57.0",
     "eslint-plugin-astro": "0.33.1",
     "husky": "^9.0.11",

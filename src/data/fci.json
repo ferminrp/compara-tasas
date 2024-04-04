@@ -226,7 +226,7 @@
   },
   "LetsBit": {
     "nombreOficial": "ST Zero - Clase D",
-    "nombreSimplificado": "ST Zero (A)",
+    "nombreSimplificado": "ST Zero (D)",
     "logo": "https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269",
     "url": "https://letsbit.page.link/zyxz",
     "type": "cuenta_remunerada",
@@ -253,5 +253,20 @@
     "plazoMinimo": "1 día",
     "slug": "fondo-comun-de-inversion-macro",
     "description": "Fondo de inversión conservador, de horizonte a corto plazo. Su cartera contiene principalmente plazos fijos, cuentas a la vista, e instrumentos de corto plazo."
+  },
+  "Astropay": {
+    "nombreOficial": "ST Zero - Clase D",
+    "nombreSimplificado": "ST Zero (D)",
+    "logo": "https://ik.imagekit.io/ferminrp/astropay.jpeg?updatedAt=1712178966962",
+    "url": "http://bit.ly/2LyXNMZ",
+    "type": "cuenta_remunerada",
+    "renta": "Fija",
+    "horario": "24/7",
+    "sociedad": "Southern Trust S.A.",
+    "moneda": "Pesos",
+    "montoMinimo": "$100",
+    "plazoMinimo": "1 día",
+    "slug": "cuenta-remunerada-astropay",
+    "description": "Fondo de inversión que maneja liquidez de corto plazo sin riesgo de mercado, con rendimientos cercanos a los de un plazo fijo."
   }
 }
