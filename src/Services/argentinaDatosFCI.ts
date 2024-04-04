@@ -39,22 +39,20 @@ const mergedFCIData = async (): Promise<FCIData[]> => {
   for (const lastFCI of lastList) {
     const apFCI = penultList.find((f) => lastFCI.fondo === f.fondo);
 
-    if (lastFCI.fecha && apFCI && apFCI.fecha) {
-      const apDate = new Date(apFCI.fecha);
-      const lastDate = new Date(lastFCI.fecha);
-      const diffDays = Math.floor(
-        (lastDate.getTime() - apDate.getTime()) / (1000 * 3600 * 24),
-      );
+    const apDate = new Date(apFCI.fecha);
+    const lastDate = new Date(lastFCI.fecha);
+    const diffDays = Math.floor(
+      (lastDate.getTime() - apDate.getTime()) / (1000 * 3600 * 24),
+    );
 
-      mergedList.push({
-        fondo: lastFCI.fondo,
-        horizonte: lastFCI.horizonte,
-        ultimaFecha: lastFCI.fecha,
-        ultimoValorvcp: lastFCI.vcp,
-        penultimoValorvcp: apFCI.vcp,
-        dias: diffDays,
-      });
-    }
+    mergedList.push({
+      fondo: lastFCI.fondo,
+      horizonte: lastFCI.horizonte,
+      ultimaFecha: lastFCI.fecha,
+      ultimoValorvcp: lastFCI.vcp,
+      penultimoValorvcp: apFCI.vcp,
+      dias: diffDays,
+    });
   }
 
   return mergedList;
