@@ -31,10 +31,36 @@ export default function SimulacionOnboarding({
 }: SimulacionOnboardingProps) {
   const [plazo, setPlazo] = useState<number | undefined>(undefined);
   const [monto, setMonto] = useState<number | undefined>(undefined);
+  const [rawMonto, setRawMonto] = useState<string>('');
   const [currentStep, setCurrentStep] = useState(1);
+  const [formattedMonto, setFormattedMonto] = useState<string>('');
 
-  const handleMontoChange = (value: number) => {
-    setMonto(isNaN(value) ? undefined : value);
+  const formatNumberToPrice = (value: number) => {
+    return new Intl.NumberFormat('es-AR', {
+      style: 'currency',
+      currency: 'ARS',
+      minimumFractionDigits: 2,
+    }).format(value);
+  };
+
+  const handleMontoChange = (value: string) => {
+    setRawMonto(value); // Update the raw input value as user types
+    const numericValue = parseInt(value.replace(/\D/g, ''), 10);
+    if (!isNaN(numericValue)) {
+      setMonto(numericValue);
+    } else {
+      setMonto(undefined);
+    }
+  };
+  const handleMontoBlur = () => {
+    if (monto !== undefined) {
+      const formattedValue = formatNumberToPrice(monto);
+      setFormattedMonto(formattedValue);
+      setRawMonto(formattedValue); // Update the raw input to the formatted value on blur
+    } else {
+      setFormattedMonto('');
+      setRawMonto('');
+    }
   };
   const handlePlazoChange = (value: number) => {
     setPlazo(isNaN(value) ? undefined : value);
@@ -133,13 +159,15 @@ export default function SimulacionOnboarding({
           >
             <div className='grid gap-2'>
               <Input
-                type='number'
+                type='text'
                 inputmode='numeric'
                 id='dinero'
-                placeholder='$ 1.500'
+                placeholder='$ 1.500,00'
                 pattern='[0-9]*'
                 className='text-md py-6 text-gray-800 dark:text-gray-200'
-                onChange={(e) => handleMontoChange(parseInt(e.target.value))}
+                value={currentStep === 1 ? rawMonto : formattedMonto}
+                onChange={(e) => handleMontoChange(e.target.value)}
+                onBlur={handleMontoBlur}
               />
               <Label htmlFor='dinero' className='text-[#858994]'>
                 Monto a invertir (mínimo $1.500)
