@@ -44,7 +44,7 @@ export default function SimulacionOnboarding({
   };
 
   const handleMontoChange = (value: string) => {
-    setRawMonto(value); // Update the raw input value as user types
+    setRawMonto(value);
     const numericValue = parseInt(value.replace(/\D/g, ''), 10);
     if (!isNaN(numericValue)) {
       setMonto(numericValue);
@@ -56,7 +56,7 @@ export default function SimulacionOnboarding({
     if (monto !== undefined) {
       const formattedValue = formatNumberToPrice(monto);
       setFormattedMonto(formattedValue);
-      setRawMonto(formattedValue); // Update the raw input to the formatted value on blur
+      setRawMonto(formattedValue);
     } else {
       setFormattedMonto('');
       setRawMonto('');
@@ -346,8 +346,9 @@ export default function SimulacionOnboarding({
           </div>
 
           <p className='my-4 text-[12px] text-gray-400 dark:text-gray-500'>
-            * Los rendimientos se calculan en base a la variación del último
-            día. La tasa puede variar constantemente.
+            {multiplo30
+              ? '* Los rendimientos se calculan en base a una reinversión mensual de un plazo fijo a 30 días. La tasa puede variar constantemente.'
+              : '* Los rendimientos se calculan en base a la variación del último día. La tasa puede variar constantemente.'}
           </p>
 
           <div className='mb-4 flex flex-col gap-2 md:mb-4'>
