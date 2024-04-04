@@ -6,9 +6,9 @@
       "imageUrl": "https://ik.imagekit.io/ferminrp/Banner_480x101.png?updatedAt=1709662989288"
     },
     {
-      "company": "cobros",
-      "url": "https://comparatasas.ar/cobros",
-      "imageUrl": "https://ik.imagekit.io/ferminrp/cobros_banner.jpg?updatedAt=1710176167111"
+      "company": "dasbanq",
+      "url": "https://bit.ly/3VNHVZK",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/Banners%202024%20April.png?updatedAt=1712251671139"
     }
   ],
   "large": [
@@ -16,6 +16,16 @@
       "company": "letsbit",
       "url": "https://dub.sh/letsbit",
       "imageUrl": "https://ik.imagekit.io/ferminrp/Banner_480x302.png?updatedAt=1709662989544"
+    },
+    {
+      "company": "dasbanq",
+      "url": "https://bit.ly/3VNHVZK",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/Banners%202024%20April%20(1).jpg?updatedAt=1712251671139"
+    },
+    {
+      "company": "dasbanq",
+      "url": "https://bit.ly/3VNHVZK",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/Banners%202024%20April.jpg?updatedAt=1712251671138"
     }
   ]
 }

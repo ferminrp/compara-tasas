@@ -25,9 +25,7 @@ const { title, subtitle, exchanges } = Astro.props;
       return exchange.data.length ? (
         <>
           <ExchangeTable exchange={exchange} key={exchange.name} />
-          {exchange.name === 'Buenbit' ? (
-            <Banner size='large' company='letsbit' />
-          ) : null}
+          {exchange.name === 'Buenbit' ? <Banner size='large' /> : null}
         </>
       ) : null;
     })

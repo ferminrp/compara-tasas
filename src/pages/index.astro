@@ -7,6 +7,7 @@ import Card from '../components/Card/Card.astro';
 import Dolares from '../components/Dolares.astro';
 import Row from '../components/ExchangeTable/Row.astro';
 import NavBar from '../components/Menu/NavBar';
+import '../components/SimularInvestment/globals.css';
 import Banner from '../components/banner.astro';
 import { EXCHANGES } from '../data/exchanges';
 import Layout from '../layouts/Layout.astro';
@@ -87,7 +88,7 @@ for (const [exchange, values] of Object.entries(dataReturns)) {
       >
     </h1>
     <Dolares />
-    <Banner size='small' company='letsbit' />
+    <Banner size='small' />
     <Best link={`/pesos#${pesosLinks.cuenta_remunerada}`} sectionName='FCI'>
       <div class='flex flex-col'>
         {
@@ -104,7 +105,7 @@ for (const [exchange, values] of Object.entries(dataReturns)) {
         }
       </div>
     </Best>
-    <Banner size='small' company='cobros' />
+    <Banner size='small' />
     <Best link={`/pesos#${pesosLinks.pf}`} sectionName='Plazos Fijos'>
       <div class='flex flex-col'>
         {
@@ -136,7 +137,7 @@ for (const [exchange, values] of Object.entries(dataReturns)) {
                   logo={EXCHANGES[item.exchange].logo}
                   apy={item.apy}
                   moneda={item.moneda}
-                  className={`  bg-white px-4  dark:border-gray-600 ${isLastItem ? 'rounded-b-lg' : 'border-b-1 border-b border-gray-100'} `}
+                  className={`  bg-white px-4 dark:border-gray-600  dark:bg-gray-900 ${isLastItem ? 'rounded-b-lg' : 'border-b-1 border-b border-gray-100'} `}
                   isBestSection
                   isLastItem={isLastItem}
                   exchange={item.exchange}
