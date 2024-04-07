@@ -36,9 +36,6 @@ interface SimulacionOnboardingProps {
   multiplo30: boolean;
 }
 
-const plazoInitialValue = null;
-const montoInitialValue = null;
-
 const CloseButton = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <Button variant='ghost' className='pr-0 hover:!bg-transparent'>
@@ -66,6 +63,9 @@ const Dot = ({ isStepActive }: { isStepActive: boolean }) => {
     />
   );
 };
+
+const plazoInitialValue = null;
+const montoInitialValue = null;
 
 export default function SimulacionOnboarding({
   className,
