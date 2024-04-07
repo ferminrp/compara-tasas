@@ -64,7 +64,7 @@ export default function SimulacionOnboarding({
       : setPlazo(Number.parseInt(value));
   };
 
-  const { tna, tea, name, logo, detail, url } = data;
+  const { tna, tea, name, logo, detail, url } = data || {};
 
   // Desabilitar boton si el monto y/o inversion es menor al minimo
   const isButtonDisabled =
