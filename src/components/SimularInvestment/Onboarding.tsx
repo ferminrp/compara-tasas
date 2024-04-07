@@ -249,11 +249,14 @@ export default function SimulacionOnboarding({
           </p>
 
           <div className='mb-4 flex flex-col gap-2 md:mb-4'>
-            <Button type='button' className='w-full !bg-[#6469F2] !text-white'>
-              <a href={url} target='_blank' rel='noreferrer'>
+            <a href={url} target='_blank' rel='noreferrer'>
+              <Button
+                type='button'
+                className='w-full !bg-[#6469F2] !text-white'
+              >
                 Visitá el sitio web de {name}
-              </a>
-            </Button>
+              </Button>
+            </a>
             <Button
               type='button'
               onClick={handlePrevClick}
