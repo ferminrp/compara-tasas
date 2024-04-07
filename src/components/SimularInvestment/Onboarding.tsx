@@ -57,6 +57,16 @@ const CloseButton = ({ isDarkMode }: { isDarkMode: boolean }) => {
   );
 };
 
+const Dot = ({ isStepActive }: { isStepActive: boolean }) => {
+  return (
+    <div
+      className={cn('h-2 w-2 rounded-full bg-gray-400 dark:bg-gray-600', {
+        'bg-black dark:bg-white': isStepActive,
+      })}
+    />
+  );
+};
+
 export default function SimulacionOnboarding({
   className,
   data,
@@ -108,22 +118,23 @@ export default function SimulacionOnboarding({
   const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const investmentTime = multiplo30 ? 'meses' : 'dias';
 
+  const isStepActive = (step: number) => currentStep === step;
+
   return (
     <div>
+      <div className='mb-4 mt-2 flex items-center justify-between md:mt-0'>
+        <div className='flex items-center gap-1'>
+          <Dot isStepActive={isStepActive(1)} />
+          <Dot isStepActive={isStepActive(2)} />
+        </div>
+        <DialogClose asChild>
+          <CloseButton isDarkMode={isDarkMode} />
+        </DialogClose>
+      </div>
+
       {/* Mostrar esto en la primer pantalla */}
       {currentStep === 1 && (
-        <div>
-          <div className='mb-4 mt-2 flex items-center justify-between md:mt-0'>
-            <div className='flex items-center gap-1'>
-              <div className={'h-2 w-2 rounded-full bg-black dark:bg-white'} />
-              <div
-                className={'h-2 w-2 rounded-full bg-gray-400 dark:bg-gray-600'}
-              />
-            </div>
-            <DialogClose asChild>
-              <CloseButton isDarkMode={isDarkMode} />
-            </DialogClose>
-          </div>
+        <>
           <DialogHeader>
             <DialogTitle className='mt-4 text-gray-800 md:mt-0 dark:text-gray-200'>
               Simulá tu inversión
@@ -199,23 +210,12 @@ export default function SimulacionOnboarding({
               Siguiente
             </Button>
           </form>
-        </div>
+        </>
       )}
 
       {/* En la pantalla dos mostrar esto */}
       {currentStep === 2 && (
-        <div>
-          <div className='mt-2 flex items-center justify-between'>
-            <div className='flex items-center gap-1'>
-              <div
-                className={'h-2 w-2 rounded-full bg-gray-400 dark:bg-gray-600'}
-              />
-              <div className={'h-2 w-2 rounded-full bg-black dark:bg-white'} />
-            </div>
-            <DialogClose asChild>
-              <CloseButton isDarkMode={isDarkMode} />
-            </DialogClose>
-          </div>
+        <>
           <DialogHeader className='my-0 !flex-col items-center gap-0'>
             <img className='h-12 w-12 rounded-full' src={logo} alt={name} />
             <div className='flex flex-col text-white'>
@@ -269,7 +269,7 @@ export default function SimulacionOnboarding({
               Nueva simulación
             </Button>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
