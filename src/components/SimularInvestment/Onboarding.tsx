@@ -161,7 +161,7 @@ export default function SimulacionOnboarding({
                   inputmode='numeric'
                   id='plazo'
                   placeholder={multiplo30 ? '3' : '30'}
-                  value={plazo?.toString() ?? ''}
+                  value={plazo ?? ''}
                   onChange={(e) => handlePlazoChange(e.target.value)}
                   className='text-md py-6 text-[16px] text-gray-800 dark:text-gray-200'
                 />
