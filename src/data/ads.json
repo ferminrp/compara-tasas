@@ -9,6 +9,11 @@
       "company": "dasbanq",
       "url": "https://bit.ly/3VNHVZK",
       "imageUrl": "https://ik.imagekit.io/ferminrp/Banners%202024%20April.png?updatedAt=1712251671139"
+    },
+    {
+      "company": "miraprecios",
+      "url": "https://dub.sh/miraprecios",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/mira_precios_small.png?updatedAt=1712606420425"
     }
   ],
   "large": [
@@ -26,6 +31,11 @@
       "company": "dasbanq",
       "url": "https://bit.ly/3VNHVZK",
       "imageUrl": "https://ik.imagekit.io/ferminrp/Banners%202024%20April.jpg?updatedAt=1712251671138"
+    },
+    {
+      "company": "miraprecios",
+      "url": "https://dub.sh/miraprecios",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/miraprecios.png?updatedAt=1712606420425"
     }
   ]
 }
