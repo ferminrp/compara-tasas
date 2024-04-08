@@ -1,9 +1,9 @@
 ---
 import { getFCIInvestments } from '../../Services/argentinaDatosFCI';
 import NavBar from '../../components/Menu/NavBar';
+import SimularInversion from '../../components/SimularInvestment/Dialog.tsx';
 import fciList from '../../data/fci.json';
 import Layout from '../../layouts/Layout.astro';
-import SimularInversion from '../../components/SimularInvestment/Dialog.tsx';
 interface paramsType {
   params: {
     instrument: string;
@@ -38,7 +38,7 @@ const fci = FCIData.find((data) => data.name === name);
 <div vaul-drawer-wrapper='' class='bg-gray-100 dark:bg-[#030712]'>
   <Layout
     title={`${name} - Rendimiento`}
-    metaDescription='Compara los rendimientos en pesos que ofrecen los principales bancos del país.'
+    metaDescription=`Conoce todo sobre los rendimientos en ${name}, simulá tu inversion y compará con otros fondos.`
     metaKeywords='rendimientos pesos, rendimiento pesos argentinos, bancos argentina'
     metaImage='https://i.ibb.co/QYKMwcL/Twitter-post-2.pnG'
   >

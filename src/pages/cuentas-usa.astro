@@ -49,6 +49,7 @@ const accounts = [
       'Retiros en pesos': false,
       Rendimientos: false,
       'Tarjeta Virtual': false,
+      Cashback: false,
       'Tarjeta Física': false,
       'Retiros Crypto': false,
     },
@@ -61,11 +62,28 @@ const accounts = [
       'Comisión por recibir': 'US$0,50 + 1,50%',
       'Comisión por extraer': '0%',
       Rendimientos: '2,00%',
+      Cashback: '2%',
       'Cuenta USA a tu nombre': true,
       'Retiros en pesos': true,
       'Tarjeta Virtual': true,
       'Tarjeta Física': true,
       'Retiros Crypto': true,
+    },
+  },
+  {
+    name: 'Wallbit',
+    logo: 'https://ik.imagekit.io/ferminrp/wallbit.jpeg?updatedAt=1712577693223',
+    url: 'https://wallbit.io/',
+    attributes: {
+      'Comisión por recibir': '0%',
+      'Comisión por extraer': '$5',
+      Rendimientos: '5,17%',
+      'Cuenta USA a tu nombre': true,
+      'Tarjeta Virtual': true,
+      Cashback: false,
+      'Retiros en pesos': false,
+      'Tarjeta Física': false,
+      'Retiros Crypto': false,
     },
   } /* OCULTADO HASTA QUE VUELVAN A ABRIR CUENTAS
   {
@@ -146,10 +164,10 @@ const booleanToSVG = (value) =>
                 <tbody class='px-4'>
                   {Object.entries(account.attributes).map(([key, value]) => (
                     <tr>
-                      <td class='border-b border-gray-600 px-4 py-4 dark:border-gray-700'>
+                      <td class='border-b border-gray-300 px-4 py-4 dark:border-gray-700'>
                         {key}{' '}
                       </td>
-                      <td class='border-b border-gray-600 px-4 py-4 text-right dark:border-gray-700'>
+                      <td class='border-b border-gray-300 px-4 py-4 text-right dark:border-gray-700'>
                         <span
                           class='flex justify-end'
                           set:html={
@@ -160,7 +178,7 @@ const booleanToSVG = (value) =>
                         />
                       </td>
                       {account.subscription && (
-                        <td class='border-b border-gray-600 px-4 py-4 text-right dark:border-gray-700'>
+                        <td class='border-b border-gray-300 px-4 py-4 text-right dark:border-gray-700'>
                           <span
                             class='flex justify-end'
                             set:html={
@@ -178,10 +196,10 @@ const booleanToSVG = (value) =>
                       {Object.entries(account.subscription).map(
                         ([key, value]) => (
                           <tr>
-                            <td class='border-b border-gray-600 px-4 py-4'>
+                            <td class='border-b border-gray-300 px-4 py-4'>
                               {key}
                             </td>
-                            <td class='border-b border-gray-600 px-4 py-4 text-right'>
+                            <td class='border-b border-gray-300 px-4 py-4 text-right'>
                               <span class='flex justify-end'>
                                 <svg
                                   width='20'
@@ -196,7 +214,7 @@ const booleanToSVG = (value) =>
                                 </svg>
                               </span>
                             </td>
-                            <td class='border-b border-gray-600 px-4 py-4 text-right'>
+                            <td class='border-b border-gray-300 px-4 py-4 text-right'>
                               {value}
                             </td>
                           </tr>
