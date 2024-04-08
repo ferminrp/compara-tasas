@@ -1,5 +1,6 @@
 ---
 import Card from '../Card/Card.astro';
+import Banner from '../banner.astro';
 
 const { data, title, sectionId } = Astro.props;
 ---
@@ -12,4 +13,5 @@ const { data, title, sectionId } = Astro.props;
   </div>
 
   {data?.map((item) => <Card {...item} />)}
+  <Banner size='small' />
 </div>
