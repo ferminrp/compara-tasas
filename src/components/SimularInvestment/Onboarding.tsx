@@ -59,9 +59,7 @@ export default function SimulacionOnboarding({
   const [currentStep, setCurrentStep] = useState(1);
 
   const handlePlazoChange = (value: string) => {
-    value === ''
-      ? setPlazo(plazoInitialValue)
-      : setPlazo(Number.parseInt(value));
+    value ? setPlazo(Number.parseInt(value)) : setPlazo(plazoInitialValue);
   };
 
   const handleMontoChange = (value: number) => {
@@ -149,9 +147,7 @@ export default function SimulacionOnboarding({
             <div className='grid gap-2'>
               <NumberFormat
                 value={monto ?? ''}
-                onValueChange={(values) => {
-                  handleMontoChange(values.floatValue);
-                }}
+                onValueChange={(values) => handleMontoChange(values.floatValue)}
                 className='text-md py-6 text-gray-800 dark:text-gray-200'
                 customInput={Input}
                 placeholder='$1.500'
