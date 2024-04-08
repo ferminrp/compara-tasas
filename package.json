@@ -24,7 +24,7 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@types/react": "^18.2.73",
-    "@types/react-dom": "^18.2.23",
+    "@types/react-dom": "^18.2.24",
     "@vercel/speed-insights": "1.0.10",
     "astro": "4.5.12",
     "bunx": "^0.1.0",
