@@ -64,6 +64,10 @@ export default function SimulacionOnboarding({
       : setPlazo(Number.parseInt(value));
   };
 
+  const handleMontoChange = (value: number) => {
+    Number.isFinite(value) ? setMonto(value) : setMonto(montoInitialValue);
+  };
+
   const { tna, tea, name, logo, detail, url } = data || {};
 
   // Desabilitar boton si el monto y/o inversion es menor al minimo
@@ -145,7 +149,9 @@ export default function SimulacionOnboarding({
             <div className='grid gap-2'>
               <NumberFormat
                 value={monto ?? ''}
-                onValueChange={(values) => setMonto(values.floatValue)}
+                onValueChange={(values) => {
+                  handleMontoChange(values.floatValue);
+                }}
                 className='text-md py-6 text-gray-800 dark:text-gray-200'
                 customInput={Input}
                 placeholder='$1.500'
