@@ -1,9 +1,9 @@
 import * as React from 'react';
-import SimulacionOnboarding from './Onboarding';
 import { useMediaQuery } from './hooks/use-media-query';
-import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
+import { Button } from './ui/button';
+import SimulacionOnboarding from './Onboarding';
 
 export default function SimularInversion({ data, multiplo30 }) {
   const [open, setOpen] = React.useState(false);
