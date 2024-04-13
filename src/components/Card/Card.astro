@@ -2,12 +2,37 @@
 import cn from '../../utils/cn';
 import { formatPercentage } from '../../utils/formats';
 
-const { logo, tna, tea, detail, title, name, url, disableRounded, className } =
-  Astro.props;
+interface Props {
+  logo: string;
+  tna: number;
+  tea: number;
+  detail: string;
+  title?: string;
+  name: string;
+  url: string;
+  slug?: string;
+  disableRounded: boolean;
+  className: string;
+  key: number;
+}
+
+const {
+  logo,
+  tna,
+  tea,
+  detail,
+  title,
+  name,
+  url,
+  slug,
+  disableRounded,
+  className,
+} = Astro.props;
 
 const tnaRate = formatPercentage(tna);
 const teaRate = formatPercentage(tea);
-const logoImg = logo + '?tr=w-32,h-32,f_webp';
+const logoImg = `${logo}?tr=w-32,h-32,f_webp`;
+const cardUrl = slug ? `detalle/${slug}` : `${url}?ref=comparatasas.ar`;
 ---
 
 <a
@@ -18,7 +43,7 @@ const logoImg = logo + '?tr=w-32,h-32,f_webp';
       'rounded-lg': !disableRounded,
     },
   )}
-  href={`${url}?ref=comparatasas.ar`}
+  href={cardUrl}
 >
   <div class=''>
     <div class='flex flex-row items-center justify-between'>

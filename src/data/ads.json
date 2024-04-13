@@ -4,6 +4,21 @@
       "company": "letsbit",
       "url": "https://dub.sh/letsbit",
       "imageUrl": "https://ik.imagekit.io/ferminrp/Banner_480x101.png?updatedAt=1709662989288"
+    },
+    {
+      "company": "dasbanq",
+      "url": "https://bit.ly/3VNHVZK",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/Banners%202024%20April.png?updatedAt=1712251671139"
+    },
+    {
+      "company": "miraprecios",
+      "url": "https://dub.sh/miraprecios",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/mira_precios_small.png?updatedAt=1712606420425"
+    },
+    {
+      "company": "takenos",
+      "url": "https://app.takenos.com/referral?referral=3019da20-6746-4f43-81ba-a489cd833a0d",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/takenos_banner.png?updatedAt=1712608636012"
     }
   ],
   "large": [
@@ -11,6 +26,21 @@
       "company": "letsbit",
       "url": "https://dub.sh/letsbit",
       "imageUrl": "https://ik.imagekit.io/ferminrp/Banner_480x302.png?updatedAt=1709662989544"
+    },
+    {
+      "company": "dasbanq",
+      "url": "https://bit.ly/3VNHVZK",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/Banners%202024%20April%20(1).jpg?updatedAt=1712251671139"
+    },
+    {
+      "company": "dasbanq",
+      "url": "https://bit.ly/3VNHVZK",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/Banners%202024%20April.jpg?updatedAt=1712251671138"
+    },
+    {
+      "company": "miraprecios",
+      "url": "https://dub.sh/miraprecios",
+      "imageUrl": "https://ik.imagekit.io/ferminrp/miraprecios.png?updatedAt=1712606420425"
     }
   ]
 }

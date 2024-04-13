@@ -9,12 +9,35 @@ const { isFooterVisible } = Astro.props;
       id='containter'
       class='container mx-4 mx-auto my-6 flex max-w-sm flex-col gap-4 px-4 sm:max-w-sm md:max-w-md lg:max-w-lg'
     >
-      <p class='my-4 text-sm text-gray-600 dark:text-gray-400'>
+      <a
+        id='cafecito'
+        href='https://cafecito.app/ferminrp'
+        rel='noopener'
+        target='_blank'
+      >
+        <img
+          width='192'
+          height='40'
+          srcset='https://cdn.cafecito.app/imgs/buttons/button_3.png 1x, https://cdn.cafecito.app/imgs/buttons/button_3_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_3_3.75x.png 3.75x'
+          src='https://cdn.cafecito.app/imgs/buttons/button_3.png'
+          alt='Invitame un café en cafecito.app'
+        />
+      </a>
+      <p class='my-2 text-sm text-gray-600 dark:text-gray-400'>
         Comparatasas.ar® es un proyecto colaborativo que tiene como fin,
         reflejar las tasas disponibles en el mercado actual. Para mayor
         información, visitá la sección{' '}
         <a class='underline dark:text-gray-200' href='/legal' target='_blank'>
           Aviso Legal
+        </a>
+      </p>
+      <p class='my-2 text-sm text-gray-600 dark:text-gray-400'>
+        <a
+          class='underline dark:text-gray-200'
+          href='/publicitar'
+          target='_blank'
+        >
+          Publicitá en comparatasas
         </a>
       </p>
       <div class='flex items-center gap-4'>

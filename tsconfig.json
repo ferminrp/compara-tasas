@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "jsx": "react"
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "baseUrl": "."
   },
   "extends": "astro/tsconfigs/base"
 }

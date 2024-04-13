@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import CriptoUsd from '../components/Sections/CriptoUsd.astro';
-import Banner from '../components/banner.astro';
-import { type Exchange } from '../model/exchange';
 import { getReturns } from '../client/argentinaDatos';
 import NavBar from '../components/Menu/NavBar';
+import CriptoUsd from '../components/Sections/CriptoUsd.astro';
+import Banner from '../components/banner.astro';
+import Layout from '../layouts/Layout.astro';
+import type { Exchange } from '../model/exchange';
 
 const returns = await getReturns();
 
@@ -17,25 +17,18 @@ const exchanges = [
     name: 'Buenbit',
   },
   {
-    data: returns?.fiwind ?? [],
-    link: 'https://fiwind.io?ref=comparatasas.ar',
-    logo: 'https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696',
-    altLogo: 'fiwind logo',
-    name: 'Fiwind',
-  },
-  {
-    data: returns?.letsbit ?? [],
-    link: 'https://letsbit.io/?ref=comparatasas.ar',
-    logo: 'https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269',
-    altLogo: 'letsbit logo',
-    name: 'LetsBit',
-  },
-  {
     data: returns?.lemoncash ?? [],
     link: 'https://lemon.me/?ref=comparatasas.ar',
     logo: 'https://ik.imagekit.io/ferminrp/lemon.jpg?updatedAt=1708468450310',
     altLogo: 'lemoncash logo',
     name: 'Lemon',
+  },
+  {
+    data: returns?.letsbit ?? [],
+    link: 'https://letsbit.page.link/zyxz',
+    logo: 'https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269',
+    altLogo: 'letsbit logo',
+    name: 'LetsBit',
   },
   {
     data: returns?.belo ?? [],
@@ -44,6 +37,20 @@ const exchanges = [
     altLogo: 'belo logo',
     name: 'Belo',
   },
+  {
+    data: returns?.fiwind ?? [],
+    link: 'https://fiwind.io?ref=comparatasas.ar',
+    logo: 'https://ik.imagekit.io/ferminrp/gKj3U76V_400x400.jpg?updatedAt=1702030494696',
+    altLogo: 'fiwind logo',
+    name: 'Fiwind',
+  },
+  {
+    data: returns?.ripio ?? [],
+    link: 'https://join.ripio.com/ref/fermin_r_0?ref=comparatasas.ar',
+    logo: 'https://ik.imagekit.io/ferminrp/ripio.jpg?updatedAt=1709314985547',
+    altLogo: 'Ripio logo',
+    name: 'Ripio',
+  },
 ] as Exchange[];
 ---
 
@@ -51,7 +58,7 @@ const exchanges = [
   title='Compara Rendimientos Crypto'
   metaDescription='Compara los rendimientos en crypto que ofrecen los principales exchanges del pais.'
   metaKeywords='rendimientos crypto, rendimiento usdt, exchanges argentina,stablecoin argentina, dolares crypto'
-  metaImage='/images/crypto.png'
+  metaImage='https://comparatasas.ar/images/crypto.png'
 >
   <NavBar pathname='/crypto' client:load />
   <div
@@ -68,19 +75,5 @@ const exchanges = [
       exchanges={exchanges}
       subtitle={'Compará en donde comprar crypto al mejor precio en'}
     />
-
-    <a
-      id='cafecito'
-      href='https://cafecito.app/ferminrp'
-      rel='noopener'
-      target='_blank'
-      ><img
-        width='192'
-        height='40'
-        srcset='https://cdn.cafecito.app/imgs/buttons/button_3.png 1x, https://cdn.cafecito.app/imgs/buttons/button_3_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_3_3.75x.png 3.75x'
-        src='https://cdn.cafecito.app/imgs/buttons/button_3.png'
-        alt='Invitame un café en cafecito.app'
-      /></a
-    >
   </div>
 </Layout>

@@ -25,7 +25,12 @@ export const menuItemsData: MenuItemType[] = [
   {
     name: 'Cuentas USA',
     url: '/cuentas-usa',
-    icon: '🇺🇸',
+    icon: '🗽',
+  },
+  {
+    name: 'Cobros',
+    url: '/cobros',
+    icon: '🛒',
   },
   {
     name: 'AVISO LEGAL',

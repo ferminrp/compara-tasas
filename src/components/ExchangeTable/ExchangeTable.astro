@@ -1,6 +1,6 @@
 ---
-import Row from './Row.astro';
 import { MAPPING_RETURNS } from '../../utils/returnsMapping';
+import Row from './Row.astro';
 
 const { exchange } = Astro.props;
 
@@ -13,7 +13,7 @@ const sortedAndFilteredData = exchange.data
   class='flex flex-col rounded-lg border-gray-300 bg-white px-4 py-2 shadow-sm dark:bg-gray-900'
 >
   <a
-    class='border-b-1 border-b border-gray-100 py-4 dark:border-gray-600'
+    class='border-b-1 border-b border-gray-600 py-4 dark:border-gray-700'
     href={exchange.link}
   >
     <div class=''>

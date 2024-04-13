@@ -18,7 +18,7 @@ export const EXCHANGES = {
     name: 'Fiwind',
   },
   letsbit: {
-    link: 'https://letsbit.io/?ref=comparatasas.ar',
+    link: 'https://dub.sh/letsbit',
     logo: 'https://ik.imagekit.io/ferminrp/letsbit.jpg?updatedAt=1708124949269',
     altLogo: 'letsbit logo',
     name: 'LetsBit',
@@ -28,5 +28,11 @@ export const EXCHANGES = {
     logo: 'https://ik.imagekit.io/ferminrp/belo.jpg?updatedAt=1708468600237',
     altLogo: 'belo logo',
     name: 'Belo',
+  },
+  ripio: {
+    link: 'https://join.ripio.com/ref/fermin_r_0?ref=comparatasas.ar',
+    logo: 'https://ik.imagekit.io/ferminrp/ripio.jpg?updatedAt=1709314985547',
+    altLogo: 'ripio logo',
+    name: 'Ripio',
   },
 };

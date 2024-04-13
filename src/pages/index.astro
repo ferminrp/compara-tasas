@@ -1,44 +1,22 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Dolares from '../components/Dolares.astro';
-import { EXCHANGES } from '../data/exchanges';
-import Best from '../components/BestInvestments/Best.astro';
-import { type Return } from '../model/exchange';
-import { type Investment } from '../model/business';
 import { getPFInvestments } from '../Services/argentinaDatos';
-import { getReturns } from '../client/argentinaDatos';
 import { getFCIInvestments } from '../Services/argentinaDatosFCI';
-import Banner from '../components/banner.astro';
-import NavBar from '../components/Menu/NavBar';
+import { getReturns } from '../client/argentinaDatos';
+import Best from '../components/BestInvestments/Best.astro';
 import Card from '../components/Card/Card.astro';
+import Dolares from '../components/Dolares.astro';
 import Row from '../components/ExchangeTable/Row.astro';
+import NavBar from '../components/Menu/NavBar';
+import '../components/SimularInvestment/globals.css';
+import Banner from '../components/banner.astro';
+import { EXCHANGES } from '../data/exchanges';
+import Layout from '../layouts/Layout.astro';
+import type { FullBankData, FullInvestmentData } from '../model/business';
+import type { Return } from '../model/exchange';
+import { TYPE_INVESTMENT_PESOS_MAPPING } from '../utils/returnsMapping';
 
-// Define your API endpoint and API keys
-const apiEndpoint =
-  'https://thklpacfwtrtuynqlnah.supabase.co/rest/v1/tna_view?display=eq.TRUE&select=*';
-const apiKey = import.meta.env.PUBLIC_SUPABASE_KEY;
-
-// Configure your fetch request with headers
-
-const response = await fetch(apiEndpoint, {
-  method: 'GET',
-  headers: {
-    Authorization: `Bearer ${apiKey}`,
-    apikey: apiKey,
-  },
-});
-
-const dataSupabase = await response.json();
 const FCIData = await getFCIInvestments();
 const dataReturns = await getReturns();
-
-// Solo usamos la info de criptopesos y buendolar de Supabase
-const filteredSBData = dataSupabase.filter(
-  (d: Investment) =>
-    d.type === 'criptopesos' ||
-    d.type === 'buendolar' ||
-    d.name === 'Naranja X',
-);
 
 const TOP_INVESTMENT_QUANTITY = 3;
 
@@ -46,32 +24,51 @@ const TOP_INVESTMENT_QUANTITY = 3;
 const PFData = await getPFInvestments();
 
 // Concatenar arrays
-const allData = Array.prototype.concat(filteredSBData, ...PFData, ...FCIData);
+const allFciData = Array.prototype.concat(...FCIData);
 
 const pesos = ['cuenta_remunerada', 'tradicional', 'pf'];
+const pesosLinks = {
+  cuenta_remunerada: TYPE_INVESTMENT_PESOS_MAPPING.cuenta_remunerada.sectionId,
+  tradicional: TYPE_INVESTMENT_PESOS_MAPPING.tradicional.sectionId,
+  pf: TYPE_INVESTMENT_PESOS_MAPPING.pf.sectionId,
+  otros: TYPE_INVESTMENT_PESOS_MAPPING.otros.sectionId,
+};
 
 const isPesoCoin = (value: Return) =>
   value.moneda === 'ARS' || value.moneda === 'NUARS' || value.moneda === 'NARS';
 
-const sortedPesosData: Investment[] = allData
+const sortedPfData: FullBankData[] = PFData.filter((item) =>
+  pesos.includes(item.type),
+).sort((a, b) => {
+  if (a.tea < b.tea) {
+    return 1; // for descending order, return 1 if the first item is less than the second
+  }
+  if (a.tea > b.tea) {
+    return -1; // return -1 if the first item is greater than the second
+  }
+  return 0; // return 0 if they're equal
+});
+
+const sortedFciData: FullInvestmentData[] = allFciData
   .filter((item) => pesos.includes(item.type))
   .sort((a, b) => {
     if (a.tea < b.tea) {
       return 1; // for descending order, return 1 if the first item is less than the second
-    } else if (a.tea > b.tea) {
-      return -1; // return -1 if the first item is greater than the second
-    } else {
-      return 0; // return 0 if they're equal
     }
+    if (a.tea > b.tea) {
+      return -1; // return -1 if the first item is greater than the second
+    }
+    return 0; // return 0 if they're equal
   });
 
-let sortedCriptoData = [];
-Object.entries(dataReturns).forEach(([exchange, values]) => {
-  values.forEach((value) => {
-    if (value.apy <= 0 || isPesoCoin(value)) return null;
+const sortedCriptoData = [];
+for (const [exchange, values] of Object.entries(dataReturns)) {
+  for (const value of values) {
+    if (value.apy <= 0 || isPesoCoin(value)) continue;
+
     sortedCriptoData.push({ exchange, ...value });
-  });
-});
+  }
+}
 ---
 
 <Layout
@@ -92,10 +89,27 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
     </h1>
     <Dolares />
     <Banner size='small' />
-    <Best link={'/pesos'} sectionName='Pesos'>
+    <Best link={`/pesos#${pesosLinks.cuenta_remunerada}`} sectionName='FCI'>
       <div class='flex flex-col'>
         {
-          sortedPesosData
+          sortedFciData
+            .slice(0, 3)
+            .map((item, index) => (
+              <Card
+                {...item}
+                key={index}
+                disableRounded
+                className={`border-b-1 border-b border-gray-100  dark:border-gray-600 ${index === TOP_INVESTMENT_QUANTITY - 1 && 'rounded-b-lg border-none'}`}
+              />
+            ))
+        }
+      </div>
+    </Best>
+    <Banner size='small' />
+    <Best link={`/pesos#${pesosLinks.pf}`} sectionName='Plazos Fijos'>
+      <div class='flex flex-col'>
+        {
+          sortedPfData
             .slice(0, 3)
             .map((item, index) => (
               <Card
@@ -112,6 +126,7 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
       <div class='flex flex-col'>
         {
           sortedCriptoData
+            .filter((item) => item.exchange !== '') // Usar esto para blacklistear exchanges
             .sort((a, b) => b.apy - a.apy)
             .slice(0, 3)
             .map((item, index) => {
@@ -122,7 +137,7 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
                   logo={EXCHANGES[item.exchange].logo}
                   apy={item.apy}
                   moneda={item.moneda}
-                  className={`px-4 ${isLastItem && 'rounded-b-lg'} `}
+                  className={`  bg-white px-4 dark:border-gray-600  dark:bg-gray-900 ${isLastItem ? 'rounded-b-lg' : 'border-b-1 border-b border-gray-100'} `}
                   isBestSection
                   isLastItem={isLastItem}
                   exchange={item.exchange}
@@ -132,18 +147,7 @@ Object.entries(dataReturns).forEach(([exchange, values]) => {
         }
       </div>
     </Best>
-    <a
-      id='cafecito'
-      href='https://cafecito.app/ferminrp'
-      rel='noopener'
-      target='_blank'
-      ><img
-        width='192'
-        height='40'
-        srcset='https://cdn.cafecito.app/imgs/buttons/button_3.png 1x, https://cdn.cafecito.app/imgs/buttons/button_3_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_3_3.75x.png 3.75x'
-        src='https://cdn.cafecito.app/imgs/buttons/button_3.png'
-        alt='Invitame un café en cafecito.app'
-      /></a
-    >
+
+    <Banner size='large' />
   </div>
 </Layout>

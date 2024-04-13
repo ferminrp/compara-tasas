@@ -50,8 +50,20 @@ export const MAPPING_RETURNS = {
 };
 
 export const TYPE_INVESTMENT_PESOS_MAPPING = {
-  pf: 'Plazos Fijos',
-  tradicional: 'Tradicionales',
-  cuenta_remunerada: 'Cuenta Remuneradas',
-  otros: 'Otros',
+  pf: {
+    title: 'Plazos Fijos',
+    sectionId: 'pf',
+  },
+  tradicional: {
+    title: 'Tradicionales',
+    sectionId: 'tradicionales',
+  },
+  cuenta_remunerada: {
+    title: 'Cuenta Remuneradas',
+    sectionId: 'remuneradas',
+  },
+  otros: {
+    title: 'Otros',
+    sectionId: 'otros',
+  },
 };

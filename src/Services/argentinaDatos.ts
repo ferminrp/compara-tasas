@@ -1,5 +1,13 @@
 import banks from '../data/banks.json';
-import type { Investment } from '../model/business';
+import type {
+  BankJsonData,
+  FullBankData,
+  PlazoFijoResponse,
+} from '../model/business';
+
+interface mergedBankData
+  extends Omit<PlazoFijoResponse, 'entidad' | 'logo'>,
+    BankJsonData {}
 
 const apiEndpoint =
   'https://api.argentinadatos.com/v1/finanzas/tasas/plazoFijo';
@@ -15,7 +23,7 @@ const apiEndpoint =
 ]
 */
 
-const getPFData = async () => {
+const getPFData = async (): Promise<PlazoFijoResponse[]> => {
   const response = await fetch(apiEndpoint);
   const data = await response.json();
 
@@ -27,48 +35,48 @@ const getPFData = async () => {
   return filteredList;
 };
 
-const replacePFData = (rawData) => {
-  const newData = [];
+const replacePFData = (rawData: PlazoFijoResponse[]): mergedBankData[] => {
+  const newData: mergedBankData[] = [];
 
   for (const fund of rawData) {
     const normalizedEntity = fund.entidad.trim().toUpperCase();
-    const matchBank = banks.find((b) => b.entidad === normalizedEntity);
+    const matchBank = banks.find(
+      (b) => b.entidad === normalizedEntity,
+    ) as BankJsonData;
+    // quitar propiedades repetidas (entidad, logo)
+    // porque ya existen en el json
+    const { entidad, logo, ...clearedFund } = fund;
     if (matchBank) {
-      fund.nombre = matchBank.nombre;
-      fund.logo = matchBank.logo;
-      fund.url = matchBank.url;
-      newData.push(fund);
+      newData.push({ ...clearedFund, ...matchBank });
     }
   }
 
   return newData;
 };
 
-const composePFData = (data): Investment => {
+const composePFData = (data): FullBankData => {
   const tem = (1 + data.tnaClientes / 12) ** 1 - 1;
   const dailyRate = ((1 + tem) ** (1 / 30) - 1) * 100;
   const tea = ((1 + data.tnaClientes / 12) ** 12 - 1) * 100;
   const tna = data.tnaClientes * 100;
-  const pfInvestment: Investment = {
+  const pfInvestment: FullBankData = {
     name: data.nombre as string,
     tasa_diaria: dailyRate,
-    logo: data.logo as string,
     display: true,
     full_liquidity: false,
-    url: data.url as string,
-    type: 'pf',
     detail: 'Plazo fijo a 30 días',
     tna: tna,
     tea: tea,
+    ...data,
   };
 
   return pfInvestment;
 };
 
-export const getPFInvestments = async (): Promise<Investment[]> => {
+export const getPFInvestments = async (): Promise<FullBankData[]> => {
   const rawData = await getPFData();
   const data = replacePFData(rawData);
-  const InvestmentList: Investment[] = [];
+  const InvestmentList: FullBankData[] = [];
 
   for (const fund of data) {
     InvestmentList.push(composePFData(fund));
