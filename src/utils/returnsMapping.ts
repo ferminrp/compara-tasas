@@ -59,7 +59,7 @@ export const TYPE_INVESTMENT_PESOS_MAPPING = {
     sectionId: 'tradicionales',
   },
   cuenta_remunerada: {
-    title: 'Cuenta Remuneradas',
+    title: 'Cuentas Remuneradas',
     sectionId: 'remuneradas',
   },
   otros: {
