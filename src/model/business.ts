@@ -3,7 +3,8 @@ export type Currency = 'Pesos' | 'Dólares';
 export type IncomeType = 'Fija' | 'Variable' | 'Mixta';
 
 // Este tipo de dato lo usamos para los FCI
-export type FullInvestmentData = InvestmentJsonData & Omit<Investment, 'url'>;
+export type FullInvestmentData = Omit<InvestmentJsonData, 'displayName'> &
+  Omit<Investment, 'url'>;
 // Este tipo de dato lo usamos para los plazos fijos
 export type FullBankData = Omit<BankJsonData, 'nombre'> &
   Omit<Investment, 'url'>;
@@ -40,6 +41,14 @@ export interface FCIResponse {
   horizonte: string;
 }
 
+export interface OtherFCIResponse {
+  fondo: string;
+  fecha: string;
+  tea: number;
+  tna: number;
+  tope: number;
+}
+
 // Tipos devueltos por la API ArgentinaDatos para los Plazo Fijo
 export interface PlazoFijoResponse {
   entidad: string;
@@ -63,11 +72,15 @@ export interface InvestmentJsonData {
   plazoMinimo: string;
   slug: string;
   description: string;
+  displayName: string;
 }
 
 // Define las propiedades y tipos que hay en la lista JSON de los bancos
 export interface BankJsonData
-  extends Omit<InvestmentJsonData, 'nombreOficial' | 'nombreSimplificado'> {
+  extends Omit<
+    InvestmentJsonData,
+    'nombreOficial' | 'nombreSimplificado' | 'displayName'
+  > {
   entidad: string;
   nombre: string;
 }
