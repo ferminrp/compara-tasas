@@ -270,5 +270,21 @@
     "slug": "fondo-comun-de-inversion-macro",
     "description": "Fondo de inversión conservador, de horizonte a corto plazo. Su cartera contiene principalmente plazos fijos, cuentas a la vista, e instrumentos de corto plazo.",
     "displayName": "Macro"
+  },
+  "NARANJA X": {
+    "nombreOficial": "Naranja X",
+    "nombreSimplificado": "Promocion hasta $300k",
+    "logo": "https://ik.imagekit.io/ferminrp/naranja.jpeg?updatedAt=1707137279009",
+    "url": "https://www.naranjax.com/cuenta-remunerada",
+    "type": "cuenta_remunerada",
+    "renta": "Fija",
+    "horario": "24/7",
+    "sociedad": "Naranja X S.A.",
+    "moneda": "Pesos",
+    "montoMinimo": "$1,000",
+    "plazoMinimo": "1 día",
+    "slug": "cuenta-remunerada-naranja-x",
+    "description": "La cuenta remunerada de Naranja X ofrece un tasa fija y segura por el saldo que tengas en cuenta.",
+    "displayName": "Naranja X"
   }
 }
