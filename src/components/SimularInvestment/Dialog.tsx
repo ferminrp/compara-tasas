@@ -18,7 +18,7 @@ export default function SimularInversion({ data, multiplo30 }) {
           </Button>
         </DialogTrigger>
         <DialogContent className='sm:max-w-[425px]'>
-          <div className='flex justify-between'></div>
+          <div className='flex justify-between' />
           <SimulacionOnboarding data={data} multiplo30={multiplo30} />
         </DialogContent>
       </Dialog>
@@ -32,8 +32,7 @@ export default function SimularInversion({ data, multiplo30 }) {
           Simulá tu inversión
         </Button>
       </DrawerTrigger>
-      <DrawerContent>
-        {multiplo30 && <p>This is shown if multiplo30 is true.</p>}
+      <DrawerContent className='h-[560px]'>
         <SimulacionOnboarding data={data} multiplo30={multiplo30} />
       </DrawerContent>
     </Drawer>
