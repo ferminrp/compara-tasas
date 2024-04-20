@@ -1,7 +1,6 @@
 import React from 'react';
 import type { FormattedYield } from '../../../client/yields';
 import { BLOCKCHAINS } from '../../../data/yieldsData';
-// import { YIELDS_DATA } from '../../../data/yieldsData';
 import BlockchainTable from './BlockchainTable';
 
 interface Props {

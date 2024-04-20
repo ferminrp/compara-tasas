@@ -17,7 +17,6 @@ const Content = ({
   yields: FormattedYield;
   options: BestCoin[];
 }) => {
-  //   const [filteredYields, setFilteredYields] = useState<FormattedYield>(yields);
   const [filters, setFilters] = useState<Filters>({ coin: options[0] });
   const [openDialog, setOpenDialog] = useState<boolean>(false);
 
