@@ -78,3 +78,26 @@ input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+.pocketShadow {
+  background:
+    linear-gradient(rgba(17, 24, 39, 1) 1%, rgba(255, 255, 255, 0)),
+    linear-gradient(rgba(255, 255, 255, 0), rgba(17, 24, 39, 1) 99%) 0 100%,
+    radial-gradient(
+      farthest-side at 50% 0,
+      rgba(99, 102, 241, 1),
+      rgba(99, 102, 241, 0)
+    ),
+    radial-gradient(
+        farthest-side at 50% 100%,
+        rgba(99, 102, 241, 1),
+        rgba(99, 102, 241, 0)
+      )
+      0 100%;
+  background-repeat: no-repeat;
+  background-size:
+    100% 40px,
+    100% 40px,
+    100% 10px,
+    100% 10px;
+  background-attachment: local, local, scroll, scroll;
+}

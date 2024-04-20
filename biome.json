@@ -9,6 +9,9 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "a11y": {
+        "useKeyWithClickEvents": "off"
+      },
       "recommended": true
     }
   },

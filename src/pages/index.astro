@@ -2,6 +2,7 @@
 import { getPFInvestments } from '../Services/argentinaDatos';
 import { getFCIInvestments } from '../Services/argentinaDatosFCI';
 import { getReturns } from '../client/argentinaDatos';
+import { getBestYields } from '../client/yields';
 import Best from '../components/BestInvestments/Best.astro';
 import Card from '../components/Card/Card.astro';
 import Dolares from '../components/Dolares.astro';
@@ -19,6 +20,8 @@ const FCIData = await getFCIInvestments();
 const dataReturns = await getReturns();
 
 const TOP_INVESTMENT_QUANTITY = 3;
+
+const defiYields = await getBestYields();
 
 // Plazos fijos de ArgentinaDatos
 const PFData = await getPFInvestments();
@@ -122,7 +125,7 @@ for (const [exchange, values] of Object.entries(dataReturns)) {
         }
       </div>
     </Best>
-    <Best link={'/crypto'} sectionName='Cripto'>
+    <Best link={'/crypto-cefi'} sectionName='Cripto CeFi'>
       <div class='flex flex-col'>
         {
           sortedCriptoData
@@ -144,6 +147,27 @@ for (const [exchange, values] of Object.entries(dataReturns)) {
                 />
               );
             })
+        }
+      </div>
+    </Best>
+    <Best link={'/crypto-defi'} sectionName='Cripto DeFi'>
+      <div class='flex flex-col'>
+        {
+          defiYields.map((item, index) => {
+            const isLastItem = index === TOP_INVESTMENT_QUANTITY - 1;
+            return (
+              <Row
+                key={index}
+                logo={EXCHANGES['buenbit'].logo}
+                apy={item.apy}
+                moneda={item.coin}
+                className={`  bg-white px-4 dark:border-gray-600  dark:bg-gray-900 ${isLastItem ? 'rounded-b-lg' : 'border-b-1 border-b border-gray-100'} `}
+                isBestSection
+                isLastItem={isLastItem}
+                exchange={item.project}
+              />
+            );
+          })
         }
       </div>
     </Best>
