@@ -1,4 +1,4 @@
-import { YIELDS_DATA } from '../data/yieldsData';
+import { PROTOCOLS } from '../data/yieldsData';
 import type { BestCoin } from '../model/business';
 
 type YieldPath = 'yields' | 'best-yields' | 'best-yields-coin';
@@ -24,7 +24,7 @@ export const getBestYields = async (): Promise<Yield[]> => {
   const response = await fetch(generateUrl('best-yields'));
   const yields = await response.json();
 
-  return yields.map((x) => ({ ...x, ...YIELDS_DATA[x.project] }));
+  return yields.map((x) => ({ ...x, ...PROTOCOLS[x.project] }));
 };
 
 export const getYields = async (): Promise<FormattedYield> => {
