@@ -18,9 +18,14 @@ export const menuItemsData: MenuItemType[] = [
       icon: '💵'
     }, */
   {
-    name: 'CRYPTO',
-    url: '/crypto',
+    name: 'CRYPTO CEFI',
+    url: '/crypto-cefi',
     icon: '⚡',
+  },
+  {
+    name: 'CRYPTO DEFI',
+    url: '/crypto-defi',
+    icon: '💰',
   },
   {
     name: 'Cuentas USA',

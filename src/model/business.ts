@@ -92,3 +92,8 @@ export interface FCIData {
   penultimoValorvcp: number;
   dias: number;
 }
+
+export interface BestCoin {
+  coin: string;
+  apy: number;
+}
