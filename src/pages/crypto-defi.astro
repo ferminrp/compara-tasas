@@ -1,13 +1,14 @@
 ---
 import { getOptions, getYields } from '../client/yields';
 import NavBar from '../components/Menu/NavBar';
-import CriptoUsd from '../components/Sections/CriptoUsd.astro';
 import Content from '../components/Sections/Defi/Content';
 import Layout from '../layouts/Layout.astro';
+import { MAPPING_RETURNS } from '../utils/returnsMapping';
 
 const yields = await getYields();
 
 const options = await getOptions();
+const filteredOptions = options.filter((x) => !!MAPPING_RETURNS?.[x.coin]);
 ---
 
 <Layout
@@ -26,6 +27,6 @@ const options = await getOptions();
         >tus cryptos en DeFi</span
       >!
     </h1>
-    <Content client:load yields={yields} options={options} />
+    <Content client:load yields={yields} options={filteredOptions} />
   </div>
 </Layout>

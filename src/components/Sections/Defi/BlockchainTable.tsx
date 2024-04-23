@@ -1,6 +1,6 @@
 import React from 'react';
-import type { FormattedYield, Yield } from '../../../client/yields';
-import { BLOCKCHAINS } from '../../../data/yieldsData';
+import type { Yield } from '../../../client/yields';
+import { BLOCKCHAINS, PROTOCOLS } from '../../../data/yieldsData';
 import DefiRow from './DefiRow';
 
 interface Props {
@@ -37,9 +37,18 @@ const BlockchainTable = ({ chain, yields }: Props) => {
           </a> */}
         </div>
       </div>
-      {sortedYields.map((x, i) => (
-        <DefiRow {...x} isLastItem={i === sortedYields.length - 1} key={x.id} />
-      ))}
+      {sortedYields.map((x, i) => {
+        if (!PROTOCOLS?.[x.project]) {
+          return null;
+        }
+        return (
+          <DefiRow
+            {...x}
+            isLastItem={i === sortedYields.length - 1}
+            key={x.id}
+          />
+        );
+      })}
     </div>
   );
 };
