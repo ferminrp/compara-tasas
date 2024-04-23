@@ -1,6 +1,6 @@
 import React from 'react';
 import type { FormattedYield } from '../../../client/yields';
-import { BLOCKCHAINS } from '../../../data/yieldsData';
+import { BLOCKCHAINS, PROTOCOLS } from '../../../data/yieldsData';
 import BlockchainTable from './BlockchainTable';
 
 interface Props {
@@ -28,7 +28,8 @@ const Yields = ({ title, subtitle, yields }: Props) => {
       </p>
       {Object.entries(yields).map(([chain, yields]) => {
         const chainLogo = BLOCKCHAINS[chain]?.logo;
-        if (!chainLogo || !yields.length) return null;
+        const hasProtocolData = yields.some((x) => PROTOCOLS?.[x.project]);
+        if (!chainLogo || !yields.length || !hasProtocolData) return null;
         return <BlockchainTable chain={chain} yields={yields} key={chain} />;
       })}
     </div>
