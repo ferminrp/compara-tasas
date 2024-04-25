@@ -158,7 +158,7 @@ for (const [exchange, values] of Object.entries(dataReturns)) {
             return (
               <Row
                 key={index}
-                logo={EXCHANGES['buenbit'].logo}
+                logo={item.logo}
                 apy={item.apy}
                 moneda={item.coin}
                 className={`  bg-white px-4 dark:border-gray-600  dark:bg-gray-900 ${isLastItem ? 'rounded-b-lg' : 'border-b-1 border-b border-gray-100'} `}
