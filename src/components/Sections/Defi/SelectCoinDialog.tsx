@@ -61,7 +61,7 @@ const ContentDialog = ({
           pocketShadowLight: !isDarkMode,
         })}
       >
-        {[...options]
+        {options
           .sort((a, b) => b.apy - a.apy)
           .map((item) => {
             return (
