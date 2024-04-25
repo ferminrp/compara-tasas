@@ -2,6 +2,7 @@ import React, { type Dispatch, type SetStateAction } from 'react';
 import { Dialog, DialogContent } from '../../SimularInvestment/ui/dialog';
 
 import ChartLineUp from '../../../assets/ChartLineUp';
+import { cn } from '../../../lib/utils';
 import type { BestCoin } from '../../../model/business';
 import { formatPercentage } from '../../../utils/formats';
 import { MAPPING_RETURNS } from '../../../utils/returnsMapping';
@@ -47,6 +48,7 @@ const ContentDialog = ({
   options: BestCoin[];
   onClick: (x: BestCoin) => void;
 }) => {
+  const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   return (
     <div>
       <h4 className='py-3 text-2xl text-gray-800 dark:text-gray-300'>
@@ -54,9 +56,12 @@ const ContentDialog = ({
       </h4>
       <ul
         style={{ scrollbarWidth: 'none' }}
-        className='pocketShadow h-[440px] overflow-y-scroll pb-4'
+        className={cn(' h-[440px] overflow-y-scroll pb-4', {
+          pocketShadowDark: isDarkMode,
+          pocketShadowLight: !isDarkMode,
+        })}
       >
-        {options
+        {[...options, ...options, ...options, ...options]
           .sort((a, b) => b.apy - a.apy)
           .map((item) => {
             return (
