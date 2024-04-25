@@ -20,7 +20,12 @@ export interface FormattedYield {
 const generateUrl = (path: YieldPath) =>
   `https://crypto-defi-yields.adriel-ignacio.workers.dev/api/${path}`;
 
-export const getBestYields = async (): Promise<Yield[]> => {
+interface EnrichedYield extends Yield {
+  altLogo: string;
+  logo: string;
+}
+
+export const getBestYields = async (): Promise<EnrichedYield[]> => {
   const response = await fetch(generateUrl('best-yields'));
   const yields = await response.json();
 
