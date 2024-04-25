@@ -1,3 +1,5 @@
+import Logo from '../assets/Logo';
+
 export const MAPPING_RETURNS = {
   NCOP: {
     logo: 'https://ik.imagekit.io/ferminrp/colombia.png?updatedAt=1708978808950',
@@ -14,13 +16,37 @@ export const MAPPING_RETURNS = {
   BTC: {
     logo: 'https://ik.imagekit.io/ferminrp/Bitcoin.svg.png?updatedAt=1703766672941',
   },
+  WBTC: {
+    logo: 'https://ik.imagekit.io/ferminrp/Bitcoin.svg.png?updatedAt=1703766672941',
+  },
   ETH: {
+    logo: 'https://ik.imagekit.io/ferminrp/eth-logo?updatedAt=1708168133038',
+  },
+  WETH: {
+    logo: 'https://ik.imagekit.io/ferminrp/eth-logo?updatedAt=1708168133038',
+  },
+  WSTETH: {
+    logo: 'https://ik.imagekit.io/ferminrp/eth-logo?updatedAt=1708168133038',
+  },
+  STETH: {
+    logo: 'https://ik.imagekit.io/ferminrp/eth-logo?updatedAt=1708168133038',
+  },
+  CBETH: {
+    logo: 'https://ik.imagekit.io/ferminrp/eth-logo?updatedAt=1708168133038',
+  },
+  RETH: {
     logo: 'https://ik.imagekit.io/ferminrp/eth-logo?updatedAt=1708168133038',
   },
   DOT: {
     logo: 'https://ik.imagekit.io/ferminrp/dot.png?updatedAt=1708168304391',
   },
   MATIC: {
+    logo: 'https://ik.imagekit.io/ferminrp/matic.webp?updatedAt=1708167991700',
+  },
+  STMATIC: {
+    logo: 'https://ik.imagekit.io/ferminrp/matic.webp?updatedAt=1708167991700',
+  },
+  WMATIC: {
     logo: 'https://ik.imagekit.io/ferminrp/matic.webp?updatedAt=1708167991700',
   },
   BNB: {
@@ -38,6 +64,12 @@ export const MAPPING_RETURNS = {
   DAI: {
     logo: 'https://ik.imagekit.io/ferminrp/dai.png?updatedAt=1706873664303',
   },
+  SDAI: {
+    logo: 'https://ik.imagekit.io/ferminrp/dai.png?updatedAt=1706873664303',
+  },
+  WXDAI: {
+    logo: 'https://ik.imagekit.io/ferminrp/dai.png?updatedAt=1706873664303',
+  },
   USDP: {
     logo: 'https://ik.imagekit.io/ferminrp/usdp.png?updatedAt=1708125100866',
   },
@@ -46,6 +78,9 @@ export const MAPPING_RETURNS = {
   },
   USDC: {
     logo: 'https://ik.imagekit.io/ferminrp/USDC%20Logo.png?updatedAt=1706873507983',
+  },
+  OP: {
+    logo: 'https://ik.imagekit.io/ferminrp/optimism-ethereum-op-logo.png?updatedAt=1703511056838',
   },
 };
 
