@@ -82,6 +82,9 @@ export const MAPPING_RETURNS = {
   OP: {
     logo: 'https://ik.imagekit.io/ferminrp/optimism-ethereum-op-logo.png?updatedAt=1703511056838',
   },
+  SUSD: {
+    logo: 'https://ik.imagekit.io/ferminrp/susd.png?updatedAt=1714304162404',
+  },
 };
 
 export const TYPE_INVESTMENT_PESOS_MAPPING = {
