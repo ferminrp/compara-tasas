@@ -40,7 +40,7 @@
     "vaul": "^0.9.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.6.3",
+    "@biomejs/biome": "1.8.3",
     "@typescript-eslint/parser": "7.5.0",
     "eslint": "8.57.0",
     "eslint-plugin-astro": "0.33.1",
