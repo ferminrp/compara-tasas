@@ -286,5 +286,21 @@
     "slug": "cuenta-remunerada-naranja-x",
     "description": "La cuenta remunerada de Naranja X ofrece un tasa fija y segura por el saldo que tengas en cuenta.",
     "displayName": "Naranja X"
+  },
+  "Caja de ahorro Uala - Uilo": {
+    "nombreOficial": "Caja de ahorro Uala - Uilo",
+    "nombreSimplificado": "Promocion hasta $500k",
+    "logo": "https://ik.imagekit.io/vlbyqqro1/uala.jpg",
+    "url": "https://www.uala.com.ar/caja-de-ahorro-uilo",
+    "type": "cuenta_remunerada",
+    "renta": "Fija",
+    "horario": "24/7",
+    "sociedad": "Alau Tecnología S.A.U.",
+    "moneda": "Pesos",
+    "montoMinimo": "$10,000",
+    "plazoMinimo": "1 día",
+    "slug": "cuenta-remunerada-uala-uilo",
+    "description": "Uala te permite abrir una caja de ahorro en Uilo (Wilobank S.A.U.) que ofrece un tasa fija por el saldo que tengas en cuenta.",
+    "displayName": "Uala"
   }
 }
