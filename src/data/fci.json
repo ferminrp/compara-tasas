@@ -286,5 +286,21 @@
     "slug": "cuenta-remunerada-naranja-x",
     "description": "La cuenta remunerada de Naranja X ofrece un tasa fija y segura por el saldo que tengas en cuenta.",
     "displayName": "Naranja X"
+  },
+  "Lemon": {
+    "nombreOficial": "Fima Premium - Clase P",
+    "nombreSimplificado": "Fima Premium (P)",
+    "logo": "https://ik.imagekit.io/ferminrp/lemon.jpg?updatedAt=1708468450310",
+    "url": "https://lemon.me/en/?utm_source=comparatasas",
+    "type": "cuenta_remunerada",
+    "renta": "Fija",
+    "horario": "24/7",
+    "sociedad": "Banco de Galicia y Buenos Aires S.A.",
+    "moneda": "Pesos",
+    "montoMinimo": "$1,000",
+    "plazoMinimo": "1 día",
+    "slug": "cuenta-remunerada-lemon",
+    "description": "La cuenta remunerada de Lemon ofrece un tasa fija y segura por el saldo que tengas en cuenta.",
+    "displayName": "Lemon Cash"
   }
 }
