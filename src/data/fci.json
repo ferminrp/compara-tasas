@@ -302,5 +302,21 @@
     "slug": "cuenta-remunerada-lemon",
     "description": "Fondo de inversión Money Market con una cartera que incluye plazos fijos, cauciones bursátiles, y cuentas remuneradas. La Sociedad Gerente es Galicia Asset Management S.A.U., administradora de los Fondos Fima. Los activos son custodiados por la Sociedad Depositaria, Banco de Galicia y Buenos Aires S.A.U. La TNA es estimada y no está garantizada, ya que se basa en rendimientos pasados y la rentabilidad puede variar según los resultados. Este rendimiento se actualiza diariamente.",
     "displayName": "Lemon Cash"
+  },
+  "SBS Ahorro Pesos - Clase A": {
+    "nombreOficial": "SBS Ahorro Pesos - Clase A",
+    "nombreSimplificado": "SBS Ahorro Pesos (A)",
+    "logo": "https://ik.imagekit.io/ferminrp/quicktrade.png?updatedAt=1724866116502",
+    "url": "https://quicktrade.com.ar/",
+    "type": "tradicional",
+    "renta": "Fija",
+    "horario": "24/7",
+    "sociedad": "SBS Asset Management",
+    "moneda": "Pesos",
+    "montoMinimo": "$100",
+    "plazoMinimo": "1 día",
+    "slug": "fondo-comun-de-inversion-sbs-ahorro-pesos",
+    "description": "Fondo de inversión conservador, de horizonte a corto plazo. Su cartera contiene principalmente plazos fijos, cuentas a la vista, e instrumentos de corto plazo.",
+    "displayName": "Quicktrade"
   }
 }
