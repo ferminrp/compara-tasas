@@ -287,6 +287,22 @@
     "description": "La cuenta remunerada de Naranja X ofrece un tasa fija y segura por el saldo que tengas en cuenta.",
     "displayName": "Naranja X"
   },
+  "UALA": {
+    "nombreOficial": "Uala",
+    "nombreSimplificado": "Promocion hasta $500k",
+    "logo": "https://ik.imagekit.io/ferminrp/uala.jpeg?updatedAt=1705751593746",
+    "url": "https://www.uilo.com.ar/",
+    "type": "cuenta_remunerada",
+    "renta": "Fija",
+    "horario": "24/7",
+    "sociedad": "Wilobank S.A.U. ",
+    "moneda": "Pesos",
+    "montoMinimo": "$1,000",
+    "plazoMinimo": "1 día",
+    "slug": "cuenta-remunerada-uala",
+    "description": "La cuenta remunerada de Uala ofrece un tasa fija y segura por el saldo que tengas en cuenta.",
+    "displayName": "Uala"
+  },
   "Fima Premium - Clase P": {
     "nombreOficial": "Fima Premium - Clase P",
     "nombreSimplificado": "Fima Premium (P)",
