@@ -163,5 +163,20 @@
     "slug": "plazo-fijo-hipotecario",
     "description": "",
     "renta": "fija"
+  },
+  {
+    "entidad": "UALA",
+    "nombre": "Uala",
+    "logo": "https://icons.com.ar/icons/bancos-apps/uala.svg",
+    "url": "https://www.uilo.com.ar/",
+    "type": "pf",
+    "moneda": "pesos",
+    "horario": "7:00 - 16:30",
+    "montoMinimo": "$1.000",
+    "sociedad": "-",
+    "plazoMinimo": "30 días",
+    "slug": "plazo-fijo-uala",
+    "description": "",
+    "renta": "fija"
   }
 ]
