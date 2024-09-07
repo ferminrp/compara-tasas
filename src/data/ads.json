@@ -1,19 +1,9 @@
 {
   "small": [
     {
-      "company": "letsbit",
-      "url": "https://dub.sh/letsbit",
-      "imageUrl": "https://ik.imagekit.io/ferminrp/Banner_480x101.png"
-    },
-    {
-      "company": "dasbanq",
-      "url": "https://bit.ly/3VNHVZK",
-      "imageUrl": "https://ik.imagekit.io/ferminrp/Banners%202024%20April.png?updatedAt=1712251671139"
-    },
-    {
-      "company": "takenos",
-      "url": "https://app.takenos.com/referral?referral=3019da20-6746-4f43-81ba-a489cd833a0d",
-      "imageUrl": "https://ik.imagekit.io/ferminrp/takenos_banner.png?updatedAt=1712608636012"
+      "company": "offramp",
+      "url": "https://app.offramp.xyz/login?referralCode=nm0hr2",
+      "imageUrl": "https://uokihdagbfiaicipggkz.supabase.co/storage/v1/object/public/ads/offramp.png"
     }
   ],
   "large": [
